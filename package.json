@@ -1,0 +1,29 @@
+{
+  "name": "pure-paradise-v2",
+  "version": "2.0.0",
+  "description": "A text based RPG video game, originally created for a university assignment in Java, ported to Javascript / TypeScript",
+  "main": "src/index.ts",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "tsc src/index.ts --outDir build/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AroneSusau/pure-paradise-v2.git"
+  },
+  "keywords": [
+    "RPG",
+    "game",
+    "assignment",
+    "learning"
+  ],
+  "author": "Arone Tie Susau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AroneSusau/pure-paradise-v2/issues"
+  },
+  "homepage": "https://github.com/AroneSusau/pure-paradise-v2#readme"
+}

@@ -1,6 +1,6 @@
 {
   "name": "pure-paradise-v2",
-  "version": "2.0.0",
+  "version": "0.0.1",
   "description": "A text based RPG video game, originally created for a university assignment in Java, ported to Javascript / TypeScript",
   "main": "src/index.ts",
   "directories": {

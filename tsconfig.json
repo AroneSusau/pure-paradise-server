@@ -5,7 +5,6 @@
       "removeComments": true,
       "preserveConstEnums": true,
       "outDir": "build/",
-      "sourceMap": true
   },
   "include": [
       "src/**/*"

@@ -1,9 +1,5 @@
-import { Controller } from "./app/controller/Controller.js"
+import { GameEngine } from "./app/model/gameEngine/GameEngine.js"
 
-let b = 2
+const gameEngine = new GameEngine()
 
-console.log(b)
-
-const y = new Controller()
-
-console.log(y)
+console.dir(gameEngine)

@@ -1,7 +1,7 @@
-import { Player } from "../character/Player.js";
-import { BattleEngine } from "../battle/BattleEngine.js";
-import { MapEngine } from "../map/MapEngine.js";
-import { EventEngine } from "../event/EventEngine.js";
+import { Player } from "../character/Player.js"
+import { BattleEngine } from "../battle/BattleEngine.js"
+import { MapEngine } from "../map/MapEngine.js"
+import { EventEngine } from "../event/EventEngine.js"
 
 export class GameEngine { 
 

@@ -1,4 +1,4 @@
-import { Controller } from "./app/controller/Controller"
+import { Controller } from "./app/controller/Controller.js"
 
 let b = 2
 

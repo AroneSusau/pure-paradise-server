@@ -4,8 +4,7 @@
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
-      "outDir": "build/",
-      "sourceMap": true
+      "outDir": "build/"
   },
   "include": [
       "src/**/*"
@@ -16,6 +15,6 @@
       "docs",
       ".*",
       "**/*.json",
-      "**/*.spec.ts",
+      "**/*.spec.ts"
   ]
 }

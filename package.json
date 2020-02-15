@@ -7,10 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node build/private/index.js",
-    "local": "npm run build && npm start",
-    "clean": "rm -rf ./build",
-    "build": "npm run clean && tsc && cd src && rsync -R `find . \\( -name '*.css' -or -name '*.html' -or -name '*.ico' \\)` ../build/",
+    "start": "sh scripts/start.sh",
+    "local": "sh scripts/local-launch.sh",
+    "clean": "sh scripts/clean.sh",
+    "build": "sh scripts/build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {

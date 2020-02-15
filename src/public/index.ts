@@ -2,4 +2,6 @@ const socket = io()
 
 socket.emit('cats', 'WEOW I WORK')
 
-console.log('testing testing 123')
+socket.on('cats', (msg: String) => {
+    console.log(msg)
+})

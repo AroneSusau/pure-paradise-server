@@ -17,6 +17,7 @@ io.on('connection', function (socket: Socket) {
 
     socket.on('cats', msg => {
         console.log(msg)
+        socket.emit('cats', 'yes, you work')
     })
 
 })

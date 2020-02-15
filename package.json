@@ -2,12 +2,14 @@
   "name": "pure-paradise-v2",
   "version": "0.0.1",
   "description": "A text based RPG video game, originally created for a university assignment in Java, ported to Javascript / TypeScript",
-  "main": "src/index.ts",
+  "main": "src/public/index.ts",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "build": "tsc && cd src && rsync -R `find . \\( -name '*.css' -or -name '*.html' -or -name '*.ico' \\)` ../build/",
+    "start": "npm run build && node build/private/index.js",
+    "clean": "rm -rf ./build",
+    "build": "npm run clean && tsc && cd src && rsync -R `find . \\( -name '*.css' -or -name '*.html' -or -name '*.ico' \\)` ../build/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

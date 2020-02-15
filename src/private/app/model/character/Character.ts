@@ -1,26 +1,26 @@
-import { Stats } from "./Stats.js"
-import { Inventory } from "../Inventory/Inventory.js"
+import {Stats} from './Stats.js'
+import {Inventory} from '../Inventory/Inventory.js'
 
-export class Character { 
-  
-  private _name: String
-  private _stats: Stats
-  private _inventory: Inventory
+export class Character {
 
-  public get name(): String {
-    return this._name
-  }
-  
-  public set name(value: String) {
-    this._name = value
-  }
+    private _name: String
+    private _stats: Stats
+    private _inventory: Inventory
 
-  public get stats(): Stats {
-    return this._stats
-  }
+    public get name(): String {
+        return this._name
+    }
 
-  public get inventory(): Inventory {
-    return this._inventory
-  }
+    public set name(value: String) {
+        this._name = value
+    }
+
+    public get stats(): Stats {
+        return this._stats
+    }
+
+    public get inventory(): Inventory {
+        return this._inventory
+    }
 
 }

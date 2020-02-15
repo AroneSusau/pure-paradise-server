@@ -1,20 +1,23 @@
 {
   "compilerOptions": {
-      "target": "es6",
-      "noImplicitAny": true,
-      "removeComments": true,
-      "preserveConstEnums": true,
-      "outDir": "build/"
+    "target": "es6",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "outDir": "build/"
   },
   "include": [
-      "src/**/*"
+    "src/**/*"
   ],
   "exclude": [
-      "node_modules",
-      "build",
-      "docs",
-      ".*",
-      "**/*.json",
-      "**/*.spec.ts"
+    "node_modules",
+    "build",
+    "docs",
+    ".*",
+    "**/*.json",
+    "**/*.spec.ts"
   ]
 }

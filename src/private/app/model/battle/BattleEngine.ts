@@ -1,3 +1,3 @@
-export class BattleEngine { 
-  
+export class BattleEngine {
+
 }

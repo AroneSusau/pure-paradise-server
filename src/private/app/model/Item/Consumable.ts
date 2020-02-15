@@ -1,5 +1,5 @@
-import { Item } from "./Item.js"
+import {Item} from './Item.js'
 
-export class Consumable extends Item { 
+export class Consumable extends Item {
 
 }

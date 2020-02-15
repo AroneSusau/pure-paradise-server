@@ -1,3 +1,3 @@
-export class GameGUI { 
-  
+export class GameGUI {
+
 }

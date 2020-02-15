@@ -1,3 +1,4 @@
-import { Item } from "./Item.js"
+import {Item} from './Item.js'
 
-export class Useable extends Item { }
+export class Useable extends Item {
+}

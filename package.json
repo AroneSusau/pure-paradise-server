@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "npm run build && node build/private/index.js",
+    "start": "node build/private/index.js",
     "clean": "rm -rf ./build",
     "build": "npm run clean && tsc && cd src && rsync -R `find . \\( -name '*.css' -or -name '*.html' -or -name '*.ico' \\)` ../build/",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,7 +1,8 @@
 const socket = io()
 
-socket.emit('cats', 'WEOW I WORK')
+socket.emit('command', 'WEOW I WORK')
 
-socket.on('cats', (msg: String) => {
+socket.on('result', (msg: String) => {
+    alert("wow")
     console.log(msg)
 })

@@ -27,5 +27,12 @@
   "bugs": {
     "url": "https://github.com/AroneSusau/pure-paradise-v2/issues"
   },
-  "homepage": "https://github.com/AroneSusau/pure-paradise-v2#readme"
+  "homepage": "https://github.com/AroneSusau/pure-paradise-v2#readme",
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.7.1",
+    "@types/socket.io": "^2.1.4",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
 }

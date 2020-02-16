@@ -5,7 +5,7 @@ export class Point {
     private _y: number = 0
     private readonly length: number = 0
 
-    constructor(x: number, y:number, length: number) {
+    constructor(x: number, y: number, length: number) {
         this._x = x
         this._y = y
         this.length = length - 1

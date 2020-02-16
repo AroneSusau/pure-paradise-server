@@ -7,8 +7,8 @@ export class InventoryMeta {
     private _context: InventoryContext
 
     constructor() {
-        this._weapon = "None"
-        this._armour = "None"
+        this._weapon = 'None'
+        this._armour = 'None'
         this._context = InventoryContext.CLOSED
     }
 

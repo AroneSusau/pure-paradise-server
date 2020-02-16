@@ -10,11 +10,11 @@ import {Command} from '../../defaults/Command.js'
 
 export class GameEngine extends Engine {
 
-    private battleEngine: BattleEngine
-    private mapEngine: MapEngine
-    private eventEngine: EventEngine
-    private shopEngine: ShopEngine
-    private inventoryEngine: InventoryEngine
+    private readonly battleEngine: BattleEngine
+    private readonly mapEngine: MapEngine
+    private readonly eventEngine: EventEngine
+    private readonly shopEngine: ShopEngine
+    private readonly inventoryEngine: InventoryEngine
 
     constructor() {
         super()
@@ -29,39 +29,47 @@ export class GameEngine extends Engine {
     public start(name: string, player: Player) {
         player.name = name
         player.meta.context = Context.FREE_ROAM
+        this._subscribers.get(player.id).notify({result: "game has started"})
     }
 
     public run(cmd: string, player: Player) {
         if (player.meta.context != Context.START) {
-            const exec = this.contextChecker(cmd, player)
-
-            exec(Context.FREE_ROAM, this)
-            exec(Context.BATTLE, this.battleEngine)
-            exec(Context.EVENT, this.eventEngine)
-            exec(Context.SHOP, this.shopEngine)
-            exec(Context.INVENTORY, this.inventoryEngine)
-
+            switch (player.meta.context) {
+                case Context.FREE_ROAM:
+                    this.action(cmd, player)
+                    break
+                case Context.BATTLE:
+                    this.battleEngine.action(cmd, player)
+                    break
+                case Context.EVENT:
+                    this.eventEngine.action(cmd, player)
+                    break
+                case Context.SHOP:
+                    this.shopEngine.action(cmd, player)
+                    break
+                case Context.INVENTORY:
+                    this.inventoryEngine.action(cmd, player)
+                    break
+            }
         } else this.start(cmd, player)
     }
 
-    public action(cmd: string, player: Player, exec: Function) {
-        return [
-            exec(Command.W, this.mapEngine),
-            exec(Command.S, this.mapEngine),
-            exec(Command.A, this.mapEngine),
-            exec(Command.D, this.mapEngine),
-            exec(Command.INV, this.inventoryEngine)
-        ]
-    }
-
-    private contextChecker(cmd: string, player: Player): Function {
-        return function inner(context: Context, engine: Engine) {
-            if (player.meta.context === context) engine.validate(cmd, player)
+    public action(cmd: string, player: Player): void {
+        switch (cmd) {
+            case Command.W || Command.S || Command.A || Command.D:
+                this.mapEngine.action(cmd, player)
+                break
+            case Command.INV:
+                this.inventoryEngine.action(cmd, player)
+                break
+            default:
+                this.invalidAction(cmd, player)
         }
     }
 
-    protected invalidCommand(cmd: string, player: Player): void {
-
+    protected invalidAction(cmd: string, player: Player): void {
+        console.log('INVALID COMMAND ENTERED')
+        this._subscribers.get(player.id).notify({ result: "we are a go good sir" })
     }
 
 }

@@ -6,12 +6,14 @@ import {PointManager} from '../../map/PointManager.js'
 export class Player extends Character {
     private _meta: MetaManager
     private _location: PointManager
+    private _id: string
 
-    constructor(defaults: Defaults) {
-        super();
+    constructor(id: string, defaults: Defaults) {
+        super()
 
         this._meta = new MetaManager()
         this._location = new PointManager()
+        this._id = id
 
         defaults.applyPlayerDefaults(this)
     }
@@ -24,4 +26,8 @@ export class Player extends Character {
         return this._location
     }
 
+
+    get id(): string {
+        return this._id
+    }
 }

@@ -1,5 +1,5 @@
 import {Character} from '../Character.js'
 
-export class ShopKeeper extends Character{
+export class ShopKeeper extends Character {
 
 }

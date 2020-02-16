@@ -21,17 +21,22 @@ const defaults = new Defaults()
 
 app.use(express.static(path.join(__dirname, '../public/')))
 
-io.on('connection',  (socket: Socket) => {
+io.on('connection', (socket: Socket) => {
+    const id = socket.id
+    const player = new Player(id, defaults)
+    const observer = new Observer(id, socket)
 
-    players.set(socket.id, new Player(defaults))
-    observers.set(socket.id, new Observer(socket))
+    players.set(id, player)
+    observers.set(id, observer)
+    gameEngine.subscribe(observer)
 
-    socket.on('command', cmd => gameEngine.run(cmd, players.get(socket.id)))
+    socket.on('command', cmd => gameEngine.run(cmd, players.get(id)))
 
 })
 
-io.on("disconnected", (socket: Socket) => {
+io.on('disconnected', (socket: Socket) => {
     players.delete(socket.id)
+    gameEngine.unsubscribe(socket.id)
 })
 
 http.listen(port, () => {

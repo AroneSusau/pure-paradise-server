@@ -3,13 +3,11 @@ import {Player} from '../../character/concrete/Player.js'
 
 export class MapEngine extends Engine {
 
-    public action(cmd: string, player: Player, exec: Function) {
-        return [
-            true
-        ]
+    public action(cmd: string, player: Player): void {
+
     }
 
-    protected invalidCommand(cmd: string, player: Player): void {
+    protected invalidAction(cmd: string, player: Player): void {
     }
 
 }

@@ -2,19 +2,19 @@ import {Socket} from 'socket.io'
 
 export class Observer {
 
-    private _id: number
+    private _id: string
     private _socket: Socket
 
-    constructor(socket: Socket) {
+    constructor(id: string, socket: Socket) {
+        this._id = id
         this._socket = socket
     }
 
-    public notify() {
-
-        this._socket.emit("result", "RESULT EMITTED")
+    public notify(obj: Object) {
+        this._socket.emit('result', obj)
     }
 
-    get id(): number {
+    get id(): string {
         return this._id
     }
 }

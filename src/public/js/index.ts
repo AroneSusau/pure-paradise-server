@@ -11,3 +11,7 @@ document.getElementById("submit").onclick = () => {
 socket.on('result', (msg: string) => {
     console.log(msg)
 })
+
+socket.on('ping', (msg: string) => {
+    socket.emit('pong', 'Loud and clear')
+})

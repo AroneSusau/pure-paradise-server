@@ -3,5 +3,6 @@ export enum Context {
     EVENT,
     BATTLE,
     SHOP,
-    INVENTORY
+    INVENTORY,
+    START
 }

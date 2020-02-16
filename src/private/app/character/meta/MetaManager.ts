@@ -13,7 +13,7 @@ export class MetaManager {
     private readonly _inventoryMeta: InventoryMeta
 
     constructor() {
-        this._context = Context.FREE_ROAM
+        this._context = Context.START
         this._battleMeta = new BattleMeta()
         this._eventMeta = new EventMeta()
         this._shopMeta = new ShopMeta()

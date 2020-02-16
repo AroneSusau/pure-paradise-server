@@ -3,8 +3,13 @@ import {Engine} from '../Engine.js'
 
 export class InventoryEngine extends Engine {
 
-    public action(cmd: string, player: Player) {
+    public action(cmd: string, player: Player, exec: Function) {
+        return [
+            true
+        ]
+    }
 
+    protected invalidCommand(cmd: string, player: Player): void {
     }
 
 }

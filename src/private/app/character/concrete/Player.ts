@@ -4,7 +4,6 @@ import {MetaManager} from '../meta/MetaManager.js'
 import {PointManager} from '../../map/PointManager.js'
 
 export class Player extends Character {
-    private _startedGame: Boolean
     private _meta: MetaManager
     private _location: PointManager
 
@@ -15,14 +14,6 @@ export class Player extends Character {
         this._location = new PointManager()
 
         defaults.applyPlayerDefaults(this)
-    }
-
-    public gameStarted() {
-        this._startedGame = true
-    }
-
-    get startedGame(): Boolean {
-        return this._startedGame
     }
 
     get meta(): MetaManager {

@@ -2,14 +2,14 @@ import {ShopContext} from '../../defaults/ShopContext.js'
 
 export class ShopMeta {
 
-    private _shopContext: ShopContext
+    private _context: ShopContext
 
     constructor() {
-        this._shopContext = ShopContext.EXITED
+        this._context = ShopContext.EXITED
     }
 
     public updateShopContext(context: ShopContext) {
-        this._shopContext = context
+        this._context = context
     }
 
 }

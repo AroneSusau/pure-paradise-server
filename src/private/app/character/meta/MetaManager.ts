@@ -7,10 +7,18 @@ import {InventoryMeta} from './InventoryMeta.js'
 export class MetaManager {
 
     private _context: Context
-    private _battleStatus: BattleMeta
-    private _eventStatus: EventMeta
-    private _shopStatus: ShopMeta
-    private _inventoryStatus: InventoryMeta
+    private readonly _battleMeta: BattleMeta
+    private readonly _eventMeta: EventMeta
+    private readonly _shopMeta: ShopMeta
+    private readonly _inventoryMeta: InventoryMeta
+
+    constructor() {
+        this._context = Context.FREE_ROAM
+        this._battleMeta = new BattleMeta()
+        this._eventMeta = new EventMeta()
+        this._shopMeta = new ShopMeta()
+        this._inventoryMeta = new InventoryMeta()
+    }
 
     get context(): Context {
         return this._context
@@ -21,19 +29,19 @@ export class MetaManager {
     }
 
     get battleStatus(): BattleMeta {
-        return this._battleStatus
+        return this._battleMeta
     }
 
     get shopStatus(): ShopMeta {
-        return this._shopStatus
+        return this._shopMeta
     }
 
     get eventStatus(): EventMeta {
-        return this._eventStatus
+        return this._eventMeta
     }
 
     get inventoryStatus(): InventoryMeta {
-        return this._inventoryStatus
+        return this._inventoryMeta
     }
 
 }

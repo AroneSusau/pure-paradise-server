@@ -27,7 +27,7 @@ io.on('connection',  (socket: Socket) => {
     socket.on('command', cmd => {
         gameEngine.run(cmd, players.get(socket.id))
 
-        socket.emit('result', 'yes, you work')
+        socket.emit('result', cmd)
     })
 
 })

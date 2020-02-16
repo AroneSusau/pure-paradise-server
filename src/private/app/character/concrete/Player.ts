@@ -11,6 +11,9 @@ export class Player extends Character {
     constructor(defaults: Defaults) {
         super();
 
+        this._meta = new MetaManager()
+        this._location = new PointManager()
+
         defaults.applyPlayerDefaults(this)
     }
 

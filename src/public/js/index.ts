@@ -1,8 +1,13 @@
 const socket = io()
 
-socket.emit('command', 'WEOW I WORK')
+document.getElementById("submit").onclick = () => {
+    const input = document.querySelector("input")
+
+    socket.emit('command', input.value)
+
+    input.value = ""
+}
 
 socket.on('result', (msg: string) => {
-    alert("wow")
     console.log(msg)
 })

@@ -1,5 +1,5 @@
 import {Socket} from 'socket.io'
-import {GameEngine} from './app/model/gameEngine/GameEngine.js'
+import {GameEngine} from './app/gameEngine/GameEngine.js'
 
 const express = require('express')
 const app = express()

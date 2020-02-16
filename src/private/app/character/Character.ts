@@ -1,5 +1,5 @@
 import {Stats} from './Stats.js'
-import {Inventory} from '../Inventory/Inventory.js'
+import {Inventory} from '../inventory/Inventory.js'
 
 export class Character {
 

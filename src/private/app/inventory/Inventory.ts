@@ -1,4 +1,4 @@
-import {Item} from '../Item/Item.js'
+import {Item} from '../item/Item.js'
 
 export class Inventory {
 

@@ -17,7 +17,9 @@ In a live environment, not all fields will be sent to the client each request, o
     "mapUpdate": true,
     "playerUpdate": true,
     "battleUpdate": true,
-    "eventUpdate": true
+    "eventUpdate": true,
+    "contextUpdate": true,
+    "error": false
   },
   "map": {
     "flags": {
@@ -40,6 +42,7 @@ In a live environment, not all fields will be sent to the client each request, o
       "coordsUpdate": true
     },
     "name": "SomeName",
+    "context": "SomeContext",
     "inventory": {
       "itemCount": 1,
       "empty": false,
@@ -132,7 +135,8 @@ The follow example shows a typical server response that could be expected when a
     "mapUpdate": false,
     "playerUpdate": true,
     "battleUpdate": false,
-    "eventUpdate": false
+    "eventUpdate": false,
+    "error": false
   },
   "player": {
     "flags": {
@@ -159,6 +163,17 @@ The follow example shows a typical server response that could be expected when a
       }
     }
   }
+}
+```
+
+## Example Template Server Error Response
+```JSON
+{
+  "flags": {
+    "error": true,
+    "invalidInput": true
+  },
+  "message": "SomeMessage"
 }
 ```
 

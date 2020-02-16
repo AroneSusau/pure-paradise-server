@@ -1,4 +1,4 @@
-export class Stats {
+export class StatMeta {
 
     private _damage: number
     private _isAlive: boolean
@@ -7,6 +7,16 @@ export class Stats {
     private _hunger: number
     private _thirst: number
     private _money: number
+
+    constructor() {
+        this._damage = 0
+        this._isAlive = true
+        this._defence = 0
+        this._health = 100
+        this._hunger = 100
+        this._thirst = 100
+        this._money = 100
+    }
 
     public get damage(): number {
         return this._damage

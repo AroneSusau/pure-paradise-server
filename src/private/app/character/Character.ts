@@ -1,21 +1,21 @@
-import {Stats} from './Stats.js'
+import {StatMeta} from './meta/StatMeta.js'
 import {Inventory} from '../inventory/Inventory.js'
 
-export class Character {
+export abstract class Character {
 
-    private _name: String
-    private _stats: Stats
-    private _inventory: Inventory
+    protected _name: string
+    protected _stats: StatMeta
+    protected _inventory: Inventory
 
-    public get name(): String {
+    public get name(): string {
         return this._name
     }
 
-    public set name(value: String) {
+    public set name(value: string) {
         this._name = value
     }
 
-    public get stats(): Stats {
+    public get stats(): StatMeta {
         return this._stats
     }
 

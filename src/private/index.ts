@@ -1,5 +1,7 @@
 import {Socket} from 'socket.io'
-import {GameEngine} from './app/gameEngine/GameEngine.js'
+import {GameEngine} from './app/engine/concrete/GameEngine.js'
+import {Player} from './app/character/concrete/Player.js'
+import {Defaults} from './app/defaults/Defaults.js'
 
 const express = require('express')
 const app = express()
@@ -8,7 +10,9 @@ const io = require('socket.io')(http)
 const port = process.env.PORT || 3000
 const path = require('path')
 
-const userGames = new Map<String, GameEngine>()
+const gameEngine = new GameEngine()
+const players = new Map<string, Player>()
+const defaults = new Defaults()
 
 app.use(express.static(path.join(__dirname, '../public/')))
 
@@ -17,9 +21,11 @@ http.listen(port, () => {
 })
 
 io.on('connection',  (socket: Socket) => {
-    userGames.set(socket.id, new GameEngine())
+
+    players.set(socket.id, new Player(defaults))
 
     socket.on('command', cmd => {
+        gameEngine.run(cmd, players.get(socket.id))
 
         socket.emit('result', 'yes, you work')
     })
@@ -27,5 +33,5 @@ io.on('connection',  (socket: Socket) => {
 })
 
 io.on("disconnected", (socket: Socket) => {
-    userGames.delete(socket.id)
+    players.delete(socket.id)
 })

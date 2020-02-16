@@ -11,8 +11,6 @@ export abstract class Engine {
 
     public abstract action(cmd: string, player: Player): void
 
-    protected abstract invalidAction(cmd: string, player: Player): void
-
     public subscribe(observer: Observer) {
         this._subscribers.set(observer.id, observer)
     }
@@ -20,5 +18,7 @@ export abstract class Engine {
     public unsubscribe(id: string) {
         this._subscribers.delete(id)
     }
+
+    protected abstract invalidAction(cmd: string, player: Player): void
 
 }

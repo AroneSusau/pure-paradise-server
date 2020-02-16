@@ -2,7 +2,6 @@ import {Socket} from 'socket.io'
 
 export class Observer {
 
-    private _id: string
     private _socket: Socket
 
     constructor(id: string, socket: Socket) {
@@ -10,11 +9,13 @@ export class Observer {
         this._socket = socket
     }
 
-    public notify(obj: Object) {
-        this._socket.emit('result', obj)
-    }
+    private _id: string
 
     get id(): string {
         return this._id
+    }
+
+    public notify(obj: Object) {
+        this._socket.emit('result', obj)
     }
 }

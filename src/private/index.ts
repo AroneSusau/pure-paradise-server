@@ -1,7 +1,6 @@
 import {Socket} from 'socket.io'
 import {GameEngine} from './app/engine/concrete/GameEngine.js'
 import {Player} from './app/character/concrete/Player.js'
-import {Defaults} from './app/defaults/Defaults.js'
 import {Observer} from './observer/Observer.js'
 
 const express = require('express')
@@ -17,13 +16,12 @@ const io = require('socket.io')(http, {
 const gameEngine = new GameEngine()
 const observers = new Map<string, Observer>()
 const players = new Map<string, Player>()
-const defaults = new Defaults()
 
 app.use(express.static(path.join(__dirname, '../public/')))
 
 io.on('connection', (socket: Socket) => {
     const id = socket.id
-    const player = new Player(id, defaults)
+    const player = new Player(id)
     const observer = new Observer(id, socket)
 
     players.set(id, player)

@@ -6,7 +6,6 @@ import {InventoryMeta} from './InventoryMeta.js'
 
 export class MetaManager {
 
-    private _context: Context
     private readonly _battleMeta: BattleMeta
     private readonly _eventMeta: EventMeta
     private readonly _shopMeta: ShopMeta
@@ -19,6 +18,8 @@ export class MetaManager {
         this._shopMeta = new ShopMeta()
         this._inventoryMeta = new InventoryMeta()
     }
+
+    private _context: Context
 
     get context(): Context {
         return this._context

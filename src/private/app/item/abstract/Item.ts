@@ -1,10 +1,4 @@
-export class Item {
-
-    private _id: number
-    private _name: string
-    private _description: string
-    private _price: number
-    private _quantity: number
+export abstract class Item {
 
     constructor(id: number, name: string, description: string, price: number, quantity: number = 1) {
         this._id = id
@@ -14,24 +8,34 @@ export class Item {
         this._quantity = quantity
     }
 
-    public get quantity(): number {
-        return this._quantity
+    protected _id: number
+
+    public get id(): number {
+        return this._id
     }
+
+    protected _name: string
 
     public get name(): string {
         return this._name
     }
 
+    protected _description: string
+
     public get description(): string {
         return this._description
     }
+
+    protected _price: number
 
     public get price(): number {
         return this._price
     }
 
-    public get id(): number {
-        return this._id
+    protected _quantity: number
+
+    public get quantity(): number {
+        return this._quantity
     }
 
     public increaseQuantity() {

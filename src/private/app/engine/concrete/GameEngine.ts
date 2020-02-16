@@ -29,11 +29,12 @@ export class GameEngine extends Engine {
     public start(name: string, player: Player) {
         player.name = name
         player.meta.context = Context.FREE_ROAM
-        this._subscribers.get(player.id).notify({result: "game has started"})
+        this._subscribers.get(player.id).notify({result: 'game has started'})
     }
 
     public run(cmd: string, player: Player) {
-        if (player.meta.context != Context.START) {
+        if (player.meta.context == Context.START) this.start(cmd, player)
+        else {
             switch (player.meta.context) {
                 case Context.FREE_ROAM:
                     this.action(cmd, player)
@@ -51,7 +52,7 @@ export class GameEngine extends Engine {
                     this.inventoryEngine.action(cmd, player)
                     break
             }
-        } else this.start(cmd, player)
+        }
     }
 
     public action(cmd: string, player: Player): void {
@@ -69,7 +70,7 @@ export class GameEngine extends Engine {
 
     protected invalidAction(cmd: string, player: Player): void {
         console.log('INVALID COMMAND ENTERED')
-        this._subscribers.get(player.id).notify({ result: "we are a go good sir" })
+        this._subscribers.get(player.id).notify({result: 'beep boop beep boop, invalid command entered.'})
     }
 
 }

@@ -2,15 +2,13 @@ import {InventoryContext} from '../../defaults/InventoryContext.js'
 
 export class InventoryMeta {
 
-    private _weapon: String
-    private _armour: String
-    private _context: InventoryContext
-
     constructor() {
         this._weapon = 'None'
         this._armour = 'None'
         this._context = InventoryContext.CLOSED
     }
+
+    private _weapon: String
 
     get weapon(): String {
         return this._weapon
@@ -20,6 +18,8 @@ export class InventoryMeta {
         this._weapon = value
     }
 
+    private _armour: String
+
     get armour(): String {
         return this._armour
     }
@@ -27,6 +27,8 @@ export class InventoryMeta {
     set armour(value: String) {
         this._armour = value
     }
+
+    private _context: InventoryContext
 
     get context(): InventoryContext {
         return this._context

@@ -1,6 +1,6 @@
 import {Character} from '../Character.js'
 import {MetaManager} from '../meta/MetaManager.js'
-import {PointManager} from '../../map/PointManager.js'
+import {PointManager} from '../point/PointManager.js'
 
 export class Player extends Character {
     constructor(id: string) {

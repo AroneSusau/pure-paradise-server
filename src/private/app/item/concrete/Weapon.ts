@@ -1,6 +1,6 @@
-import {Usable} from './abstract/Usable.js'
-import {Player} from '../character/concrete/Player.js'
-import {Item} from './abstract/Item.js'
+import {Usable} from '../interface/Usable.js'
+import {Player} from '../../character/concrete/Player.js'
+import {Item} from '../Item.js'
 
 export class Weapon extends Item implements Usable {
 

@@ -1,5 +1,5 @@
 import {StatMeta} from './meta/StatMeta.js'
-import {Inventory} from '../inventory/Inventory.js'
+import {Inventory} from './inventory/Inventory.js'
 
 export abstract class Character {
 

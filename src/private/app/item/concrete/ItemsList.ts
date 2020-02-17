@@ -1,7 +1,8 @@
-import {ItemId} from '../defaults/ItemId.js'
+import {ItemId} from '../../defaults/ItemId.js'
 import {Food} from './Food.js'
 import {Weapon} from './Weapon.js'
 import {Armour} from './Armour.js'
+import {EdibleWeapon} from './EdibleWeapon.js'
 
 const items = [
 
@@ -20,6 +21,8 @@ const items = [
     new Weapon(ItemId.KNIFE, 'Knife', 'This thing is pointy.', 3, 25, 1),
     new Weapon(ItemId.WOODEN_SWORD, 'Wooden Sword', 'A sword carved out of wood, greater than man but lesser than the Draconical Sword.', 10, 250, 1),
     new Weapon(ItemId.DRACONIC_SWORD, 'Draconic Sword', 'A sword smithed from a dragon\'s skeleton, the strongest material in all of New Tretham ', 15, 500, 1),
+
+    new EdibleWeapon(ItemId.CHOCOLATE_SWORD, 'Chocolate Sword', 'A tasty treat that should do the trick!', 5, 1, 1, 6),
 
     // ARMOUR
     new Armour(ItemId.WOODEN_SHIELD, 'Wooden Shield', 'A shield carved from wood, provides decent protection.', 8, 200, 1),

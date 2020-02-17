@@ -1,6 +1,6 @@
-import {Consumable} from './abstract/Consumable.js'
-import {Player} from '../character/concrete/Player.js'
-import {Item} from './abstract/Item.js'
+import {Consumable} from '../interface/Consumable.js'
+import {Player} from '../../character/concrete/Player.js'
+import {Item} from '../Item.js'
 
 export class Food extends Item implements Consumable {
 

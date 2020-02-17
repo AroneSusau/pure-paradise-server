@@ -1,4 +1,4 @@
-import {Point} from './../../../../src/private/app/map/Point'
+import {Point} from '../../../../src/private/app/character/point/Point.js'
 
 describe('Point', () => {
 

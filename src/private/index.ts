@@ -8,7 +8,7 @@ const observers = new Map<string, Observer>()
 const players = new Map<string, Player>()
 
 export class PureParadise {
-    connected(socket: Socket) {
+    connection(socket: Socket) {
         const id = socket.id
         const player = new Player(id)
         const observer = new Observer(id, socket)

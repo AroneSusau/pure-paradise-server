@@ -3,12 +3,16 @@ import {Point} from './Point.js'
 export class PointManager {
 
     private _local: Point
+    private _global: Point
+
+    constructor() {
+        this._local = new Point(0, 0, 0)
+        this._global = new Point(0, 0, 0)
+    }
 
     public get local(): Point {
         return this._local
     }
-
-    private _global: Point
 
     public get global(): Point {
         return this._global

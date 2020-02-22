@@ -3,6 +3,9 @@ import {MetaManager} from '../meta/MetaManager.js'
 import {PointManager} from '../point/PointManager.js'
 
 export class Player extends Character {
+
+    private _id: string
+
     constructor(id: string) {
         super()
 
@@ -27,8 +30,6 @@ export class Player extends Character {
     get location(): PointManager {
         return this._location
     }
-
-    private _id: string
 
     get id(): string {
         return this._id

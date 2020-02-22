@@ -7,6 +7,8 @@ import {ShopEngine} from './ShopEngine.js'
 import {InventoryEngine} from './InventoryEngine.js'
 import {Engine} from '../Engine.js'
 import {Command} from '../../defaults/Command.js'
+import {Observer} from '../../../observer/Observer.js'
+import {DialogManager} from '../../dialog/DialogManager.js'
 
 export class GameEngine extends Engine {
 
@@ -16,24 +18,18 @@ export class GameEngine extends Engine {
     private readonly shopEngine: ShopEngine
     private readonly inventoryEngine: InventoryEngine
 
-    constructor() {
-        super()
+    constructor(observer: Observer) {
+        super(observer)
 
-        this.battleEngine = new BattleEngine()
-        this.mapEngine = new MapEngine()
-        this.eventEngine = new EventEngine()
-        this.shopEngine = new ShopEngine()
-        this.inventoryEngine = new InventoryEngine()
-    }
-
-    public start(name: string, player: Player) {
-        player.name = name
-        player.meta.context = Context.FREE_ROAM
-        this._subscribers.get(player.id).notify({result: 'game has started'})
+        this.battleEngine = new BattleEngine(observer)
+        this.mapEngine = new MapEngine(observer)
+        this.eventEngine = new EventEngine(observer)
+        this.shopEngine = new ShopEngine(observer)
+        this.inventoryEngine = new InventoryEngine(observer)
     }
 
     public run(cmd: string, player: Player) {
-        if (player.meta.context == Context.START) this.start(cmd, player)
+        if (player.meta.context == Context.START) this.eventEngine.start(cmd, player)
         else {
             switch (player.meta.context) {
                 case Context.FREE_ROAM:
@@ -69,8 +65,7 @@ export class GameEngine extends Engine {
     }
 
     protected invalidAction(cmd: string, player: Player): void {
-        console.log('INVALID COMMAND ENTERED')
-        this._subscribers.get(player.id).notify({result: 'beep boop beep boop, invalid command entered.'})
+        this._observer.notify({result: 'beep boop beep boop, invalid command entered.'})
     }
 
 }

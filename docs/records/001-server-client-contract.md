@@ -19,20 +19,15 @@ In a live environment, not all fields will be sent to the client each request, o
     "battleUpdate": true,
     "eventUpdate": true,
     "contextUpdate": true,
+    "generalUpdate": true,
     "error": false
   },
+  "general": {
+    "text": "SomeText"
+  },
   "map": {
-    "flags": {
-      "localUpdate": true,
-      "globalUpdate": true 
-    },
-    "local": {
-      "name": "SomeName",
-      "raw": [0, 1, 2, 3]
-    },
-    "global": {
-      "raw": [0, 1, 2, 3]
-    }
+    "name": "SomeName",
+    "raw": [1, 2, 3]
   },
   "player": {
     "flags": {

@@ -2,30 +2,21 @@ export class EventMeta {
 
     private _score: Map<Number, Number>
 
+    private _code: string
+    private _id: number
+    private _stage: number
+
     constructor() {
         this._id = 0
         this._stage = 0
+        this._code = `e${this._id}s${this._stage}`
         this._score = new Map<Number, Number>()
     }
 
-    private _id: number
-
-    get id(): number {
-        return this._id
-    }
-
-    set id(value: number) {
-        this._id = value
-    }
-
-    private _stage: number
-
-    get stage(): number {
-        return this._stage
-    }
-
-    set stage(value: number) {
-        this._stage = value
+    public updateCode(id: number, stage: number) {
+        this._id = id
+        this._stage = stage
+        this._code = `e${this._id}s${this._stage}`
     }
 
     public updateScore(id: number, score: number) {

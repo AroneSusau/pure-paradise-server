@@ -1,23 +1,18 @@
 import {Player} from '../character/concrete/Player.js'
 import {Observer} from '../../observer/Observer.js'
+import {DialogManager} from '../dialog/DialogManager.js'
 
 export abstract class Engine {
 
-    protected _subscribers: Map<string, Observer>
+    protected _observer: Observer
+    protected dialogManager: DialogManager
 
-    constructor() {
-        this._subscribers = new Map<string, Observer>()
+    constructor(observer: Observer) {
+        this._observer = observer
+        this.dialogManager = new DialogManager()
     }
 
     public abstract action(cmd: string, player: Player): void
-
-    public subscribe(observer: Observer) {
-        this._subscribers.set(observer.id, observer)
-    }
-
-    public unsubscribe(id: string) {
-        this._subscribers.delete(id)
-    }
 
     protected abstract invalidAction(cmd: string, player: Player): void
 

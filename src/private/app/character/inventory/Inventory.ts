@@ -1,33 +1,44 @@
-import {Item} from '../../item/Item.js'
+import {ItemId} from '../../defaults/ItemId.js'
 
 export class Inventory {
 
-    private items: Map<number, Item>
+    private _items: Map<ItemId, number>
 
-    public addItem(item: Item) {
-        const id = item.id
-        const itemInInventoy = this.items.has(id)
-
-        if (itemInInventoy) this.getItem(id).increaseQuantity()
-        else this.items.set(id, item)
+    constructor() {
+        this._items = new Map<ItemId, number>()
     }
 
-    public removeItem(item: Item): boolean {
-        const id = item.id
-        const itemExists = this.items.has(id)
-
-        if (itemExists) {
-            const _item = this.getItem(id)
-
-            if (_item.last()) this.items.delete(id)
-            else _item.decreaseQuantity()
-            return true
-
-        } else return false
+    public itemQuantity(id: ItemId): number {
+        return this.hasItem(id) ? this._items.get(id) : 0
     }
 
-    public getItem(id: number): Item {
-        return this.items.get(id)
+    public hasItem(id: ItemId): boolean {
+        return this._items.has(id)
+    }
+
+    public setItem(id: ItemId, qty: number) {
+        this._items.set(id, qty)
+    }
+
+    public addItem(id: ItemId): number {
+        if (this.hasItem(id)) {
+            const currentQty = this._items.get(id)
+            this._items.set(id, currentQty + 1)
+        } else this._items.set(id, 1)
+
+        return this.itemQuantity(id)
+    }
+
+    public removeItem(id: ItemId): number {
+        if (this.hasItem(id)) {
+            const currentQty = this._items.get(id)
+
+            if (currentQty > 1) {
+                this._items.set(id, currentQty - 1)
+                return this.itemQuantity(id)
+            }
+        }
+        return 0
     }
 
 }

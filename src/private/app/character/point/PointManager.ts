@@ -6,8 +6,8 @@ export class PointManager {
     private _global: Point
 
     constructor() {
-        this._local = new Point(0, 0, 20)
-        this._global = new Point(0, 0, 20)
+        this._local = new Point()
+        this._global = new Point()
     }
 
     public get local(): Point {

@@ -26,6 +26,7 @@ In a live environment, not all fields will be sent to the client each request, o
     "text": "SomeText"
   },
   "map": {
+    "id" : 1 
     "name": "SomeName",
     "raw": [1, 2, 3]
   },
@@ -58,7 +59,7 @@ In a live environment, not all fields will be sent to the client each request, o
         "id": 1,
         "damage": 10
       },
-      "armor": {
+      "armour": {
         "id": 1,
         "defence": 10
       }

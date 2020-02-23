@@ -1,11 +1,10 @@
 export abstract class Item {
 
-    constructor(id: number, name: string, description: string, price: number, quantity: number = 1) {
+    constructor(id: number, name: string, description: string, price: number) {
         this._id = id
         this._name = name
         this._description = description
         this._price = price
-        this._quantity = quantity
     }
 
     protected _id: number
@@ -30,26 +29,6 @@ export abstract class Item {
 
     public get price(): number {
         return this._price
-    }
-
-    protected _quantity: number
-
-    public get quantity(): number {
-        return this._quantity
-    }
-
-    public increaseQuantity() {
-        this._quantity += 1
-    }
-
-    public decreaseQuantity() {
-        if (this._quantity > 0) {
-            this._quantity -= 1
-        }
-    }
-
-    public last(): boolean {
-        return this._quantity == 1
     }
 
 }

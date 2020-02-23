@@ -1,6 +1,7 @@
 import {Context} from '../private/app/defaults/Context.js'
 import {Item} from '../private/app/item/Item.js'
 import {Monster} from '../private/app/character/concrete/Monster.js'
+import {MapIds} from '../private/app/defaults/MapIds.js'
 
 export type GameResponse = {
     id: string,
@@ -18,6 +19,7 @@ export type GameResponse = {
 
     },
     map?: {
+        id: MapIds
         name: string,
         raw: Array<number>
     },

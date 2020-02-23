@@ -2,8 +2,9 @@ import {Player} from '../../character/concrete/Player.js'
 import {Engine} from '../Engine.js'
 import {MapManager} from '../../map/MapManager.js'
 import {Context} from '../../defaults/Context.js'
-import {DialogManager} from '../../dialog/DialogManager.js'
 import {Socket} from 'socket.io'
+import {AreaNames} from '../../defaults/AreaNames.js'
+import {MapIds} from '../../defaults/MapIds.js'
 
 export class EventEngine extends Engine {
 
@@ -23,7 +24,7 @@ export class EventEngine extends Engine {
             },
             player: {
                 name: player.name,
-                context: player.meta.context,
+                context: Context.FREE_ROAM,
                 flags: {
                     inventoryUpdate: false,
                     equippedUpdate: false,
@@ -39,8 +40,9 @@ export class EventEngine extends Engine {
                 text: this.dialogManager['e0s0'](player)
             },
             map: {
-                name: MapManager.venmark.name,
-                raw: MapManager.venmark.raw
+                id: MapIds.VEMARK,
+                name: AreaNames.VEMARK,
+                raw: MapManager.maps.get(MapIds.VEMARK).raw
             }
         }, socket)
     }

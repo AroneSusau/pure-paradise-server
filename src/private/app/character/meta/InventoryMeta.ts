@@ -1,34 +1,27 @@
 import {InventoryContext} from '../../defaults/InventoryContext.js'
+import {ItemId} from '../../defaults/ItemId.js'
 
 export class InventoryMeta {
 
-    constructor() {
-        this._weapon = 'None'
-        this._armour = 'None'
-        this._context = InventoryContext.CLOSED
-    }
+    private _weapon: ItemId
+    private _armour: ItemId
+    private _context: InventoryContext
 
-    private _weapon: String
-
-    get weapon(): String {
+    get weapon(): ItemId {
         return this._weapon
     }
 
-    set weapon(value: String) {
+    set weapon(value: ItemId) {
         this._weapon = value
     }
 
-    private _armour: String
-
-    get armour(): String {
+    get armour(): ItemId {
         return this._armour
     }
 
-    set armour(value: String) {
+    set armour(value: ItemId) {
         this._armour = value
     }
-
-    private _context: InventoryContext
 
     get context(): InventoryContext {
         return this._context

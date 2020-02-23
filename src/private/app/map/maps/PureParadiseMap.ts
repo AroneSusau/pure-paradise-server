@@ -1,14 +1,15 @@
 import {GameMap} from '../GameMap.js'
 import {AreaNames} from '../../defaults/AreaNames.js'
 import {Point} from '../../character/point/Point.js'
+import {Defaults} from '../../defaults/Defaults.js'
 
 export class PureParadiseMap extends GameMap {
 
-    constructor(x: number, y: number, length: number) {
+    constructor(defaults: Defaults) {
         super()
 
         this._name = AreaNames.PURE_PARADISE
-        this._coords = new Point(x, y, length)
+        this._coords = new Point()
 
         this._raw = [
             2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
@@ -32,5 +33,7 @@ export class PureParadiseMap extends GameMap {
             3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 3, 3, 3, 3,
             3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 2, 2, 2, 2, 3, 3, 3, 3
         ]
+
+        defaults.applyMapDefaults(this)
     }
 }

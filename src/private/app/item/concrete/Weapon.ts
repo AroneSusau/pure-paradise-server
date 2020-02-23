@@ -6,8 +6,8 @@ export class Weapon extends Item implements Usable {
 
     protected readonly damage: number
 
-    constructor(id: number, name: string, description: string, price: number, quantity: number, damage: number) {
-        super(id, name, description, price, quantity)
+    constructor(id: number, name: string, description: string, price: number, damage: number) {
+        super(id, name, description, price)
         this.damage = damage
     }
 

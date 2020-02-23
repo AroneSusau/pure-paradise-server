@@ -65,6 +65,8 @@ function playerUpdate(flag, response, term) {
             gameData.mapRaw = Array.from(gameData.mapOriginal)
             gameData.mapRaw[response.player.coords.localIndex] = 89
 
+            console.log(response.player.coords.localIndex)
+
             const map = document.getElementById("map")
             const mapParsed = MapParser(gameData.mapRaw)
 

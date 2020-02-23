@@ -1,21 +1,21 @@
 export class Point {
 
-    private readonly length: number = 0
-
-    constructor(x: number, y: number, length: number) {
-        this._x = x
-        this._y = y
-        this.length = length
-        this.updateIndex()
-    }
-
+    private _length: number
     private _index: number
+    private _x: number
+    private _y: number
 
     public get index(): number {
         return this._index
     }
 
-    private _x: number
+    get length(): number {
+        return this._length
+    }
+
+    set length(value: number) {
+        this._length = value
+    }
 
     public get x(): number {
         return this._x
@@ -24,8 +24,6 @@ export class Point {
     public set x(value: number) {
         this._x = value
     }
-
-    private _y: number = 0
 
     public get y(): number {
         return this._y
@@ -36,7 +34,7 @@ export class Point {
     }
 
     public incrementX() {
-        this._x += this._x < this.length - 1 ? 1 : 0
+        this._x += this._x < this._length - 1 ? 1 : 0
         this.updateIndex()
     }
 
@@ -46,7 +44,7 @@ export class Point {
     }
 
     public incrementY() {
-        this._y += this._y < this.length - 1 ? 1 : 0
+        this._y += this._y < this._length - 1 ? 1 : 0
         this.updateIndex()
     }
 
@@ -56,7 +54,7 @@ export class Point {
     }
 
     public updateIndex() {
-        this._index = (this._y * this.length + this._x)
+        this._index = (this._y * this._length) + this._x
     }
 
 }

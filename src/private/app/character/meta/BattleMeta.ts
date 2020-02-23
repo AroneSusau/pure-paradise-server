@@ -3,7 +3,6 @@ export class BattleMeta {
     private _monsterIds: Array<number>
 
     constructor() {
-        this._monsterCount = 0
         this._monsterIds = new Array<number>()
     }
 
@@ -11,6 +10,10 @@ export class BattleMeta {
 
     get monsterCount(): number {
         return this._monsterCount
+    }
+
+    set monsterCount(value: number) {
+        this._monsterCount = value
     }
 
     public updateMonsterIds(list: Array<number>) {

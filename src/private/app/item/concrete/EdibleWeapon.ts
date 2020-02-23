@@ -9,8 +9,8 @@ export class EdibleWeapon extends Item implements Consumable, Usable {
     protected readonly value: number
 
 
-    constructor(id: number, name: string, description: string, price: number, quantity: number, damage: number, value: number) {
-        super(id, name, description, price, quantity)
+    constructor(id: number, name: string, description: string, price: number, damage: number, value: number) {
+        super(id, name, description, price)
         this.damage = damage
         this.value = value
     }

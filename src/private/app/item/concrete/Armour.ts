@@ -6,8 +6,8 @@ export class Armour extends Item implements Usable {
 
     protected readonly defence: number
 
-    constructor(id: number, name: string, description: string, price: number, quantity: number, defence: number) {
-        super(id, name, description, price, quantity)
+    constructor(id: number, name: string, description: string, price: number, defence: number) {
+        super(id, name, description, price)
         this.defence = defence
     }
 

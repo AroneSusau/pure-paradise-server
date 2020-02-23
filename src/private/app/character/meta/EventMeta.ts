@@ -7,9 +7,6 @@ export class EventMeta {
     private _stage: number
 
     constructor() {
-        this._id = 0
-        this._stage = 0
-        this._code = `e${this._id}s${this._stage}`
         this._score = new Map<Number, Number>()
     }
 

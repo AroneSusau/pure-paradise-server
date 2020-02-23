@@ -70,14 +70,8 @@ In a live environment, not all fields will be sent to the client each request, o
       "gold": 100
     },
     "coords": {
-      "local": {
-        "x": 0,
-        "y": 1
-      },
-      "global": {
-        "x": 0,
-        "y": 1
-      }
+      "localIndex": 0,
+      "globalIndex": 0
     }
   },
   "battle": {
@@ -165,10 +159,17 @@ The follow example shows a typical server response that could be expected when a
 ```JSON
 {
   "flags": {
-    "error": true,
-    "invalidInput": true
+    "mapUpdate": false,
+    "playerUpdate": false,
+    "battleUpdate": false,
+    "eventUpdate": false,
+    "contextUpdate": false,
+    "generalUpdate": false,
+    "error": true
   },
-  "message": "SomeMessage"
+  "error": {
+    "message": "SomeMessage"
+  }
 }
 ```
 

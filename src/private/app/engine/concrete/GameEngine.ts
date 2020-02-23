@@ -8,7 +8,6 @@ import {InventoryEngine} from './InventoryEngine.js'
 import {Engine} from '../Engine.js'
 import {Command} from '../../defaults/Command.js'
 import {Observer} from '../../../observer/Observer.js'
-import {DialogManager} from '../../dialog/DialogManager.js'
 
 export class GameEngine extends Engine {
 
@@ -53,7 +52,16 @@ export class GameEngine extends Engine {
 
     public action(cmd: string, player: Player): void {
         switch (cmd) {
-            case Command.W || Command.S || Command.A || Command.D:
+            case Command.W:
+                this.mapEngine.action(cmd, player)
+                break
+            case Command.A:
+                this.mapEngine.action(cmd, player)
+                break
+            case Command.S:
+                this.mapEngine.action(cmd, player)
+                break
+            case Command.D:
                 this.mapEngine.action(cmd, player)
                 break
             case Command.INV:
@@ -62,10 +70,6 @@ export class GameEngine extends Engine {
             default:
                 this.invalidAction(cmd, player)
         }
-    }
-
-    protected invalidAction(cmd: string, player: Player): void {
-        this._observer.notify({result: 'beep boop beep boop, invalid command entered.'})
     }
 
 }

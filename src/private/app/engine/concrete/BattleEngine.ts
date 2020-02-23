@@ -7,7 +7,4 @@ export class BattleEngine extends Engine {
 
     }
 
-    protected invalidAction(cmd: string, player: Player): void {
-    }
-
 }

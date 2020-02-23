@@ -12,12 +12,24 @@ export class EventEngine extends Engine {
         this._observer.notify({
             flags: {
                 mapUpdate: true,
-                playerUpdate: false,
+                playerUpdate: true,
                 battleUpdate: false,
                 eventUpdate: false,
-                contextUpdate: false,
+                contextUpdate: true,
                 generalUpdate: true,
                 error: false
+            },
+            player: {
+                flags: {
+                    inventoryUpdate: false,
+                    equippedUpdate: false,
+                    statsUpdate: false,
+                    coordsUpdate: true
+                },
+                coords: {
+                    localIndex: player.location.local.index,
+                    globalIndex: player.location.global.index
+                }
             },
             general: {
                 text: this.dialogManager['e0s0'](player)
@@ -31,9 +43,6 @@ export class EventEngine extends Engine {
 
     public action(cmd: string, player: Player): void {
 
-    }
-
-    protected invalidAction(cmd: string, player: Player): void {
     }
 
 }

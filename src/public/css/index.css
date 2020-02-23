@@ -1,0 +1,87 @@
+body, html, .wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    font-size: 16px !important;
+}
+
+body {
+    display: flex;
+}
+
+.wrapper {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+    border: 3px solid gray;
+}
+
+/* Title image */
+
+.imageContainer {
+    padding: 10px;
+}
+
+.titleImage {
+    width: 40%;
+}
+
+/* Terminal */
+
+.terminalContainer {
+    width: 100%;
+    height: 50%;
+    overflow-y: auto;
+    border-top: 3px solid gray;
+}
+
+.contents {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+terminal div {
+    word-wrap: break-spaces;
+    flex-flow: row;
+}
+
+/* Map */
+
+.map {
+    color: #aaa;
+}
+
+/* Disable scroll bars */
+
+html {
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1550px) {
+    .titleImage {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .titleImage {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 764px) {
+    .titleImage {
+        width: 90%;
+    }
+}

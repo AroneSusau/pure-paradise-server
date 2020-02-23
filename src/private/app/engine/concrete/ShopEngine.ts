@@ -7,7 +7,4 @@ export class ShopEngine extends Engine {
 
     }
 
-    protected invalidAction(cmd: string, player: Player): void {
-    }
-
 }

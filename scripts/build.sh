@@ -14,6 +14,12 @@ cd src || exit
 echo 'Copying Addition Files..\n'
 
 # Copy css, html and other relevant files that dont require tsc parsing.
-rsync -R $(find . \( -name '*.css' -or -name '*.html' -or -name '*.ico' \)) ../build/
+rsync -R $(find . \( -name '*.css' -or -name '*.html' -or -name '*.ico' -or -name '*.png' \)) ../build/
+
+cd ..
+
+browserify ./src/public/js/index.js | minify >./src/public/dist/bundle.js
+
+cp -r ./src/public/dist ./build/public
 
 echo 'Build Complete\n'

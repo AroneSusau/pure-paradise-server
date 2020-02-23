@@ -2,6 +2,7 @@ import {Socket} from 'socket.io'
 import {GameEngine} from './app/engine/concrete/GameEngine.js'
 import {Player} from './app/character/concrete/Player.js'
 import {Observer} from './observer/Observer.js'
+import {SocketEvents} from './app/defaults/SocketEvents.js'
 
 const observer = new Observer()
 const gameEngine = new GameEngine(observer)
@@ -15,7 +16,8 @@ export class PureParadise {
         observer.socket = socket
         players.set(id, player)
 
-        socket.on('command', cmd => gameEngine.run(cmd, players.get(id)))
+
+        socket.on(SocketEvents.COMMAND, cmd => gameEngine.run(cmd, players.get(id)))
 
     }
 

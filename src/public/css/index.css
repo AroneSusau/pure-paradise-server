@@ -84,4 +84,68 @@ html {
     .titleImage {
         width: 90%;
     }
+
+    .contents {
+        justify-content: center;
+    }
+
+    #map {
+        font-size: 12px;
+    }
+}
+
+/* Animations */
+
+#player {
+    display: inline;
+    color: crimson;
+    text-shadow: 0 0 5px crimson;
+    animation: blinkingPlayer 1.2s infinite;
+    -moz-animation: blinkingPlayer 1.2s infinite;
+    -webkit-animation: blinkingPlayer 1.2s infinite;
+    -o-animation: blinkingPlayer 1.2s infinite;
+}
+
+#objective {
+    display: inline;
+    color: crimson;
+    text-shadow: 0 0 5px crimson;
+    animation: blinkingObjective 3s infinite;
+    -moz-animation: blinkingObjective 3s infinite;
+    -webkit-animation: blinkingObjective 3s infinite;
+    -o-animation: blinkingObjective 3s infinite;
+}
+
+@keyframes blinkingPlayer {
+    0% {
+        color: crimson;
+        text-shadow: 0 0 5px crimson;
+    }
+
+    40% {
+        color: crimson;
+        text-shadow: 0 0 5px crimson;
+    }
+
+    100% {
+        color: rgba(0, 0, 0, 0.98);
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.98);
+    }
+}
+
+@keyframes blinkingObjective {
+    0% {
+        color: goldenrod;
+        text-shadow: 0 0 5px goldenrod;
+    }
+
+    40% {
+        color: goldenrod;
+        text-shadow: 0 0 5px goldenrod;
+    }
+
+    100% {
+        color: rgba(0, 0, 0, 0.98);
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.98);
+    }
 }

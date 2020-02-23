@@ -13,12 +13,12 @@ key.set(9, "++")
 key.set(10, "//")
 key.set(11, "\\\\")
 key.set(12, "==")
-key.set(13, "??")
+key.set(13, "<span id='objective'>??</span>")
 key.set(73, "D ")
 key.set(76, "G ")
 key.set(84, "O ")
 key.set(88, "S ")
-key.set(89, "PP")
+key.set(89, "<span id='player'>PP</span>")
 
 const MapParser = (raw) => {
     return raw.map(value => {

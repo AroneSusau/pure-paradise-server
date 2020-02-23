@@ -10,18 +10,21 @@ function battleUpdate(flag, response, term) {
     if (flag) {
         console.log("Its a battle")
     }
+    jumpToBottomScroll()
 }
 
 function contextUpdate(flag, response, term) {
     if (flag) {
         console.log("Its a context")
     }
+    jumpToBottomScroll()
 }
 
 function eventUpdate(flag, response, term) {
     if (flag) {
         console.log("Its a event")
     }
+    jumpToBottomScroll()
 }
 
 function generalUpdate(flag, response, term) {
@@ -30,6 +33,7 @@ function generalUpdate(flag, response, term) {
 
         term.echo(response.general.text)
     }
+    jumpToBottomScroll()
 }
 
 function mapUpdate(flag, response, term) {
@@ -46,6 +50,7 @@ function mapUpdate(flag, response, term) {
             return t + lineBreak + c
         })
     }
+    jumpToBottomScroll()
 }
 
 function playerUpdate(flag, response, term) {
@@ -71,12 +76,20 @@ function playerUpdate(flag, response, term) {
             })
         }
     }
+    jumpToBottomScroll()
 }
 
 function error(flag, response, term) {
     if (flag) {
         term.echo(response.error.message)
     }
+    jumpToBottomScroll()
+}
+
+function jumpToBottomScroll() {
+    const div = document.querySelector(".terminalContainer")
+
+    div.scrollTop = div.scrollHeight;
 }
 
 module.exports = {

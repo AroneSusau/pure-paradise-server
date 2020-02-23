@@ -3,13 +3,15 @@ import {Engine} from '../Engine.js'
 import {MapManager} from '../../map/MapManager.js'
 import {Context} from '../../defaults/Context.js'
 import {DialogManager} from '../../dialog/DialogManager.js'
+import {Socket} from 'socket.io'
 
 export class EventEngine extends Engine {
 
-    public start(cmd: string, player: Player): void {
+    public start(cmd: string, player: Player, socket: Socket): void {
         player.name = cmd
         player.meta.context = Context.FREE_ROAM
         this._observer.notify({
+            id: player.id,
             flags: {
                 mapUpdate: true,
                 playerUpdate: true,
@@ -20,6 +22,8 @@ export class EventEngine extends Engine {
                 error: false
             },
             player: {
+                name: player.name,
+                context: player.meta.context,
                 flags: {
                     inventoryUpdate: false,
                     equippedUpdate: false,
@@ -38,10 +42,10 @@ export class EventEngine extends Engine {
                 name: MapManager.venmark.name,
                 raw: MapManager.venmark.raw
             }
-        })
+        }, socket)
     }
 
-    public action(cmd: string, player: Player): void {
+    public action(cmd: string, player: Player, socket: Socket): void {
 
     }
 

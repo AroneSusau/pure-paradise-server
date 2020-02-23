@@ -9,19 +9,17 @@ const gameEngine = new GameEngine(observer)
 const players = new Map<string, Player>()
 
 export class PureParadise {
-    connection(socket: Socket) {
+    connect(socket: Socket) {
         const id = socket.id
         const player = new Player(id)
 
-        observer.socket = socket
         players.set(id, player)
 
+        socket.on(SocketEvents.COMMAND, cmd => gameEngine.run(cmd, players.get(id), socket))
 
-        socket.on(SocketEvents.COMMAND, cmd => gameEngine.run(cmd, players.get(id)))
+        socket.on('disconnect', () => {
+            players.delete(id)
+        })
 
-    }
-
-    disconnected(socket: Socket) {
-        players.delete(socket.id)
     }
 }

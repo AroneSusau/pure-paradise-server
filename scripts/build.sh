@@ -11,7 +11,7 @@ tsc
 
 cd src || exit
 
-echo 'Copying Addition Files..\n'
+echo 'Copying Additional Files..\n'
 
 # Copy css, html and other relevant files that dont require tsc parsing.
 rsync -R $(find . \( -name '*.css' -or -name '*.html' -or -name '*.ico' -or -name '*.png' \)) ../build/

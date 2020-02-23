@@ -1,32 +1,31 @@
 import {Engine} from '../Engine.js'
 import {Player} from '../../character/concrete/Player.js'
 import {Command} from '../../defaults/Command.js'
+import {Socket} from 'socket.io'
 
 export class MapEngine extends Engine {
 
-    public action(cmd: string, player: Player): void {
+    public action(cmd: string, player: Player, socket: Socket): void {
         switch (cmd) {
             case Command.W:
                 player.location.local.decremementY()
-                this.movePlayer(player)
                 break;
             case Command.A:
                 player.location.local.decremementX()
-                this.movePlayer(player)
                 break;
             case Command.S:
                 player.location.local.incrementY()
-                this.movePlayer(player)
                 break;
             case Command.D:
                 player.location.local.incrementX()
-                this.movePlayer(player)
                 break;
         }
+        this.movePlayer(player, socket)
     }
 
-    public movePlayer(player: Player) {
+    public movePlayer(player: Player, socket: Socket) {
         this._observer.notify({
+            id: player.id,
             flags: {
                 mapUpdate: false,
                 playerUpdate: true,
@@ -37,6 +36,8 @@ export class MapEngine extends Engine {
                 error: false
             },
             player: {
+                name: player.name,
+                context: player.meta.context,
                 flags: {
                     inventoryUpdate: false,
                     equippedUpdate: false,
@@ -49,7 +50,7 @@ export class MapEngine extends Engine {
                 }
 
             }
-        })
+        }, socket)
     }
 
 }

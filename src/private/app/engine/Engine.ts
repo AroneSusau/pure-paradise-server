@@ -2,6 +2,7 @@ import {Player} from '../character/concrete/Player.js'
 import {Observer} from '../../observer/Observer.js'
 import {DialogManager} from '../dialog/DialogManager.js'
 import {SocketEvents} from '../defaults/SocketEvents.js'
+import {Socket} from 'socket.io'
 
 export abstract class Engine {
 
@@ -13,10 +14,11 @@ export abstract class Engine {
         this.dialogManager = new DialogManager()
     }
 
-    public abstract action(cmd: string, player: Player): void
+    public abstract action(cmd: string, player: Player, socket: Socket): void
 
-    protected invalidAction(cmd: string, player: Player): void {
-        this._observer.socket.emit(SocketEvents.RESULT, {
+    protected invalidAction(cmd: string, player: Player, socket: Socket): void {
+        this._observer.notify({
+            id: player.id,
             flags: {
                 mapUpdate: false,
                 playerUpdate: false,
@@ -29,7 +31,7 @@ export abstract class Engine {
             error: {
                 message: "Invalid action entered, please try again."
             }
-        })
+        }, socket)
     }
 
 }

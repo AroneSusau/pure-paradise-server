@@ -23,17 +23,10 @@ const routers = [
     pureParadise
 ]
 
-io.on('connection', (socket: Socket) => {
+io.on('connect', (socket: Socket) => {
     routers.forEach(obj => {
-        if (obj['connection'] != undefined)
-            obj.connection(socket)
-    })
-})
-
-io.on('disconnected', (socket: Socket) => {
-    routers.forEach(obj => {
-        if (obj['disconnected'] != undefined)
-            obj.disconnected(socket)
+        if (obj['connect'] != undefined)
+            obj.connect(socket)
     })
 })
 

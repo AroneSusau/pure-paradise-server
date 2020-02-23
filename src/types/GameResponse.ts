@@ -3,6 +3,7 @@ import {Item} from '../private/app/item/Item.js'
 import {Monster} from '../private/app/character/concrete/Monster.js'
 
 export type GameResponse = {
+    id: string,
     flags: {
         mapUpdate: boolean,
         playerUpdate: boolean,
@@ -53,14 +54,8 @@ export type GameResponse = {
             gold: number
         },
         coords?: {
-            local: {
-                x: number,
-                y: number
-            },
-            global: {
-                x: number,
-                y: number
-            }
+            localIndex: number,
+            globalIndex: number,
         }
     },
     battle?: {

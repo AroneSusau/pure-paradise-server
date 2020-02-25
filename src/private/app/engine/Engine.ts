@@ -18,6 +18,7 @@ export abstract class Engine {
     protected invalidAction(cmd: string, player: Player, socket: Socket): void {
         this._observer.notify({
             id: player.id,
+            room: player.room,
             flags: {
                 mapUpdate: false,
                 playerUpdate: false,

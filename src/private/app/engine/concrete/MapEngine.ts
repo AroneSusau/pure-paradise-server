@@ -4,11 +4,12 @@ import {Command} from '../../defaults/Command.js'
 import {Socket} from 'socket.io'
 import {MapManager} from '../../map/MapManager.js'
 import {GameMap} from '../../map/GameMap.js'
+import {CharacterTypes} from '../../defaults/CharacterTypes.js'
 
 export class MapEngine extends Engine {
 
     public action(cmd: string, player: Player, socket: Socket): void {
-        const mapSwitch = this.mapBoundsCheck(cmd, player, socket)
+        const mapSwitch = this.globalBoundsCheck(cmd, player, socket)
 
         switch (cmd) {
             case Command.W:
@@ -24,13 +25,14 @@ export class MapEngine extends Engine {
                 player.location.local.incrementX()
                 break;
         }
-
         mapSwitch ?
             this.movePlayerGlobally(player, socket) :
             this.movePlayerLocally(player, socket)
+
+        this.broadcastPlayerMovement(player, socket)
     }
 
-    public mapBoundsCheck(cmd: string, player: Player, socket: Socket): boolean {
+    public globalBoundsCheck(cmd: string, player: Player, socket: Socket): boolean {
         const playerLocalX: number = player.location.local.x
         const playerLocalY: number = player.location.local.y
         const playerGlobalX: number = player.location.global.x
@@ -73,13 +75,13 @@ export class MapEngine extends Engine {
                 return true
             } else this.outOfBounds(player, socket)
         }
-
         return false
     }
 
     public outOfBounds(player: Player, socket: Socket) {
         this._observer.notify({
             id: player.id,
+            room: player.room,
             flags: {
                 mapUpdate: false,
                 playerUpdate: false,
@@ -101,6 +103,7 @@ export class MapEngine extends Engine {
 
         this._observer.notify({
             id: player.id,
+            room: player.room,
             flags: {
                 mapUpdate: true,
                 playerUpdate: true,
@@ -138,6 +141,7 @@ export class MapEngine extends Engine {
     public movePlayerLocally(player: Player, socket: Socket) {
         this._observer.notify({
             id: player.id,
+            room: player.room,
             flags: {
                 mapUpdate: false,
                 playerUpdate: true,
@@ -160,6 +164,19 @@ export class MapEngine extends Engine {
                     localIndex: player.location.local.index,
                     globalIndex: player.location.global.index
                 }
+            }
+        }, socket)
+    }
+
+    public broadcastPlayerMovement(player: Player, socket: Socket) {
+        this._observer.broadcastMovement({
+            id: player.id,
+            name: player.name,
+            room: player.room,
+            type: CharacterTypes.PLAYER,
+            mapId: player.location.global.index,
+            location: {
+                index: player.location.local.index
             }
         }, socket)
     }

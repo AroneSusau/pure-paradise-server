@@ -3,7 +3,7 @@ import {AreaNames} from '../../defaults/AreaNames.js'
 import {Point} from '../../character/point/Point.js'
 import {Defaults} from '../../defaults/Defaults.js'
 
-export class Venmark extends GameMap {
+export class Vemark extends GameMap {
 
     constructor(defaults: Defaults) {
         super()

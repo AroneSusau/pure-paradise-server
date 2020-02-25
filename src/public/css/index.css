@@ -45,7 +45,7 @@ body {
     display: flex;
 }
 
-terminal div {
+.terminal div {
     word-wrap: break-spaces;
     flex-flow: row;
 }
@@ -87,6 +87,7 @@ html {
 
     .contents {
         justify-content: center;
+        align-items: center;
     }
 
     #map {
@@ -96,41 +97,68 @@ html {
 
 /* Animations */
 
-#player {
+.player {
     display: inline;
-    color: crimson;
-    text-shadow: 0 0 5px crimson;
+    color: lightblue;
+    text-shadow: 0 0 5px lightblue;
     animation: blinkingPlayer 1.2s infinite;
     -moz-animation: blinkingPlayer 1.2s infinite;
     -webkit-animation: blinkingPlayer 1.2s infinite;
     -o-animation: blinkingPlayer 1.2s infinite;
 }
 
-#objective {
-    display: inline;
-    color: crimson;
-    text-shadow: 0 0 5px crimson;
-    animation: blinkingObjective 3s infinite;
-    -moz-animation: blinkingObjective 3s infinite;
-    -webkit-animation: blinkingObjective 3s infinite;
-    -o-animation: blinkingObjective 3s infinite;
-}
-
 @keyframes blinkingPlayer {
     0% {
-        color: crimson;
-        text-shadow: 0 0 5px crimson;
+        color: lightblue;
+        text-shadow: 0 0 5px lightblue;
     }
 
     40% {
-        color: crimson;
-        text-shadow: 0 0 5px crimson;
+        color: lightblue;
+        text-shadow: 0 0 5px lightblue;
     }
 
     100% {
         color: rgba(0, 0, 0, 0.98);
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.98);
     }
+}
+
+.otherPlayer {
+    display: inline;
+    color: green;
+    text-shadow: 0 0 5px green;
+    animation: blinkingOtherPlayer 3s infinite;
+    -moz-animation: blinkingOtherPlayer 3s infinite;
+    -webkit-animation: blinkingOtherPlayer 3s infinite;
+    -o-animation: blinkingOtherPlayer 3s infinite;
+}
+
+@keyframes blinkingOtherPlayer {
+    0% {
+        color: green;
+        text-shadow: 0 0 5px green;
+    }
+
+    40% {
+        color: green;
+        text-shadow: 0 0 5px green;
+    }
+
+    100% {
+        color: rgba(0, 0, 0, 0.98);
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.98);
+    }
+}
+
+.objective {
+    display: inline;
+    color: goldenrod;
+    text-shadow: 0 0 5px goldenrod;
+    animation: blinkingObjective 3s infinite;
+    -moz-animation: blinkingObjective 3s infinite;
+    -webkit-animation: blinkingObjective 3s infinite;
+    -o-animation: blinkingObjective 3s infinite;
 }
 
 @keyframes blinkingObjective {

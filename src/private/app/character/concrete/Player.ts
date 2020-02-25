@@ -5,19 +5,25 @@ import {Defaults} from '../../defaults/Defaults.js'
 
 export class Player extends Character {
 
-    private _id: string
-    private _location: PointManager
-    private _meta: MetaManager
+    private readonly _id: string
+    private readonly _room: string
+    private readonly _location: PointManager
+    private readonly _meta: MetaManager
 
-    constructor(id: string, defaults: Defaults) {
+    constructor(id: string, room: string, defaults: Defaults) {
         super()
 
         this._id = id
+        this._room = room
 
         this._meta = new MetaManager()
         this._location = new PointManager()
 
         defaults.applyPlayerDefaults(this)
+    }
+
+    get room(): string {
+        return this._room
     }
 
     get meta(): MetaManager {

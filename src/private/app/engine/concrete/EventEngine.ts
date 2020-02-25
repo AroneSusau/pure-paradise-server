@@ -13,6 +13,7 @@ export class EventEngine extends Engine {
         player.meta.context = Context.FREE_ROAM
         this._observer.notify({
             id: player.id,
+            room: player.room,
             flags: {
                 mapUpdate: true,
                 playerUpdate: true,

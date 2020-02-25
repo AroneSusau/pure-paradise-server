@@ -13,12 +13,20 @@ key.set(9, "++")
 key.set(10, "//")
 key.set(11, "\\\\")
 key.set(12, "==")
-key.set(13, "<span id='objective'>??</span>")
+key.set(13, "??")
+key.set(14, "00")
+key.set(15, "@@")
+key.set(16, ">>")
+key.set(17, ">>")
+key.set(18, "<<")
+key.set(20, "))")
+key.set(21, "((")
 key.set(73, "D ")
 key.set(76, "G ")
 key.set(84, "O ")
 key.set(88, "S ")
-key.set(89, "<span id='player'>PP</span>")
+key.set(89, "PP")
+key.set(90, "PP")
 
 const MapParser = (raw) => {
     return raw.map(value => {
@@ -26,7 +34,7 @@ const MapParser = (raw) => {
     })
 }
 
-module.exports = {MapParser}
+module.exports = {key, MapParser}
 
 
 

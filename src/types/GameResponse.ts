@@ -5,6 +5,7 @@ import {MapIds} from '../private/app/defaults/MapIds.js'
 
 export type GameResponse = {
     id: string,
+    room: string,
     flags: {
         mapUpdate: boolean,
         playerUpdate: boolean,

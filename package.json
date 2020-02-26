@@ -39,8 +39,6 @@
     "jquery": "^3.4.1",
     "jquery.terminal": "^2.14.1",
     "socket.io": "2.3.0",
-    "tsify": "^4.0.1",
-    "wcwidth": "^1.0.1",
     "socket.io-client": "latest"
   },
   "devDependencies": {
@@ -49,10 +47,8 @@
     "@types/node": "13.7.1",
     "@types/socket.io": "2.1.4",
     "@types/socket.io-client": "1.4.32",
-    "babel-minify": "^0.5.1",
     "browserify": "^16.5.0",
     "jest": "^25.1.0",
-    "typescript": "^3.7.5",
-    "uglify-js": "^3.8.0"
+    "typescript": "^3.7.5"
   }
 }

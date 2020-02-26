@@ -53,7 +53,7 @@ export class RequestManager {
             room: player.room,
             type: CharacterTypes.PLAYER,
             mapId: player.location.global.index,
-            message: `[[gi;green;]\n${player.name} has joined the game!\n]`,
+            message: `<br>${player.name} has joined the game!<br>`,
             location: {
                 index: player.location.local.index
             }
@@ -70,7 +70,7 @@ export class RequestManager {
                 room: player.room,
                 type: CharacterTypes.PLAYER,
                 mapId: player.location.global.index,
-                message: `[[gi;gray;]\n${player.name} has left the game.\n]`,
+                message: `<br>${player.name} has left the game.<br>`,
                 location: {
                     index: player.location.local.index
                 }
@@ -83,9 +83,9 @@ export class RequestManager {
         this._observer.roomFull({
             id: id,
             type: 0,
-            message: '[[gi;gold;]\nUnfortunately, all the game rooms are currently full. Please' +
+            message: '<br>Unfortunately, all the game rooms are currently full. Please' +
                 ' refresh' +
-                ' and try again later.\n]'
+                ' and try again later.<br>'
         }, socket)
     }
 

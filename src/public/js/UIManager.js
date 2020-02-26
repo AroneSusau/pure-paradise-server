@@ -30,12 +30,10 @@ module.exports = class UIManager {
     }
 
     startFrame(gameDataManager) {
-        setInterval(() => this.updateFrame(gameDataManager), 100);
+        setInterval(() => this.updateFrame(gameDataManager), 1000 / 30);
     }
 
     updateFrame(gameDataManager) {
-        console.log(gameDataManager.players)
-
         this.refreshMap()
 
         gameDataManager.players.forEach(player => {

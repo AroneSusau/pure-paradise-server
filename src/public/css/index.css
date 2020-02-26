@@ -134,6 +134,12 @@ html {
     -o-animation: blinkingOtherPlayer 3s infinite;
 }
 
+.terminalText {
+    color: lightgray;
+    padding: 10px;
+    text-align: justify;
+}
+
 @keyframes blinkingOtherPlayer {
     0% {
         color: green;

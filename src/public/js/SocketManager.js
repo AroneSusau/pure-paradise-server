@@ -19,6 +19,7 @@ module.exports = class SocketManager {
         this.socket.on('room:joined', response => this.playerJoined(response, gameDataManager))
         this.socket.on('room:left', response => this.roomLeft(response, gameDataManager))
         this.socket.on('room:movement', response => this.movement(response, gameDataManager))
+        this.socket.on('room:chat', response => this.chat(response, gameDataManager))
     }
 
     command(response, gameDataManager, uiManager) {
@@ -86,6 +87,10 @@ module.exports = class SocketManager {
     }
 
     generalUpdate(response, gameDataManager) {
+        this.terminal.echo(response.general.text)
+    }
+
+    chat(response, gameDataManager) {
         this.terminal.echo(response.general.text)
     }
 

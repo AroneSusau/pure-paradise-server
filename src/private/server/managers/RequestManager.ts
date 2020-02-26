@@ -89,6 +89,24 @@ export class RequestManager {
         }, socket)
     }
 
+    chat(cmd: string, socket: Socket) {
+        this._observer.chat({
+            id: socket.id,
+            room: this._playerManager.get(socket.id).room,
+            flags: {
+                mapUpdate: false,
+                playerUpdate: false,
+                battleUpdate: false,
+                eventUpdate: false,
+                contextUpdate: false,
+                generalUpdate: true,
+                error: false
+            },
+           general: {
+                text: `[[g;yellow;]${this.playerManager.get(socket.id).name}: ${cmd}]`
+           }
+        }, socket)
+    }
 
     get observer(): Observer {
         return this._observer

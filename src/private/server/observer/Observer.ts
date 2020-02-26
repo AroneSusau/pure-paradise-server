@@ -30,4 +30,8 @@ export class Observer {
         socket.emit('room:full', obj)
     }
 
+    public chat(obj: GameResponse, socket: Socket) {
+        socket.to(obj.room).emit('room:chat', obj)
+    }
+
 }

@@ -13,6 +13,7 @@ export class PureParadise {
 
         socket.on('client:start', cmd => requestManager.clientStart(cmd, room, socket))
         socket.on('client:command', cmd => requestManager.gameRun(cmd, socket))
+        socket.on('room:chat', cmd => requestManager.chat(cmd, socket))
         socket.on('disconnect', cmd => requestManager.playerLeftRoom(cmd, socket))
     }
 }

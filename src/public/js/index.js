@@ -24,8 +24,13 @@ $(function () {
             uiManager.startFrame(gameDataManager)
         }
 
-        if (gameStarted)
-            socketManager.socket.emit('client:command', cmd)
+        if (gameStarted) {
+
+
+            if (cmd.substr(0, 5) === "/chat") {
+                socketManager.socket.emit("room:chat", cmd.substr(6))
+            } else socketManager.socket.emit('client:command', cmd)
+        }
 
         gameStarted = true
 

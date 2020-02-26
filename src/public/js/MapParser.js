@@ -1,40 +1,43 @@
-const key = new Map()
+module.exports = class MapParser {
 
-key.set(0, "**")
-key.set(1, "~~")
-key.set(2, "^^")
-key.set(3, "..")
-key.set(4, "||")
-key.set(5, "__")
-key.set(6, "--")
-key.set(7, "[[")
-key.set(8, "]]")
-key.set(9, "++")
-key.set(10, "//")
-key.set(11, "\\\\")
-key.set(12, "==")
-key.set(13, "??")
-key.set(14, "00")
-key.set(15, "@@")
-key.set(16, ">>")
-key.set(17, ">>")
-key.set(18, "<<")
-key.set(20, "))")
-key.set(21, "((")
-key.set(73, "D ")
-key.set(76, "G ")
-key.set(84, "O ")
-key.set(88, "S ")
-key.set(89, "PP")
-key.set(90, "PP")
+    constructor() {
+        this.key = new Map()
 
-const MapParser = (raw) => {
-    return raw.map(value => {
-        return key.get(value)
-    })
+        this.key.set(0, "**")
+        this.key.set(1, "~~")
+        this.key.set(2, "^^")
+        this.key.set(3, "..")
+        this.key.set(4, "||")
+        this.key.set(5, "__")
+        this.key.set(6, "--")
+        this.key.set(7, "[[")
+        this.key.set(8, "]]")
+        this.key.set(9, "++")
+        this.key.set(10, "//")
+        this.key.set(11, "\\\\")
+        this.key.set(12, "==")
+        this.key.set(13, "??")
+        this.key.set(14, "00")
+        this.key.set(15, "@@")
+        this.key.set(16, ">>")
+        this.key.set(17, ">>")
+        this.key.set(18, "<<")
+        this.key.set(20, "))")
+        this.key.set(21, "((")
+        this.key.set(73, "D ")
+        this.key.set(76, "G ")
+        this.key.set(84, "O ")
+        this.key.set(88, "S ")
+        this.key.set(89, "PP")
+        this.key.set(90, "PP")
+    }
+
+    parse(raw) {
+        return raw.map(value => {
+            return this.key.get(value)
+        })
+    }
 }
-
-module.exports = {key, MapParser}
 
 
 

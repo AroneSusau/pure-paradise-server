@@ -4,8 +4,6 @@ import {ItemId} from '../../defaults/ItemId.js'
 export class InventoryMeta {
 
     private _weapon: ItemId
-    private _armour: ItemId
-    private _context: InventoryContext
 
     get weapon(): ItemId {
         return this._weapon
@@ -15,6 +13,8 @@ export class InventoryMeta {
         this._weapon = value
     }
 
+    private _armour: ItemId
+
     get armour(): ItemId {
         return this._armour
     }
@@ -22,6 +22,8 @@ export class InventoryMeta {
     set armour(value: ItemId) {
         this._armour = value
     }
+
+    private _context: InventoryContext
 
     get context(): InventoryContext {
         return this._context

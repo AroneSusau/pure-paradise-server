@@ -7,7 +7,7 @@ import {ShopEngine} from './ShopEngine.js'
 import {InventoryEngine} from './InventoryEngine.js'
 import {Engine} from '../Engine.js'
 import {Command} from '../../defaults/Command.js'
-import {Observer} from '../../../observer/Observer.js'
+import {Observer} from '../../../server/observer/Observer.js'
 import {Socket} from 'socket.io'
 
 export class GameEngine extends Engine {

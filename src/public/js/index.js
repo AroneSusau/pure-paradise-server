@@ -1,20 +1,32 @@
 const io = require("socket.io-client")
-const methods = require("./methods")
+const SocketManager = require("./SocketManager.js")
+const GameDataManager = require("./GameDataManager.js")
+const UIManager = require("./UIManager.js")
 
-const socket = io()
+const socketManager = new SocketManager(io)
+const gameDataManager = new GameDataManager()
+const uiManager = new UIManager()
 
 const term = $("#terminal")
-let terminal
-let gameStarted = false
 
-methods.generateMap()
-methods.setPlayerId(socket.id)
+let gameStarted = false
 
 $(function () {
     term.terminal(function (cmd, term) {
 
-        terminal = term
-        socket.emit('command', cmd)
+        if (!gameStarted) {
+            socketManager.setTerminal(term)
+            socketManager.start(cmd)
+            socketManager.registerEvents(gameDataManager, uiManager)
+
+            uiManager.setMap(gameDataManager.defaultMap)
+            uiManager.createMap()
+            uiManager.startFrame(gameDataManager)
+        }
+
+        if (gameStarted)
+            socketManager.socket.emit('client:command', cmd)
+
         gameStarted = true
 
     }, {
@@ -23,32 +35,12 @@ $(function () {
 
             callback(text);
         },
+        onStart: function () {
+
+        },
         prompt: "[[gb;green;]>>> ]",
         wrap: true
-
     });
 })
 
-socket.on('movement', response => {
-    if (gameStarted) {
-        methods.worldMovement(response)
-    }
-})
 
-socket.on('result', response => {
-    if (gameStarted) {
-        for (const key in response.flags) {
-            if (response.flags.hasOwnProperty(key) && response.flags[key])
-                if (methods.hasOwnProperty(key))
-                    methods[key](response, terminal)
-        }
-
-        methods.bottomScroll()
-    }
-})
-
-socket.on('startDump', response => methods.startDump(response))
-socket.on('playerJoinedRoom', response => methods.playerJoinedRoom(response, terminal))
-socket.on('playerLeftRoom', response => methods.playerLeftRoom(response, terminal))
-
-socket.on('ping', () => socket.emit('pong', 'Loud and clear'))

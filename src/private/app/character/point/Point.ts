@@ -1,13 +1,6 @@
 export class Point {
 
     private _length: number
-    private _index: number
-    private _x: number
-    private _y: number
-
-    public get index(): number {
-        return this._index
-    }
 
     get length(): number {
         return this._length
@@ -17,6 +10,14 @@ export class Point {
         this._length = value
     }
 
+    private _index: number
+
+    public get index(): number {
+        return this._index
+    }
+
+    private _x: number
+
     public get x(): number {
         return this._x
     }
@@ -24,6 +25,8 @@ export class Point {
     public set x(value: number) {
         this._x = value
     }
+
+    private _y: number
 
     public get y(): number {
         return this._y

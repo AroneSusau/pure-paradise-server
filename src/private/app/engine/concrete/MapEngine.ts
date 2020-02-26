@@ -14,16 +14,16 @@ export class MapEngine extends Engine {
         switch (cmd) {
             case Command.W:
                 player.location.local.decremementY()
-                break;
+                break
             case Command.A:
                 player.location.local.decremementX()
-                break;
+                break
             case Command.S:
                 player.location.local.incrementY()
-                break;
+                break
             case Command.D:
                 player.location.local.incrementX()
-                break;
+                break
         }
         mapSwitch ?
             this.movePlayerGlobally(player, socket) :
@@ -62,13 +62,13 @@ export class MapEngine extends Engine {
         if (cmd === Command.D && playerLocalX === currentMapLength - 1) {
             if (currentMap.bounds.east) {
                 player.location.updateLocalPosition(-1, playerLocalY)
-                player.location.updateGlobalPosition(playerGlobalX  + 1, playerGlobalY)
+                player.location.updateGlobalPosition(playerGlobalX + 1, playerGlobalY)
                 return true
             } else this.outOfBounds(player, socket)
         }
 
         // Move West
-        if (cmd === Command.A && playerLocalX ===  0) {
+        if (cmd === Command.A && playerLocalX === 0) {
             if (currentMap.bounds.west) {
                 player.location.updateLocalPosition(currentMapLength, playerLocalY)
                 player.location.updateGlobalPosition(playerGlobalX - 1, playerGlobalY)
@@ -92,7 +92,7 @@ export class MapEngine extends Engine {
                 error: false
             },
             general: {
-                text: "You can't go any farther out!"
+                text: 'You can\'t go any farther out!'
             }
         }, socket)
     }
@@ -119,7 +119,7 @@ export class MapEngine extends Engine {
             map: {
                 id: map.id,
                 name: map.name,
-                raw: map.raw,
+                raw: map.raw
             },
             player: {
                 name: player.name,
@@ -169,7 +169,7 @@ export class MapEngine extends Engine {
     }
 
     public broadcastPlayerMovement(player: Player, socket: Socket) {
-        this._observer.broadcastMovement({
+        this._observer.roomMovement({
             id: player.id,
             name: player.name,
             room: player.room,

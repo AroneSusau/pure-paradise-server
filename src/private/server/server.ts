@@ -15,7 +15,7 @@ const io = require('socket.io')(http, {
     pingInterval: 60000
 })
 
-app.use(express.static(path.join(__dirname, '../public/')))
+app.use(express.static(path.join(__dirname, '../../public/')))
 
 const pureParadise = new PureParadise()
 

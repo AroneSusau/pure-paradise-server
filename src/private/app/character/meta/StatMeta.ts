@@ -1,12 +1,6 @@
 export class StatMeta {
 
     private _damage: number
-    private _isAlive: boolean
-    private _defence: number
-    private _health: number
-    private _hunger: number
-    private _thirst: number
-    private _money: number
 
     public get damage(): number {
         return this._damage
@@ -16,6 +10,8 @@ export class StatMeta {
         this._damage = value
     }
 
+    private _isAlive: boolean
+
     public get isAlive(): boolean {
         return this._isAlive
     }
@@ -23,6 +19,8 @@ export class StatMeta {
     public set isAlive(value: boolean) {
         this._isAlive = value
     }
+
+    private _defence: number
 
     public get defence(): number {
         return this._defence
@@ -32,6 +30,8 @@ export class StatMeta {
         this._defence = value
     }
 
+    private _health: number
+
     public get health(): number {
         return this._health
     }
@@ -39,6 +39,8 @@ export class StatMeta {
     public set health(value: number) {
         this._health = value
     }
+
+    private _hunger: number
 
     public get hunger(): number {
         return this._hunger
@@ -48,6 +50,8 @@ export class StatMeta {
         this._hunger = value
     }
 
+    private _thirst: number
+
     public get thirst(): number {
         return this._thirst
     }
@@ -55,6 +59,8 @@ export class StatMeta {
     public set thirst(value: number) {
         this._thirst = value
     }
+
+    private _money: number
 
     public get money(): number {
         return this._money

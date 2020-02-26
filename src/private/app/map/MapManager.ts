@@ -9,7 +9,7 @@ import {MapIds} from '../defaults/MapIds.js'
 const defaults = new Defaults()
 
 const MapManager = {
-    maps: new Map<MapIds, GameMap>(),
+    maps: new Map<MapIds, GameMap>()
 }
 
 MapManager.maps.set(MapIds.VEMARK, new Vemark(defaults))

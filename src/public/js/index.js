@@ -11,7 +11,8 @@ const term = new Terminal()
 
 let gameStarted = false
 
-term.echo("Arone Susau 2020 - www.aronesusau.com<br><br>Please enter your characters name..<br>")
+term.echo("Arone Susau 2020 - www.aronesusau.com", "terminal-main")
+term.echo("Please enter your characters name..", "terminal-main")
 
 window.onload = _ => {
     term.command(cmd => {
@@ -33,7 +34,7 @@ window.onload = _ => {
 
             switch (action) {
                 case "/chat":
-                    term.echo(`You: ${content}`)
+                    term.echo(`You: ${content}`, "client-terminal-chat")
                     socketManager.socket.emit("room:chat", content)
                     break
                 case "/debug":

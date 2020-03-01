@@ -42,7 +42,7 @@ export class EventEngine extends Engine {
             },
             map: {
                 id: MapIds.VEMARK,
-                name: AreaNames.VEMARK,
+                name: AreaNames.VENMARK,
                 raw: MapManager.maps.get(MapIds.VEMARK).raw
             }
         }, socket)

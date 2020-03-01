@@ -12,7 +12,7 @@ Legend
 | (Sh) | Shop | Map has shop. |
 | (St) | Event | Map is where player starts. |
 
-1. Vemark - St, Sh
+1. Venmark - St, Sh
 2. Silvos - Ev, A
 3. Tirera - Ev, A
 4. Pure Paradise - Ev, En, L
@@ -22,7 +22,7 @@ Legend
 ```Plain
 --------------------------------
 |            |                 |
-|  Vemark   |      Silvos     |
+|  Venmark   |      Silvos     |
 |            |                 |
 |------------------------------|
 |            |                 |
@@ -33,7 +33,7 @@ Legend
 
 ### Event Breakdown
 
-## Vemark
+## Venmark
 
 | Attribute | Value |
 |-----|-------|

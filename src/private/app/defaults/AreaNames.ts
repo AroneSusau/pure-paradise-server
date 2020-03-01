@@ -1,7 +1,7 @@
 export enum AreaNames {
     SILVOS = 'Silvos',
     TIRERA = 'Tirera',
-    VEMARK = 'Vemark',
+    VENMARK = 'Venmark',
     NEW_TRETHAM = 'New Tretham',
     PURE_PARADISE = 'Pure Paradise',
 }

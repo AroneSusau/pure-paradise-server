@@ -52,7 +52,7 @@ module.exports = class SocketManager {
                 gameDataManager.deletePlayer(player.id)
             })
         })
-        this.terminal.echo(response.message)
+        this.terminal.echo(response.message, "")
     }
 
     mapUpdate(response, gameDataManager, uiManager) {
@@ -65,7 +65,7 @@ module.exports = class SocketManager {
             players.forEach(player =>
                 gameDataManager.setPlayer(player))
         })
-        this.terminal.echo(response.message)
+        this.terminal.echo(response.message, "")
     }
 
     playerUpdate(response, gameDataManager) {
@@ -97,11 +97,11 @@ module.exports = class SocketManager {
     }
 
     chat(response, gameDataManager) {
-        this.terminal.echo(response.message)
+        this.terminal.echo(response.message, "external-terminal-chat")
     }
 
     error(response, gameDataManager) {
-        this.terminal.echo(response.error.message)
+        this.terminal.echo(response.error.message, "terminal-error")
     }
 
 }

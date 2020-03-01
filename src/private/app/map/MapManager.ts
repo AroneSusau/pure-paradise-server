@@ -1,4 +1,4 @@
-import {Vemark} from './maps/Vemark.js'
+import {Venmark} from './maps/Venmark.js'
 import {Silvos} from './maps/Silvos.js'
 import {Tirera} from './maps/Tirera.js'
 import {PureParadiseMap} from './maps/PureParadiseMap.js'
@@ -12,7 +12,7 @@ const MapManager = {
     maps: new Map<MapIds, GameMap>()
 }
 
-MapManager.maps.set(MapIds.VEMARK, new Vemark(defaults))
+MapManager.maps.set(MapIds.VEMARK, new Venmark(defaults))
 MapManager.maps.set(MapIds.SILVOS, new Silvos(defaults))
 MapManager.maps.set(MapIds.TIRERA, new Tirera(defaults))
 MapManager.maps.set(MapIds.PURE_PARADISE, new PureParadiseMap(defaults))

@@ -4,12 +4,12 @@ module.exports = class Terminal {
 
     }
 
-    echo(text) {
+    echo(text, classes) {
         const terminal = document.getElementById("terminal")
         const div = document.createElement("div")
 
-        div.className = "terminalText"
-        div.innerHTML = text
+        div.className = `terminal-text`
+        div.innerHTML = `<span class="console-input">>>> </span><span class="terminal-span ${classes}">${text}</span>`
 
         terminal.appendChild(div)
         terminal.scrollTop = terminal.scrollHeight

@@ -54,7 +54,7 @@ export class Defaults {
 
     public applyMapDefaults(map: GameMap) {
         switch (map.name) {
-            case AreaNames.VEMARK:
+            case AreaNames.VENMARK:
                 this.mapDefaults(map, 0, 0, MapIds.VEMARK)
                 break
             case AreaNames.SILVOS:

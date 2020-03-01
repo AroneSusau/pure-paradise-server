@@ -45,7 +45,7 @@ export class RequestManager {
 
     playerJoinedRoom(id: string, socket: Socket) {
         const player = this._playerManager.get(socket.id)
-        const message = `<br>${player.name} has joined the game!<br>`
+        const message = `${player.name} has joined the quest!`
         this._observer.playerJoinedRoom({
             room: player.room,
             count: this._playerManager.size(player.room),
@@ -58,7 +58,7 @@ export class RequestManager {
         const player = this._playerManager.get(socket.id) || false
         if (player) {
             if (player.meta.context != Context.START) {
-                const message = `<br>${player.name} has left the game.<br>`
+                const message = `${player.name} has abandoned the quest!`
                 this._observer.playerLeftRoom({
                     room: player.room,
                     count: this._playerManager.size(player.room) - 1,
@@ -84,9 +84,7 @@ export class RequestManager {
         this._observer.roomFull({
             id: id,
             type: 0,
-            message: '<br>Unfortunately, all the game rooms are currently full. Please' +
-                ' refresh' +
-                ' and try again later.<br>'
+            message: 'Unfortunately, all the game rooms are currently full. Please refresh and try again later.'
         }, socket)
     }
 

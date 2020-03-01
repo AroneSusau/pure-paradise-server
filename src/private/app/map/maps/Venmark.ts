@@ -3,12 +3,12 @@ import {AreaNames} from '../../defaults/AreaNames.js'
 import {Point} from '../../character/point/Point.js'
 import {Defaults} from '../../defaults/Defaults.js'
 
-export class Vemark extends GameMap {
+export class Venmark extends GameMap {
 
     constructor(defaults: Defaults) {
         super()
 
-        this._name = AreaNames.VEMARK
+        this._name = AreaNames.VENMARK
         this._coords = new Point()
 
         this._raw = [

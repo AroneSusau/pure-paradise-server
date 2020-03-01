@@ -42,7 +42,8 @@ module.exports = class UIManager {
     }
 
     drawClientsPosition(gameDataManager) {
-        const localExists = gameDataManager.local || false
+        const localExists = gameDataManager.local !== undefined && gameDataManager.local >= 0
+
         if (localExists) {
             const span = document.getElementById(`node${gameDataManager.local}`)
             span.removeChild(span.childNodes[0])

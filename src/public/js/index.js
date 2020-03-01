@@ -15,6 +15,17 @@ term.echo("Arone Susau 2020 - www.aronesusau.com", "terminal-main")
 term.echo("Please enter your characters name..", "terminal-main")
 
 window.onload = _ => {
+    const terminalContainer = document.getElementById("terminal-container")
+    const input = document.getElementById("input")
+
+    input.focus();
+    input.select();
+
+    terminalContainer.onclick = () => {
+        input.focus();
+        input.select();
+    }
+
     term.command(cmd => {
         if (!gameStarted) {
             socketManager.setTerminal(term)

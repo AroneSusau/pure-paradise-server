@@ -33,8 +33,8 @@ export class EventEngine extends Engine {
                     coordsUpdate: true
                 },
                 coords: {
-                    localIndex: player.location.local.index,
-                    globalIndex: player.location.global.index
+                    local: player.location.local.index,
+                    global: player.location.global.index
                 }
             },
             general: {

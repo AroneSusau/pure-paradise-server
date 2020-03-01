@@ -3,6 +3,7 @@ import {RoomNames} from '../../app/defaults/RoomNames.js'
 export class RoomManager {
 
     private rooms: Map<string, Array<string>>
+    private _roomLimit: number = 10
 
     constructor() {
         this.rooms = new Map<string, Array<string>>()
@@ -10,12 +11,6 @@ export class RoomManager {
         for (let room in RoomNames) {
             this.rooms.set(room, new Array<string>())
         }
-    }
-
-    private _roomLimit: number = 10
-
-    get roomLimit(): number {
-        return this._roomLimit
     }
 
     public assignRoom(id: string): string {
@@ -41,6 +36,10 @@ export class RoomManager {
 
     public roomCount(name: string): number {
         return this.rooms.get(name).length
+    }
+
+    get roomLimit(): number {
+        return this._roomLimit
     }
 
 }

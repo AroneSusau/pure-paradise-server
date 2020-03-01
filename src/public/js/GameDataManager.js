@@ -2,7 +2,6 @@ const Player = require("./Player.js")
 
 module.exports = class GameDataManager {
 
-
     constructor() {
         this._players = new Map()
         this.defaultMap = [
@@ -31,19 +30,51 @@ module.exports = class GameDataManager {
         this.global = null
     }
 
-    setClient(local, global) {
-        this.local = local
-        this.global = global
+    setClient(coords) {
+        this.local = coords.local
+        this.global = coords.global
     }
 
-    setPlayer(id, name, local, global) {
-        this._players.set(id,
-            new Player(
-                id,
-                name,
-                local,
-                global
-            ))
+    setPlayer(player) {
+        this.validatePlayer(player)
+        if (!this._players.has(player.id)) {
+            this._players.set(player.id,
+                new Player(
+                    player.id,
+                    player.name,
+                    player.location.local,
+                    player.location.global,
+                    player.context
+                ))
+        } else console.warn(`Attempting to set player ${player.id} that already exists.`)
+    }
+
+    updatePlayer(player) {
+        this.validatePlayer(player)
+        if (this._players.has(player.id)) {
+            const playerLocal = this._players.get(player.id)
+            playerLocal.local = player.location.local
+            playerLocal.global = player.location.global
+            playerLocal.context = player.context
+        } else console.warn(`Attempting to update player ${player.id} that does not exist.`)
+    }
+
+    deletePlayer(id) {
+        this._players.delete(id)
+    }
+
+    validatePlayer(player) {
+        if (player) {
+            for (let key in player) {
+                if (!player.hasOwnProperty(key)) {
+                    console.warn(`Player key ${key} was undefined.`)
+                }
+            }
+        } else console.warn(`Player object passed in was invalid.`)
+    }
+
+    get players() {
+        return this._players;
     }
 
     getLength() {
@@ -52,18 +83,5 @@ module.exports = class GameDataManager {
 
     getPlayer(key) {
         return this._players.get(key)
-    }
-
-    updatePlayerPosition(id, local, global) {
-        this._players.get(id).local = local
-        this._players.get(id).global = global
-    }
-
-    deletePlayer(id) {
-        this._players.delete(id)
-    }
-
-    get players() {
-        return this._players;
     }
 }

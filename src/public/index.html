@@ -6,7 +6,6 @@
     <link href="favicon.ico" rel="icon" type="image/x-icon">
     <title>Pure Paradise 2.0</title>
     <link href="./css/index.css" rel="stylesheet">
-    <link href="https://unpkg.com/jquery.terminal@2.x.x/css/jquery.terminal.min.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrapper">
@@ -16,38 +15,18 @@
         </div>
         <div class="stats"></div>
     </div>
-    <div class="terminalContainer">
+    <div class="terminalWrapper">
         <div class="imageContainer">
-            <img class="titleImage" src="images/title.png">
+            <img class="titleImage" src="images/title.png" alt="title">
         </div>
-        <div>
+        <div class="terminalContainer">
             <div id="terminal"></div>
-            <input id="input" type="text">
+            <div class="inputContainer">
+                <label for="input"></label><input id="input" type="text"/>
+            </div>
         </div>
     </div>
 </div>
-
-<!--    <div class="wrapper">-->
-
-<!--        <div id="mainScreen" class="container">-->
-<!--            <div id="mapContainer" class="inner">-->
-<!--                <pre id="map"></pre>-->
-<!--            </div>-->
-
-<!--            <div class="content">-->
-<!--                <p id="output">Please enter a character name..</p>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div id="inputScreen" class="container">-->
-<!--            <label for="command"></label><input id="command" placeholder="Enter command.." type="text">-->
-<!--            <button id="submit">Enter</button>-->
-<!--        </div>-->
-
-<!--    </div>-->
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://unpkg.com/jquery.terminal@2.x.x/js/jquery.terminal.min.js"></script>
 <script src="./dist/bundle.js"></script>
 </body>
 </html>

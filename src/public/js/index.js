@@ -11,6 +11,8 @@ const term = new Terminal()
 
 let gameStarted = false
 
+term.echo("Arone Susau 2020 - www.aronesusau.com<br><br>Please enter your characters name..<br>")
+
 window.onload = _ => {
     term.command(cmd => {
         if (!gameStarted) {
@@ -24,14 +26,29 @@ window.onload = _ => {
         }
 
         if (gameStarted) {
-            if (cmd.substr(0, 5) === "/chat") {
-                socketManager.socket.emit("room:chat", cmd.substr(6))
-            } else socketManager.socket.emit('client:command', cmd)
+            const cmdSplit = cmd.split(" ")
+            const action = cmdSplit[0]
+            cmdSplit.shift()
+            const content = cmdSplit.join(" ")
+
+            switch (action) {
+                case "/chat":
+                    term.echo(`You: ${content}`)
+                    socketManager.socket.emit("room:chat", content)
+                    break
+                case "/debug":
+                    debug(gameDataManager)
+                    break
+                default:
+                    socketManager.socket.emit('client:command', cmd)
+            }
         }
 
         gameStarted = true
     })
 }
 
-//`[[gb;#00FF41;]Arone Susau 2020 - www.aronesusau.com\n\nPlease enter your characters name..\n]`;
+function debug(gameDataManager) {
+    console.dir(gameDataManager)
+}
 

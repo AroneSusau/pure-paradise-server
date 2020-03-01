@@ -1,6 +1,7 @@
 import {Player} from '../../app/character/concrete/Player.js'
 import {Defaults} from '../../app/defaults/Defaults.js'
-import {PlayerUpdate} from '../../../types/PlayerUpdate.js'
+import {PlayerUpdate} from '../../../types/RoomUpdate.js'
+import {CharacterTypes} from '../../app/defaults/CharacterTypes.js'
 
 export class PlayerManager {
 
@@ -27,23 +28,40 @@ export class PlayerManager {
         return this.players.has(id)
     }
 
-    public currentPlayerPositions(id: string): Array<PlayerUpdate> {
-        let list: Array<PlayerUpdate> = []
+    public size(room: string): number {
+        let size = 0
 
         this.players.forEach(player => {
-            if (player.id != id) {
-                if (player.name != undefined) {
-                    list.push({
-                        id: player.id,
-                        name: player.name,
-                        localIndex: player.location.local.index,
-                        globalIndex: player.location.global.index
-                    })
-                }
-            }
+            size += player.room === room ? 1 : 0
         })
 
-        return list
+        return size
+    }
+
+    public getAllPlayerUpdates(id: string, room: string): Array<PlayerUpdate> {
+        return Array.from(this.players)
+            .filter((args: [string, Player]) => {
+                return (args[1].id !== id &&
+                    args[1].name &&
+                    args[1].room === room)
+            })
+            .map((args: [string, Player]) => {
+                const player = args[1]
+                return this.getPlayerUpdate(player)
+            })
+    }
+
+    public getPlayerUpdate(player: Player): PlayerUpdate {
+        return {
+            id: player.id,
+            name: player.name,
+            room: player.room,
+            type: CharacterTypes.PLAYER,
+            location: {
+                local: player.location.local.index,
+                global: player.location.global.index,
+            }
+        }
     }
 
 }

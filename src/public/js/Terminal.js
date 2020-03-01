@@ -7,12 +7,12 @@ module.exports = class Terminal {
     echo(text) {
         const terminal = document.getElementById("terminal")
         const div = document.createElement("div")
-        const txt = document.createTextNode(text)
 
         div.className = "terminalText"
+        div.innerHTML = text
 
-        div.appendChild(txt)
         terminal.appendChild(div)
+        terminal.scrollTop = terminal.scrollHeight
     }
 
     command(callback) {

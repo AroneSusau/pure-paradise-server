@@ -28,27 +28,30 @@ module.exports = class SocketManager {
                 this[key](response, gameDataManager, uiManager)
             }
         }
-
-        const map = document.getElementById("map")
-        map.scrollTop = map.scrollHeight
     }
 
     onStart(response, gameDataManager) {
-        if (response.players.length > 0) {
-            for (let i = 0; i < response.players.length; i++) {
-                const {id, name, localIndex, globalIndex} = response.players[i]
-                gameDataManager.setPlayer(id, name, localIndex, globalIndex)
-            }
-        }
+        this.validatePlayersField(response, players => {
+            players.forEach(player => {
+                gameDataManager.setPlayer(player)
+            })
+        })
     }
 
     movement(response, gameDataManager) {
-        gameDataManager.updatePlayerPosition(response.id, response.location.index, response.mapId)
+        this.validatePlayersField(response, players => {
+            players.forEach(player => {
+                gameDataManager.updatePlayer(player)
+            })
+        })
     }
 
     roomLeft(response, gameDataManager) {
-        gameDataManager.deletePlayer(response.id)
-
+        this.validatePlayersField(response, players => {
+            players.forEach(player => {
+                gameDataManager.deletePlayer(player.id)
+            })
+        })
         this.terminal.echo(response.message)
     }
 
@@ -58,20 +61,23 @@ module.exports = class SocketManager {
     }
 
     playerJoined(response, gameDataManager) {
-
-        gameDataManager.setPlayer(
-            response.id,
-            response.name,
-            response.mapId,
-            response.location.index)
-
+        this.validatePlayersField(response, players => {
+            players.forEach(player =>
+                gameDataManager.setPlayer(player))
+        })
         this.terminal.echo(response.message)
     }
 
-    playerUpdate(response, gameDataManager, uiManager) {
-        gameDataManager.setClient(
-            response.player.coords.localIndex,
-            response.player.coords.globalIndex)
+    playerUpdate(response, gameDataManager) {
+        gameDataManager.setClient(response.player.coords)
+    }
+
+    validatePlayersField(response, callback) {
+        const players = response.players || false
+
+        if (players && players.length > 0) {
+            callback(players)
+        } else console.warn("Players field is empty or undefined.")
     }
 
     battleUpdate() {
@@ -91,7 +97,7 @@ module.exports = class SocketManager {
     }
 
     chat(response, gameDataManager) {
-        this.terminal.echo(response.general.text)
+        this.terminal.echo(response.message)
     }
 
     error(response, gameDataManager) {

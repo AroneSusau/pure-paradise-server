@@ -7,6 +7,7 @@ module.exports = class UIManager {
         this.raw = raw
         this.parsed = mapParser.parse(raw)
         this.length = raw.length
+        this.fps = 1000 / 30
     }
 
     createMap() {
@@ -30,12 +31,27 @@ module.exports = class UIManager {
     }
 
     startFrame(gameDataManager) {
-        setInterval(() => this.updateFrame(gameDataManager), 1000 / 30);
+        setInterval(() => this.updateFrame(gameDataManager), this.fps);
     }
 
     updateFrame(gameDataManager) {
         this.refreshMap()
+        this.drawPlayersPositions(gameDataManager)
+        this.drawClientsPosition(gameDataManager)
 
+    }
+
+    drawClientsPosition(gameDataManager) {
+        const localExists = gameDataManager.local || false
+        if (localExists) {
+            const span = document.getElementById(`node${gameDataManager.local}`)
+            span.removeChild(span.childNodes[0])
+            span.appendChild(document.createTextNode('PP'))
+            span.className = 'player'
+        }
+    }
+
+    drawPlayersPositions(gameDataManager) {
         gameDataManager.players.forEach(player => {
             const span = document.getElementById(`node${player.local}`)
 
@@ -46,13 +62,6 @@ module.exports = class UIManager {
                 span.className = 'otherPlayer'
             }
         })
-
-        if (gameDataManager.local !== null || gameDataManager.local !== undefined) {
-            const span = document.getElementById(`node${gameDataManager.local}`)
-            span.removeChild(span.childNodes[0])
-            span.appendChild(document.createTextNode('PP'))
-            span.className = 'player'
-        }
     }
 
     refreshMap() {

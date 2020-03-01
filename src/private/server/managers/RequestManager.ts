@@ -1,6 +1,5 @@
 import {Socket} from 'socket.io'
 import {RoomNames} from '../../app/defaults/RoomNames.js'
-import {CharacterTypes} from '../../app/defaults/CharacterTypes.js'
 import {Context} from '../../app/defaults/Context.js'
 import {PlayerManager} from './PlayerManager.js'
 import {Observer} from '../observer/Observer.js'
@@ -9,10 +8,10 @@ import {RoomManager} from './RoomManager.js'
 
 export class RequestManager {
 
-    private _observer: Observer
-    private _gameEngine: GameEngine
-    private _playerManager: PlayerManager
-    private _roomManager: RoomManager
+    private readonly _observer: Observer
+    private readonly _gameEngine: GameEngine
+    private readonly _playerManager: PlayerManager
+    private readonly _roomManager: RoomManager
 
     constructor() {
         this._playerManager = new PlayerManager()
@@ -26,13 +25,13 @@ export class RequestManager {
             const player = this._playerManager.get(socket.id)
 
             this._observer.clientStart({
-                players: this._playerManager.currentPlayerPositions(player.id)
+                room: room,
+                count: this._playerManager.size(room),
+                players: this._playerManager.getAllPlayerUpdates(player.id, room)
             }, socket)
 
-            this._gameEngine.run(cmd, this._playerManager.get(socket.id), socket)
-
+            this._gameEngine.run(cmd, player, socket)
             this.playerJoinedRoom(player.id, socket)
-
         } else this.fullRoom(socket.id, socket)
     }
 
@@ -46,37 +45,39 @@ export class RequestManager {
 
     playerJoinedRoom(id: string, socket: Socket) {
         const player = this._playerManager.get(socket.id)
-
+        const message = `<br>${player.name} has joined the game!<br>`
         this._observer.playerJoinedRoom({
-            id: id,
-            name: player.name,
             room: player.room,
-            type: CharacterTypes.PLAYER,
-            mapId: player.location.global.index,
-            message: `<br>${player.name} has joined the game!<br>`,
-            location: {
-                index: player.location.local.index
-            }
+            count: this._playerManager.size(player.room),
+            message: message,
+            players: [this._playerManager.getPlayerUpdate(player)]
         }, socket)
     }
 
     playerLeftRoom(cmd: string, socket: Socket) {
-        if (this._playerManager.has(socket.id)) {
-            const player = this._playerManager.get(socket.id)
-
-            if (player.meta.context != Context.START) this._observer.playerLeftRoom({
-                id: socket.id,
-                name: player.name,
-                room: player.room,
-                type: CharacterTypes.PLAYER,
-                mapId: player.location.global.index,
-                message: `<br>${player.name} has left the game.<br>`,
-                location: {
-                    index: player.location.local.index
-                }
-            }, socket)
+        const player = this._playerManager.get(socket.id) || false
+        if (player) {
+            if (player.meta.context != Context.START) {
+                const message = `<br>${player.name} has left the game.<br>`
+                this._observer.playerLeftRoom({
+                    room: player.room,
+                    count: this._playerManager.size(player.room) - 1,
+                    message: message,
+                    players: [this._playerManager.getPlayerUpdate(player)]
+                }, socket)
+            }
             this._playerManager.remove(socket.id)
         }
+    }
+
+    chat(cmd: string, socket: Socket) {
+        const player = this._playerManager.get(socket.id)
+
+        this._observer.chat({
+            room: player.room,
+            count: this._playerManager.size(player.room),
+            message: `${player.name}: ${cmd}`
+        }, socket)
     }
 
     fullRoom(id: string, socket: Socket) {
@@ -86,25 +87,6 @@ export class RequestManager {
             message: '<br>Unfortunately, all the game rooms are currently full. Please' +
                 ' refresh' +
                 ' and try again later.<br>'
-        }, socket)
-    }
-
-    chat(cmd: string, socket: Socket) {
-        this._observer.chat({
-            id: socket.id,
-            room: this._playerManager.get(socket.id).room,
-            flags: {
-                mapUpdate: false,
-                playerUpdate: false,
-                battleUpdate: false,
-                eventUpdate: false,
-                contextUpdate: false,
-                generalUpdate: true,
-                error: false
-            },
-           general: {
-                text: `[[g;yellow;]${this.playerManager.get(socket.id).name}: ${cmd}]`
-           }
         }, socket)
     }
 

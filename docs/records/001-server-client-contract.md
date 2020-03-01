@@ -71,8 +71,8 @@ In a live environment, not all fields will be sent to the client each request, o
       "gold": 100
     },
     "coords": {
-      "localIndex": 0,
-      "globalIndex": 0
+      "local": 0,
+      "global": 0
     }
   },
   "battle": {

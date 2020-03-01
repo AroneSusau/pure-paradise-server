@@ -29,7 +29,7 @@ export class MapEngine extends Engine {
             this.movePlayerGlobally(player, socket) :
             this.movePlayerLocally(player, socket)
 
-        this.broadcastPlayerMovement(player, socket)
+        this.roomMovement(player, socket)
     }
 
     public globalBoundsCheck(cmd: string, player: Player, socket: Socket): boolean {
@@ -131,8 +131,8 @@ export class MapEngine extends Engine {
                     coordsUpdate: true
                 },
                 coords: {
-                    localIndex: player.location.local.index,
-                    globalIndex: player.location.global.index
+                    local: player.location.local.index,
+                    global: player.location.global.index
                 }
             }
         }, socket)
@@ -161,23 +161,26 @@ export class MapEngine extends Engine {
                     coordsUpdate: true
                 },
                 coords: {
-                    localIndex: player.location.local.index,
-                    globalIndex: player.location.global.index
+                    local: player.location.local.index,
+                    global: player.location.global.index
                 }
             }
         }, socket)
     }
 
-    public broadcastPlayerMovement(player: Player, socket: Socket) {
+    public roomMovement(player: Player, socket: Socket) {
         this._observer.roomMovement({
-            id: player.id,
-            name: player.name,
             room: player.room,
-            type: CharacterTypes.PLAYER,
-            mapId: player.location.global.index,
-            location: {
-                index: player.location.local.index
-            }
+            players: [{
+                id: player.id,
+                name: player.name,
+                room: player.room,
+                type: CharacterTypes.PLAYER,
+                location: {
+                    local: player.location.local.index,
+                    global: player.location.global.index
+                }
+            }]
         }, socket)
     }
 

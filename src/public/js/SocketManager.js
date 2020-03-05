@@ -1,7 +1,7 @@
 module.exports = class SocketManager {
 
     constructor(io) {
-        this.socket = io()
+        this.socket = io("https://socket.ppv2.aronesusau.com")
     }
 
     setTerminal(terminal) {

@@ -9,13 +9,10 @@ const express = require('express')
 const app = express()
 const http = require('http').createServer(app)
 const port = process.env.PORT || 3000
-const path = require('path')
 const io = require('socket.io')(http, {
     pingTimeout: 60000,
     pingInterval: 60000
 })
-
-app.use(express.static(path.join(__dirname, '../../public/')))
 
 const pureParadise = new PureParadise()
 

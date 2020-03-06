@@ -2,13 +2,13 @@
   "name": "pure-paradise-v2",
   "version": "0.0.1",
   "description": "A text based RPG video game, originally created for a university assignment in Java, ported to Javascript / TypeScript",
-  "main": "src/public/js/index.js",
+  "main": "build/server.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "start": "sh scripts/start.sh",
-    "local": "sh scripts/local-launch.sh",
+    "local": "sh scripts/local.sh",
     "clean": "sh scripts/clean.sh",
     "build": "sh scripts/build.sh",
     "test": "jest"
@@ -35,7 +35,7 @@
   "dependencies": {
     "express": "4.17.1",
     "http": "0.0.0",
-    "socket.io": "2.3.0",
+    "socket.io": "2.3.0"
   },
   "devDependencies": {
     "@types/express": "4.17.2",
@@ -44,6 +44,10 @@
     "@types/socket.io": "2.1.4",
     "@types/socket.io-client": "1.4.32",
     "jest": "^25.1.0",
-    "typescript": "^3.7.5"
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   }
 }

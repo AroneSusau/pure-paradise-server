@@ -1,7 +1,7 @@
-import {Player} from '../../app/character/concrete/Player.js'
-import {Defaults} from '../../app/defaults/Defaults.js'
-import {PlayerUpdate} from '../../../types/RoomUpdate.js'
-import {CharacterTypes} from '../../app/defaults/CharacterTypes.js'
+import {Player} from '../../app/character/concrete/Player'
+import {Defaults} from '../../app/defaults/Defaults'
+import {PlayerUpdate} from '../../types/RoomUpdate'
+import {CharacterTypes} from '../../app/defaults/CharacterTypes'
 
 export class PlayerManager {
 
@@ -59,7 +59,7 @@ export class PlayerManager {
             type: CharacterTypes.PLAYER,
             location: {
                 local: player.location.local.index,
-                global: player.location.global.index,
+                global: player.location.global.index
             }
         }
     }

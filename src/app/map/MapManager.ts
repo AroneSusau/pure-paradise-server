@@ -1,10 +1,10 @@
-import {Venmark} from './maps/Venmark.js'
-import {Silvos} from './maps/Silvos.js'
-import {Tirera} from './maps/Tirera.js'
-import {PureParadiseMap} from './maps/PureParadiseMap.js'
-import {Defaults} from '../defaults/Defaults.js'
-import {GameMap} from './GameMap.js'
-import {MapIds} from '../defaults/MapIds.js'
+import {Venmark} from './maps/Venmark'
+import {Silvos} from './maps/Silvos'
+import {Tirera} from './maps/Tirera'
+import {PureParadiseMap} from './maps/PureParadiseMap'
+import {Defaults} from '../defaults/Defaults'
+import {GameMap} from './GameMap'
+import {MapIds} from '../defaults/MapIds'
 
 const defaults = new Defaults()
 

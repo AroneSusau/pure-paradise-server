@@ -1,8 +1,8 @@
-import {Context} from '../../defaults/Context.js'
-import {BattleMeta} from './BattleMeta.js'
-import {EventMeta} from './EventMeta.js'
-import {ShopMeta} from './ShopMeta.js'
-import {InventoryMeta} from './InventoryMeta.js'
+import {Context} from '../../defaults/Context'
+import {BattleMeta} from './BattleMeta'
+import {EventMeta} from './EventMeta'
+import {ShopMeta} from './ShopMeta'
+import {InventoryMeta} from './InventoryMeta'
 
 export class MetaManager {
 

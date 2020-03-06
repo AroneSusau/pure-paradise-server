@@ -1,4 +1,4 @@
-import {ItemId} from '../../defaults/ItemId.js'
+import {ItemId} from '../../defaults/ItemId'
 
 export class Inventory {
 

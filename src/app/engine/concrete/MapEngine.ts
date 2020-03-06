@@ -1,10 +1,10 @@
-import {Engine} from '../Engine.js'
-import {Player} from '../../character/concrete/Player.js'
-import {Command} from '../../defaults/Command.js'
+import {Engine} from '../Engine'
+import {Player} from '../../character/concrete/Player'
+import {Command} from '../../defaults/Command'
+import {MapManager} from '../../map/MapManager'
+import {GameMap} from '../../map/GameMap'
+import {CharacterTypes} from '../../defaults/CharacterTypes'
 import {Socket} from 'socket.io'
-import {MapManager} from '../../map/MapManager.js'
-import {GameMap} from '../../map/GameMap.js'
-import {CharacterTypes} from '../../defaults/CharacterTypes.js'
 
 export class MapEngine extends Engine {
 

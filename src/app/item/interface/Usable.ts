@@ -1,4 +1,4 @@
-import {Player} from '../../character/concrete/Player.js'
+import {Player} from '../../character/concrete/Player'
 
 export interface Usable {
 

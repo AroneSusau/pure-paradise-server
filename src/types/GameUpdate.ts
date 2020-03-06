@@ -1,7 +1,7 @@
-import {Context} from '../private/app/defaults/Context.js'
-import {Item} from '../private/app/item/Item.js'
-import {Monster} from '../private/app/character/concrete/Monster.js'
-import {MapIds} from '../private/app/defaults/MapIds.js'
+import {Context} from '../app/defaults/Context'
+import {Item} from '../app/item/Item'
+import {Monster} from '../app/character/concrete/Monster'
+import {MapIds} from '../app/defaults/MapIds'
 
 export type Flags = {
     mapUpdate: boolean,

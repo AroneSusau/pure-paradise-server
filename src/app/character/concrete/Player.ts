@@ -1,7 +1,7 @@
-import {Character} from '../Character.js'
-import {MetaManager} from '../meta/MetaManager.js'
-import {PointManager} from '../point/PointManager.js'
-import {Defaults} from '../../defaults/Defaults.js'
+import {Character} from '../Character'
+import {MetaManager} from '../meta/MetaManager'
+import {PointManager} from '../point/PointManager'
+import {Defaults} from '../../defaults/Defaults'
 
 export class Player extends Character {
 

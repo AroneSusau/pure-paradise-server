@@ -2,4 +2,4 @@
 
 # Starts node server
 echo 'Starting server..\n'
-node build/private/server/server.js
+node build/server.js

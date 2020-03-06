@@ -1,10 +1,10 @@
-import {Player} from '../../character/concrete/Player.js'
-import {Engine} from '../Engine.js'
-import {MapManager} from '../../map/MapManager.js'
-import {Context} from '../../defaults/Context.js'
+import {Player} from '../../character/concrete/Player'
+import {Engine} from '../Engine'
+import {MapManager} from '../../map/MapManager'
+import {Context} from '../../defaults/Context'
+import {AreaNames} from '../../defaults/AreaNames'
+import {MapIds} from '../../defaults/MapIds'
 import {Socket} from 'socket.io'
-import {AreaNames} from '../../defaults/AreaNames.js'
-import {MapIds} from '../../defaults/MapIds.js'
 
 export class EventEngine extends Engine {
 

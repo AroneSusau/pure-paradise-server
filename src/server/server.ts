@@ -2,7 +2,7 @@
  * Arone Tie Susau 2020
  */
 
-import {PureParadise} from './index.js'
+import {PureParadise} from './PureParadise'
 import {Socket} from 'socket.io'
 
 const express = require('express')

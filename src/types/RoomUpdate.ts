@@ -1,4 +1,4 @@
-import {CharacterTypes} from '../private/app/defaults/CharacterTypes.js'
+import {CharacterTypes} from '../app/defaults/CharacterTypes'
 
 export type PlayerUpdate = {
     id: string,

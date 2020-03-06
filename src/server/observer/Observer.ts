@@ -1,7 +1,7 @@
 import {Socket} from 'socket.io'
-import {GameUpdate} from '../../../types/GameUpdate.js'
-import {ErrorResponse} from '../../../types/ErrorResponse.js'
-import {RoomUpdate} from '../../../types/RoomUpdate.js'
+import {GameUpdate} from '../../types/GameUpdate'
+import {ErrorResponse} from '../../types/ErrorResponse'
+import {RoomUpdate} from '../../types/RoomUpdate'
 
 export class Observer {
 

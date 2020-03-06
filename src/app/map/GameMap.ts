@@ -1,7 +1,7 @@
-import {AreaNames} from '../defaults/AreaNames.js'
-import {Point} from '../character/point/Point.js'
-import {Bounds} from './Bounds.js'
-import {MapIds} from '../defaults/MapIds.js'
+import {AreaNames} from '../defaults/AreaNames'
+import {Point} from '../character/point/Point'
+import {Bounds} from './Bounds'
+import {MapIds} from '../defaults/MapIds'
 
 export abstract class GameMap {
 

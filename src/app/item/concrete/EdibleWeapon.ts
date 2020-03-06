@@ -1,7 +1,7 @@
-import {Item} from '../Item.js'
-import {Consumable} from '../interface/Consumable.js'
-import {Usable} from '../interface/Usable.js'
-import {Player} from '../../character/concrete/Player.js'
+import {Item} from '../Item'
+import {Consumable} from '../interface/Consumable'
+import {Usable} from '../interface/Usable'
+import {Player} from '../../character/concrete/Player'
 
 export class EdibleWeapon extends Item implements Consumable, Usable {
 

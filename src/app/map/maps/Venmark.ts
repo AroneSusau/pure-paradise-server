@@ -1,7 +1,7 @@
-import {GameMap} from '../GameMap.js'
-import {AreaNames} from '../../defaults/AreaNames.js'
-import {Point} from '../../character/point/Point.js'
-import {Defaults} from '../../defaults/Defaults.js'
+import {GameMap} from '../GameMap'
+import {AreaNames} from '../../defaults/AreaNames'
+import {Point} from '../../character/point/Point'
+import {Defaults} from '../../defaults/Defaults'
 
 export class Venmark extends GameMap {
 

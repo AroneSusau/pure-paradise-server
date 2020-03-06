@@ -1,11 +1,11 @@
-import {Player} from '../character/concrete/Player.js'
-import {Context} from './Context.js'
-import {InventoryContext} from './InventoryContext.js'
-import {ItemId} from './ItemId.js'
-import {GameMap} from '../map/GameMap.js'
-import {AreaNames} from './AreaNames.js'
-import {ShopContext} from './ShopContext.js'
-import {MapIds} from './MapIds.js'
+import {Player} from '../character/concrete/Player'
+import {Context} from './Context'
+import {InventoryContext} from './InventoryContext'
+import {ItemId} from './ItemId'
+import {GameMap} from '../map/GameMap'
+import {AreaNames} from './AreaNames'
+import {ShopContext} from './ShopContext'
+import {MapIds} from './MapIds'
 
 export class Defaults {
 

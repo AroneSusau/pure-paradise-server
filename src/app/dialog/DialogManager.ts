@@ -1,5 +1,5 @@
-import {AreaNames} from '../defaults/AreaNames.js'
-import {Player} from '../character/concrete/Player.js'
+import {AreaNames} from '../defaults/AreaNames'
+import {Player} from '../character/concrete/Player'
 
 export class DialogManager {
 

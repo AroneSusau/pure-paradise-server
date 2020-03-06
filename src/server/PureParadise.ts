@@ -1,5 +1,5 @@
 import {Socket} from 'socket.io'
-import {RequestManager} from './managers/RequestManager.js'
+import {RequestManager} from './managers/RequestManager'
 
 const requestManager = new RequestManager()
 

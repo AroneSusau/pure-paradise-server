@@ -1,6 +1,6 @@
-import {Player} from '../character/concrete/Player.js'
-import {Observer} from '../../server/observer/Observer.js'
-import {DialogManager} from '../dialog/DialogManager.js'
+import {Player} from '../character/concrete/Player'
+import {Observer} from '../../server/observer/Observer'
+import {DialogManager} from '../dialog/DialogManager'
 import {Socket} from 'socket.io'
 
 export abstract class Engine {

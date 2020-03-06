@@ -1,10 +1,10 @@
 import {Socket} from 'socket.io'
-import {RoomNames} from '../../app/defaults/RoomNames.js'
-import {Context} from '../../app/defaults/Context.js'
-import {PlayerManager} from './PlayerManager.js'
-import {Observer} from '../observer/Observer.js'
-import {GameEngine} from '../../app/engine/concrete/GameEngine.js'
-import {RoomManager} from './RoomManager.js'
+import {RoomNames} from '../../app/defaults/RoomNames'
+import {Context} from '../../app/defaults/Context'
+import {PlayerManager} from './PlayerManager'
+import {Observer} from '../observer/Observer'
+import {GameEngine} from '../../app/engine/concrete/GameEngine'
+import {RoomManager} from './RoomManager'
 
 export class RequestManager {
 
@@ -18,6 +18,22 @@ export class RequestManager {
         this._roomManager = new RoomManager()
         this._observer = new Observer()
         this._gameEngine = new GameEngine(this._observer)
+    }
+
+    get observer(): Observer {
+        return this._observer
+    }
+
+    get gameEngine(): GameEngine {
+        return this._gameEngine
+    }
+
+    get playerManager(): PlayerManager {
+        return this._playerManager
+    }
+
+    get roomManager(): RoomManager {
+        return this._roomManager
     }
 
     clientStart(cmd: string, room: string, socket: Socket) {
@@ -86,21 +102,5 @@ export class RequestManager {
             type: 0,
             message: 'Unfortunately, all the game rooms are currently full. Please refresh and try again later.'
         }, socket)
-    }
-
-    get observer(): Observer {
-        return this._observer
-    }
-
-    get gameEngine(): GameEngine {
-        return this._gameEngine
-    }
-
-    get playerManager(): PlayerManager {
-        return this._playerManager
-    }
-
-    get roomManager(): RoomManager {
-        return this._roomManager
     }
 }

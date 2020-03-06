@@ -1,4 +1,4 @@
-import {ShopContext} from '../../defaults/ShopContext.js'
+import {ShopContext} from '../../defaults/ShopContext'
 
 export class ShopMeta {
 

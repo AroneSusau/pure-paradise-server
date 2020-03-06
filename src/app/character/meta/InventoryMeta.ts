@@ -1,5 +1,5 @@
-import {InventoryContext} from '../../defaults/InventoryContext.js'
-import {ItemId} from '../../defaults/ItemId.js'
+import {InventoryContext} from '../../defaults/InventoryContext'
+import {ItemId} from '../../defaults/ItemId'
 
 export class InventoryMeta {
 

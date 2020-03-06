@@ -1,8 +1,8 @@
-import {ItemId} from '../../defaults/ItemId.js'
-import {Food} from './Food.js'
-import {Weapon} from './Weapon.js'
-import {Armour} from './Armour.js'
-import {EdibleWeapon} from './EdibleWeapon.js'
+import {ItemId} from '../../defaults/ItemId'
+import {Food} from './Food'
+import {Weapon} from './Weapon'
+import {Armour} from './Armour'
+import {EdibleWeapon} from './EdibleWeapon'
 
 const items = [
 

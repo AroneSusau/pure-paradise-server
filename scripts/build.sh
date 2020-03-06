@@ -8,6 +8,6 @@ echo 'Building project..\n'
 mkdir ./build
 
 # Build webpack project
-webpack ./webpack.config.js
+webpack --config ./webpack.config.js src/server/server.ts
 
 echo 'Build Complete\n'

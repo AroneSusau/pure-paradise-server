@@ -82,6 +82,7 @@ export class RequestManager {
                     players: [this._playerManager.getPlayerUpdate(player)]
                 }, socket)
             }
+            this._roomManager.unassignedRoom(socket.id, player.room)
             this._playerManager.remove(socket.id)
         }
     }

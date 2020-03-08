@@ -822,6 +822,7 @@ var Defaults = (function () {
         player.meta.context = Context_1.Context.START;
         player.meta.inventoryMeta.context = InventoryContext_1.InventoryContext.CLOSED;
         player.meta.inventoryMeta.weapon = ItemId_1.ItemId.FISTS;
+        player.meta.inventoryMeta.armour = ItemId_1.ItemId.CLOTH_CLOTHING;
         player.meta.battleMeta.monsterCount = 0;
         player.meta.eventMeta.updateCode(0, 0);
         player.meta.shopMeta.updateShopContext(ShopContext_1.ShopContext.EXITED);
@@ -1002,6 +1003,7 @@ var ShopContext;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var AreaNames_1 = __webpack_require__(/*! ../defaults/AreaNames */ "./src/app/defaults/AreaNames.ts");
+var ItemsList_1 = __webpack_require__(/*! ../item/concrete/ItemsList */ "./src/app/item/concrete/ItemsList.ts");
 var DialogManager = (function () {
     function DialogManager() {
     }
@@ -1016,13 +1018,13 @@ var DialogManager = (function () {
         return "You dash around the corner and hear the screams growing louder and louder.. closer.. and closer.. until you\n        turn the corner from the town square only to see that it is filled with a sea of monsters. EVERYWHERE THEY CRAWL.\n        You tremble before them as one by one they begin to notice your presence.. But you can see the young girl in the\n        distance hanging on to a large tree in the middle of the town square, screaming, as the monsters claw their way up\n        to her.<br><br>If you choose to fight this might not end too well for you..<br><br>Do you fight or run?<br><br>fight / run";
     };
     DialogManager.prototype['e1s2'] = function (player) {
-        return "Clenching your " + player.meta.inventoryMeta.weapon + " you take a deep breath.. Calming your nerves.. There is one way forward and now with all the monsters attention squarely on you there is no way back. You swing your " + player.meta.inventoryMeta.weapon + " side to side cutting down one monster after the other.. Being pushed back with the occasional claw from one of the monsters, yet you push on, digging down deep into your warrior spirit, holding onto the memories of times before..<br><br>The screams of the monsters die down, one after another..<br><br>Until finally, there are no more left..<br><br>You look all around you, seeing the carnage you have left behind and begin to feel the pain from all the attacks.<br><br>The young girl stagger down the tree with a slight limp as she reaches the bottom and begins steadying her footing. She stares directly into your eyes but you notice that something isn't right..<br><br>The young girl starts walking towards you.. Running.. What? Running towards you.. You stumble your way up but are dazed by the attacks, you can't tell if she is holding a weapon or not but she is coming at you full force.<br><br>Do you raise your weapon and strike before she gets to you or do you hold still until you can see clearer?<br><br>wait / strike";
+        return "Clenching your " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " you take a deep breath.. Calming your nerves.. There is one way forward and now with all the monsters attention squarely on you there is no way back. You swing your " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " side to side cutting down one monster after the other.. Being pushed back with the occasional claw from one of the monsters, yet you push on, digging down deep into your warrior spirit, holding onto the memories of times before..<br><br>The screams of the monsters die down, one after another..<br><br>Until finally, there are no more left..<br><br>You look all around you, seeing the carnage you have left behind and begin to feel the pain from all the attacks.<br><br>The young girl stagger down the tree with a slight limp as she reaches the bottom and begins steadying her footing. She stares directly into your eyes but you notice that something isn't right..<br><br>She begins walking towards you.. Running.. What? You stumble your way up but are dazed by the attacks, you can't tell if she is holding a weapon or not but she is coming at you full force.<br><br>Do you raise your weapon and strike before she gets to you or do you hold still until you can see clearer?<br><br>wait / strike";
     };
     DialogManager.prototype['e1s3'] = function (player) {
-        return "You hold your nerves steady to get a clearer picture.. she gets closer and BAM.. She flies onto you biting your neck and clawing your back. The girl IS A MONSTER, you hear her screech and wail as the beast morphs from a young girl into a Werewolf. You reach around your back and rip the thing from you, pulling out your " + player.meta.inventoryMeta.weapon + " and striking the Werewolf with one swift blow, tearing its head from its shoulders.<br><br>Argh, all this effort for this thing you think to yourself..<br><br>Well even though nothing came of this, the eyes from Pure Paradise are always watching.. and they will take notice of your heroic acts in the face of the unknown.";
+        return "You hold your nerves steady to get a clearer picture.. she gets closer and BAM.. She flies onto you biting your neck and clawing your back. The girl IS A MONSTER, you hear her screech and wail as the beast morphs from a young girl into a Werewolf. You reach around your back and rip the thing from you, pulling out your " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " and striking the Werewolf with one swift blow, tearing its head from its shoulders.<br><br>Argh, all this effort for this thing you think to yourself..<br><br>Well even though nothing came of this, the eyes from Pure Paradise are always watching.. and they will take notice of your heroic acts in the face of the unknown.";
     };
     DialogManager.prototype['e1s4'] = function (player) {
-        return "You cannot hesitate in situations like this and pull your " + player.meta.inventoryMeta.weapon + " and STRIKE HER DOWN. Starring at her young body you can't help but wonder what was she thinking? You had no other choice.. There was nothing you could have done, but still.. you have taken the life of a child, and that lives with you forever, even in Pure Paradise.";
+        return "You cannot hesitate in situations like this and pull your " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " and STRIKE HER DOWN. Starring at her young body you can't help but wonder what was she thinking? You had no other choice.. There was nothing you could have done, but still.. you have taken the life of a child, and that lives with you forever, even in Pure Paradise.";
     };
     DialogManager.prototype['e1s5'] = function (player) {
         return "Catch a hero flying straight into that mess, at least no one will know of your cowardliness because there was no one to see it.. right?";
@@ -1037,10 +1039,10 @@ var DialogManager = (function () {
         return "WHAT HAVE YOU DONE!! Turning around you see another group of soldiers approaching but you can see how this current situations may appear to be misleading for anyone stumbling upon you.<br><br>Covered in the solider's blood that you had just helped innocently kill, you try to plead with the so approaching\n        men but they don't seem to want to listen..<br><br>ARHHH WE'LL KILL YOU FOR THIS!<br><br>Do you fight the soldiers or try to convince them you were helping ease the killed soldiers pain?<br><br>fight / convince";
     };
     DialogManager.prototype['e2s2'] = function (player) {
-        return "Sensing that there is no stopping these men from their blood raged enchantment, you draw your " + player.meta.inventoryMeta.weapon + " and begin to defend yourself.. <br>One after another they fall to your overwhelming power and strength, the screams from the men can be\n                heard from miles around.<br><br>The last man standing there.. Quivering before you, not as strong and valiant as he was moments before\n                attacking you..<br><br>Ha you think to yourself, you could squash him in an instant, or do you spare his life?<br><br>squash / spare";
+        return "Sensing that there is no stopping these men from their blood raged enchantment, you draw your " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " and begin to defend yourself.. <br>One after another they fall to your overwhelming power and strength, the screams from the men can be\n                heard from miles around.<br><br>The last man standing there.. Quivering before you, not as strong and valiant as he was moments before\n                attacking you..<br><br>Ha you think to yourself, you could squash him in an instant, or do you spare his life?<br><br>squash / spare";
     };
     DialogManager.prototype['e2s3'] = function (player) {
-        return "You cackle like a mad man, before starring into the remaining soldiers eyes, you see him tremble before you as he realises that this is the end for him.. He begs and pleads for his life but you laugh and drive your " + player.meta.inventoryMeta.weapon + " through his chest, tearing out his heart.<br><br>Bodies lay everywhere and you've added one more to the pile, oh well.. just one more misfit to blend in with the monsters mess.";
+        return "You cackle like a mad man, before starring into the remaining soldiers eyes, you see him tremble before you as he realises that this is the end for him.. He begs and pleads for his life but you laugh and drive your " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " through his chest, tearing out his heart.<br><br>Bodies lay everywhere and you've added one more to the pile, oh well.. just one more misfit to blend in with the monsters mess.";
     };
     DialogManager.prototype['e2s4'] = function (player) {
         return "Pft you exhale and explain what had happened, the solider in front of you confused as he thought this was the end of himself.So we.. all died for nothing? For.. Nothing..<br><br>CRACK..<br><br>In a moment before you had a chance to make a move the solider plunged his own sword through his skull. Taking his own life.<br><br>You gather yourself together and keep moving forward until you finally see the wreckage that is " + AreaNames_1.AreaNames.TIRERA + ".. Oh well, I guess you couldn't have hoped for much else in a time like this I suppose.";
@@ -1052,7 +1054,7 @@ var DialogManager = (function () {
         return "You decide this solider isn't worth your time or blade and leave him as he is.. Walking forward you notice another group of soldiers..<br><br>HALT.. Oh, its just another Trethamian. Did you have any trouble making your way through?<br><br>You make a shrugging movement, somewhat uninterested in their small talk and ask for the directions towards " + AreaNames_1.AreaNames.TIRERA + ".<br><br>They all turn to each other and laugh.. " + AreaNames_1.AreaNames.TIRERA + " is no more my friend, it was overrun by the monsters long ago, but we managed to clear them out and push them back to " + AreaNames_1.AreaNames.SILVOS + " to deal with. We're heading to Pure Paradise in hope to get a good spot in the city to finally relax from these wretched creatures.<br><br>Well isn't this a waste of your time, the city is destroyed and there is nothing to go to.. I guess you could make some fun out of this still?<br><br>Do you attack the remaining soldiers and tear them all apart for fun or humanely leave?<br><br>attack / leave";
     };
     DialogManager.prototype['e2s7'] = function (player) {
-        return "Well I guess there was nothing better to do than attack a group of soldiers before they had a chance to react. You pull out you " + player.meta.inventoryMeta.weapon + " and cut them down, one by one.. Until no more remain.. It was fun while it lasted I suppose..<br><br>Off to the next city!";
+        return "Well I guess there was nothing better to do than attack a group of soldiers before they had a chance to react. You pull out you " + ItemsList_1.items.get(player.meta.inventoryMeta.weapon).name + " and cut them down, one by one.. Until no more remain.. It was fun while it lasted I suppose..<br><br>Off to the next city!";
     };
     DialogManager.prototype['e2s8'] = function (player) {
         return "You decide you've had enough psychotic episodes for one day and walk away, slightly unhinged by all the human and monster bodies laying around you.";
@@ -1227,17 +1229,20 @@ var EventEngine = (function (_super) {
         var event = this.events.get(eventId);
         var options = event.options.get(eventCode);
         var match = options.has(cmd);
+        console.dir(options);
         if (match) {
             var nextCode = options.get(cmd);
             var nextStory = event.story(nextCode, player);
             var nextOptions = event.options.get(nextCode);
             var finished = event.isFinalStage(nextCode);
+            var general = void 0;
             player.meta.eventMeta.updateCode(eventId, eventStage + 1);
             if (finished) {
                 player.meta.context = Context_1.Context.FREE_ROAM;
                 player.location.local.incrementX();
                 player.location.local.incrementY();
                 player.meta.eventMeta.updateScore(eventId, eventStage);
+                general = { text: "Event " + eventId + " Finished" };
             }
             this._observer.notify({
                 id: player.id,
@@ -1259,6 +1264,7 @@ var EventEngine = (function (_super) {
                     story: nextStory,
                     options: nextOptions,
                 },
+                general: general,
                 player: {
                     flags: {
                         inventoryUpdate: false,
@@ -1290,12 +1296,12 @@ var EventEngine = (function (_super) {
                     id: player.id,
                     room: player.room,
                     flags: {
+                        generalUpdate: false,
                         mapUpdate: false,
                         playerUpdate: true,
                         battleUpdate: false,
                         eventUpdate: true,
                         contextUpdate: true,
-                        generalUpdate: true,
                         error: false
                     },
                     general: {
@@ -1845,6 +1851,266 @@ var GirlInVillageE01 = (function (_super) {
     return GirlInVillageE01;
 }(Event_1.Event));
 exports.GirlInVillageE01 = GirlInVillageE01;
+
+
+/***/ }),
+
+/***/ "./src/app/item/Item.ts":
+/*!******************************!*\
+  !*** ./src/app/item/Item.ts ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var Item = (function () {
+    function Item(id, name, description, price) {
+        this._id = id;
+        this._name = name;
+        this._description = description;
+        this._price = price;
+    }
+    Object.defineProperty(Item.prototype, "id", {
+        get: function () {
+            return this._id;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Item.prototype, "name", {
+        get: function () {
+            return this._name;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Item.prototype, "description", {
+        get: function () {
+            return this._description;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Item.prototype, "price", {
+        get: function () {
+            return this._price;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Item;
+}());
+exports.Item = Item;
+
+
+/***/ }),
+
+/***/ "./src/app/item/concrete/Armour.ts":
+/*!*****************************************!*\
+  !*** ./src/app/item/concrete/Armour.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Item_1 = __webpack_require__(/*! ../Item */ "./src/app/item/Item.ts");
+var Armour = (function (_super) {
+    __extends(Armour, _super);
+    function Armour(id, name, description, price, defence) {
+        var _this = _super.call(this, id, name, description, price) || this;
+        _this.defence = defence;
+        return _this;
+    }
+    Armour.prototype.equip = function (player) {
+    };
+    Armour.prototype.unequip = function (player) {
+    };
+    return Armour;
+}(Item_1.Item));
+exports.Armour = Armour;
+
+
+/***/ }),
+
+/***/ "./src/app/item/concrete/EdibleWeapon.ts":
+/*!***********************************************!*\
+  !*** ./src/app/item/concrete/EdibleWeapon.ts ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Item_1 = __webpack_require__(/*! ../Item */ "./src/app/item/Item.ts");
+var EdibleWeapon = (function (_super) {
+    __extends(EdibleWeapon, _super);
+    function EdibleWeapon(id, name, description, price, damage, value) {
+        var _this = _super.call(this, id, name, description, price) || this;
+        _this.damage = damage;
+        _this.value = value;
+        return _this;
+    }
+    EdibleWeapon.prototype.consume = function (player) {
+    };
+    EdibleWeapon.prototype.equip = function (player) {
+    };
+    EdibleWeapon.prototype.unequip = function (player) {
+    };
+    return EdibleWeapon;
+}(Item_1.Item));
+exports.EdibleWeapon = EdibleWeapon;
+
+
+/***/ }),
+
+/***/ "./src/app/item/concrete/Food.ts":
+/*!***************************************!*\
+  !*** ./src/app/item/concrete/Food.ts ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Item_1 = __webpack_require__(/*! ../Item */ "./src/app/item/Item.ts");
+var Food = (function (_super) {
+    __extends(Food, _super);
+    function Food(id, name, description, price, value) {
+        var _this = _super.call(this, id, name, description, price) || this;
+        _this.value = value;
+        return _this;
+    }
+    Food.prototype.consume = function (player) {
+    };
+    return Food;
+}(Item_1.Item));
+exports.Food = Food;
+
+
+/***/ }),
+
+/***/ "./src/app/item/concrete/ItemsList.ts":
+/*!********************************************!*\
+  !*** ./src/app/item/concrete/ItemsList.ts ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ItemId_1 = __webpack_require__(/*! ../../defaults/ItemId */ "./src/app/defaults/ItemId.ts");
+var Food_1 = __webpack_require__(/*! ./Food */ "./src/app/item/concrete/Food.ts");
+var Weapon_1 = __webpack_require__(/*! ./Weapon */ "./src/app/item/concrete/Weapon.ts");
+var Armour_1 = __webpack_require__(/*! ./Armour */ "./src/app/item/concrete/Armour.ts");
+var EdibleWeapon_1 = __webpack_require__(/*! ./EdibleWeapon */ "./src/app/item/concrete/EdibleWeapon.ts");
+var items = new Map([
+    [ItemId_1.ItemId.APPLE, new Food_1.Food(ItemId_1.ItemId.APPLE, 'Apple', 'An apple a day keeps the doctor away!', 9, 2)],
+    [ItemId_1.ItemId.BEEF, new Food_1.Food(ItemId_1.ItemId.BEEF, 'Beef', 'Man needs his beef.', 31, 24)],
+    [ItemId_1.ItemId.DONUT, new Food_1.Food(ItemId_1.ItemId.DONUT, 'Donut', 'Mmmmmm, donuts.', 26, 14)],
+    [ItemId_1.ItemId.HAMBURGER, new Food_1.Food(ItemId_1.ItemId.HAMBURGER, 'Hamburger', 'Holy cow where did you get this hamburger!', 110, 30)],
+    [ItemId_1.ItemId.FLESH, new Food_1.Food(ItemId_1.ItemId.FLESH, 'Flesh', 'Uhmm.. if you\'re hungry enough?', 1, 1)],
+    [ItemId_1.ItemId.PEANUTS, new Food_1.Food(ItemId_1.ItemId.PEANUTS, 'Peanuts', 'A little salty if you ask me.', 9, 1)],
+    [ItemId_1.ItemId.PIE, new Food_1.Food(ItemId_1.ItemId.PIE, 'Pie', 'At least its still wrapped', 14, 4)],
+    [ItemId_1.ItemId.WATER, new Food_1.Food(ItemId_1.ItemId.WATER, 'Water', 'A bit of H2O never hurt anyone', 25, 16)],
+    [ItemId_1.ItemId.FISTS, new Weapon_1.Weapon(ItemId_1.ItemId.FISTS, 'Fists', 'Your bare hands, old fashion but reliable.', 0, 1)],
+    [ItemId_1.ItemId.RUSTED_RAZOR, new Weapon_1.Weapon(ItemId_1.ItemId.RUSTED_RAZOR, 'Rusted Razor', 'A rusted, dull blade that is pathetic in every way, shape and form.', 150, 3)],
+    [ItemId_1.ItemId.KNIFE, new Weapon_1.Weapon(ItemId_1.ItemId.KNIFE, 'Knife', 'This thing is pointy.', 25, 2)],
+    [ItemId_1.ItemId.WOODEN_SWORD, new Weapon_1.Weapon(ItemId_1.ItemId.WOODEN_SWORD, 'Wooden Sword', 'A sword carved out of wood, greater than man but lesser than the Draconical Sword.', 250, 10)],
+    [ItemId_1.ItemId.DRACONIC_SWORD, new Weapon_1.Weapon(ItemId_1.ItemId.DRACONIC_SWORD, 'Draconic Sword', 'A sword smithed from a dragon\'s skeleton, the strongest material in all of New Tretham ', 500, 25)],
+    [ItemId_1.ItemId.CHOCOLATE_SWORD, new EdibleWeapon_1.EdibleWeapon(ItemId_1.ItemId.CHOCOLATE_SWORD, 'Chocolate Sword', 'A tasty treat that should do the trick!', 5, 1, 1)],
+    [ItemId_1.ItemId.CLOTH_CLOTHING, new Armour_1.Armour(ItemId_1.ItemId.CLOTH_CLOTHING, 'Cloth Clothing', 'Ain\'t nothing better than some cloth clothing, fresh from the sheep.', 15, 2)],
+    [ItemId_1.ItemId.WOODEN_SHIELD, new Armour_1.Armour(ItemId_1.ItemId.WOODEN_SHIELD, 'Wooden Shield', 'A shield carved from wood, provides decent protection.', 200, 8)],
+    [ItemId_1.ItemId.DRACONIC_SHIELD, new Armour_1.Armour(ItemId_1.ItemId.DRACONIC_SHIELD, 'Draconic Shield', 'A shield smithed from a dragon\'s hide, provides godly protection.', 450, 25)]
+]);
+exports.items = items;
+
+
+/***/ }),
+
+/***/ "./src/app/item/concrete/Weapon.ts":
+/*!*****************************************!*\
+  !*** ./src/app/item/concrete/Weapon.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+Object.defineProperty(exports, "__esModule", { value: true });
+var Item_1 = __webpack_require__(/*! ../Item */ "./src/app/item/Item.ts");
+var Weapon = (function (_super) {
+    __extends(Weapon, _super);
+    function Weapon(id, name, description, price, damage) {
+        var _this = _super.call(this, id, name, description, price) || this;
+        _this.damage = damage;
+        return _this;
+    }
+    Weapon.prototype.equip = function (player) {
+    };
+    Weapon.prototype.unequip = function (player) {
+    };
+    return Weapon;
+}(Item_1.Item));
+exports.Weapon = Weapon;
 
 
 /***/ }),

@@ -8,6 +8,7 @@ import {Socket} from 'socket.io'
 import {Observer} from '../../../server/observer/Observer'
 import {GirlInVillageE01} from '../../event/eventlist/GirlInVillageE01'
 import {Event} from '../../event/Event'
+import {text} from 'express'
 
 export class EventEngine extends Engine {
 
@@ -75,6 +76,8 @@ export class EventEngine extends Engine {
             const nextOptions = event.options.get(nextCode)
             const finished = event.isFinalStage(nextCode)
 
+            let general
+
             player.meta.eventMeta.updateCode(eventId, eventStage + 1)
 
             if (finished) {
@@ -82,6 +85,7 @@ export class EventEngine extends Engine {
                 player.location.local.incrementX()
                 player.location.local.incrementY()
                 player.meta.eventMeta.updateScore(eventId, eventStage)
+                general = { text: `Event ${eventId} Finished` }
             }
 
             this._observer.notify({
@@ -104,6 +108,7 @@ export class EventEngine extends Engine {
                     story: nextStory,
                     options: nextOptions,
                 },
+                general,
                 player: {
                     flags: {
                         inventoryUpdate: false,
@@ -135,12 +140,12 @@ export class EventEngine extends Engine {
                     id: player.id,
                     room: player.room,
                     flags: {
+                        generalUpdate: false,
                         mapUpdate: false,
                         playerUpdate: true,
                         battleUpdate: false,
                         eventUpdate: true,
                         contextUpdate: true,
-                        generalUpdate: true,
                         error: false
                     },
                     general: {

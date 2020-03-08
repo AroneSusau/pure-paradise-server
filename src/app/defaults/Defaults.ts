@@ -28,7 +28,9 @@ export class Defaults {
         player.meta.context = Context.START
 
         player.meta.inventoryMeta.context = InventoryContext.CLOSED
+
         player.meta.inventoryMeta.weapon = ItemId.FISTS
+        player.meta.inventoryMeta.armour = ItemId.CLOTH_CLOTHING
 
         player.meta.battleMeta.monsterCount = 0
 

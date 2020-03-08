@@ -175,6 +175,7 @@ export class MapEngine extends Engine {
                 id: player.id,
                 name: player.name,
                 room: player.room,
+                context: player.meta.context.toString(),
                 type: CharacterTypes.PLAYER,
                 location: {
                     local: player.location.local.index,

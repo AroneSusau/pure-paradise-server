@@ -4,6 +4,7 @@ export type PlayerUpdate = {
     id: string,
     name: string,
     room: string,
+    context: string,
     type: CharacterTypes,
     location: {
         local: number,

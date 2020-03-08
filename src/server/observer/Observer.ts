@@ -1,6 +1,6 @@
 import {Socket} from 'socket.io'
 import {GameUpdate} from '../../types/GameUpdate'
-import {ErrorResponse} from '../../types/ErrorResponse'
+import {ErrorUpdate} from '../../types/ErrorUpdate.js'
 import {RoomUpdate} from '../../types/RoomUpdate'
 
 export class Observer {
@@ -50,8 +50,12 @@ export class Observer {
     }
 
     // Error Updates
-    public roomFull(obj: ErrorResponse, socket: Socket) {
+    public roomFull(obj: ErrorUpdate, socket: Socket) {
         socket.emit('error:full', obj)
+    }
+
+    public invalidCommand(obj: ErrorUpdate, socket: Socket) {
+        socket.emit('error:invalid', obj)
     }
 
 }

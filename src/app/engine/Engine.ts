@@ -16,22 +16,12 @@ export abstract class Engine {
     public abstract action(cmd: string, player: Player, socket: Socket): void
 
     protected invalidAction(cmd: string, player: Player, socket: Socket): void {
-        this._observer.notify({
+        this._observer.invalidCommand({
             id: player.id,
-            room: player.room,
-            flags: {
-                mapUpdate: false,
-                playerUpdate: false,
-                battleUpdate: false,
-                eventUpdate: false,
-                contextUpdate: false,
-                generalUpdate: false,
-                error: true
-            },
-            error: {
-                message: 'Invalid action entered, please try again.'
-            }
+            type: 1,
+            message: 'Invalid action entered, please try again.'
         }, socket)
     }
 
 }
+

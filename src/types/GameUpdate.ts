@@ -13,7 +13,7 @@ export type Flags = {
     error: boolean
 }
 
-export type Map = {
+export type GameMap = {
     id: MapIds
     name: string,
     raw: Array<number>
@@ -72,12 +72,12 @@ export type Battle = {
 
 export type Event = {
     flags: {
-        displayUpdate: symbol
+        displayUpdate: boolean
     },
     name: string,
     story: string,
-    options: Array<string>,
-    display: Array<number>
+    options: Map<string, string>,
+    display?: Array<number>
 }
 
 export type GameUpdate = {
@@ -85,7 +85,7 @@ export type GameUpdate = {
     room: string,
     flags: Flags,
     general?: { text: string },
-    map?: Map,
+    map?: GameMap,
     player?: PlayerInfo,
     battle?: Battle,
     event?: Event

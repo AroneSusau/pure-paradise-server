@@ -27,14 +27,14 @@ export class Defaults {
 
         player.meta.context = Context.START
 
-        player.meta.inventoryStatus.context = InventoryContext.CLOSED
-        player.meta.inventoryStatus.weapon = ItemId.FISTS
+        player.meta.inventoryMeta.context = InventoryContext.CLOSED
+        player.meta.inventoryMeta.weapon = ItemId.FISTS
 
-        player.meta.battleStatus.monsterCount = 0
+        player.meta.battleMeta.monsterCount = 0
 
-        player.meta.eventStatus.updateCode(0, 0)
+        player.meta.eventMeta.updateCode(0, 0)
 
-        player.meta.shopStatus.updateShopContext(ShopContext.EXITED)
+        player.meta.shopMeta.updateShopContext(ShopContext.EXITED)
 
         player.inventory.setItem(ItemId.BEEF, 1)
         player.inventory.setItem(ItemId.APPLE, 3)

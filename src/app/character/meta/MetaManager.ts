@@ -28,19 +28,19 @@ export class MetaManager {
         this._context = value
     }
 
-    get battleStatus(): BattleMeta {
+    get battleMeta(): BattleMeta {
         return this._battleMeta
     }
 
-    get shopStatus(): ShopMeta {
+    get shopMeta(): ShopMeta {
         return this._shopMeta
     }
 
-    get eventStatus(): EventMeta {
+    get eventMeta(): EventMeta {
         return this._eventMeta
     }
 
-    get inventoryStatus(): InventoryMeta {
+    get inventoryMeta(): InventoryMeta {
         return this._inventoryMeta
     }
 

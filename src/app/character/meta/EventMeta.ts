@@ -23,4 +23,16 @@ export class EventMeta {
     public getScore(id: number) {
         this._score.has(id) ? this._score.get(id) : 0
     }
+
+    get code(): string {
+        return this._code
+    }
+
+    get id(): number {
+        return this._id
+    }
+
+    get stage(): number {
+        return this._stage
+    }
 }

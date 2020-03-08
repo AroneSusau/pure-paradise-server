@@ -28,15 +28,15 @@ export class DialogManager {
     }
 
     ['e1s2'](player: Player): string {
-        return `Clenching your ${player.meta.inventoryStatus.weapon} you take a deep breath.. Calming your nerves.. There is one way forward and now with all the monsters attention squarely on you there is no way back. You swing your ${player.meta.inventoryStatus.weapon} side to side cutting down one monster after the other.. Being pushed back with the occasional claw from one of the monsters, yet you push on, digging down deep into your warrior spirit, holding onto the memories of times before..<br><br>The screams of the monsters die down, one after another..<br><br>Until finally, there are no more left..<br><br>You look all around you, seeing the carnage you have left behind and begin to feel the pain from all the attacks.<br><br>The young girl stagger down the tree with a slight limp as she reaches the bottom and begins steadying her footing. She stares directly into your eyes but you notice that something isn't right..<br><br>The young girl starts walking towards you.. Running.. What? Running towards you.. You stumble your way up but are dazed by the attacks, you can't tell if she is holding a weapon or not but she is coming at you full force.<br><br>Do you raise your weapon and strike before she gets to you or do you hold still until you can see clearer?<br><br>wait / strike`
+        return `Clenching your ${player.meta.inventoryMeta.weapon} you take a deep breath.. Calming your nerves.. There is one way forward and now with all the monsters attention squarely on you there is no way back. You swing your ${player.meta.inventoryMeta.weapon} side to side cutting down one monster after the other.. Being pushed back with the occasional claw from one of the monsters, yet you push on, digging down deep into your warrior spirit, holding onto the memories of times before..<br><br>The screams of the monsters die down, one after another..<br><br>Until finally, there are no more left..<br><br>You look all around you, seeing the carnage you have left behind and begin to feel the pain from all the attacks.<br><br>The young girl stagger down the tree with a slight limp as she reaches the bottom and begins steadying her footing. She stares directly into your eyes but you notice that something isn't right..<br><br>The young girl starts walking towards you.. Running.. What? Running towards you.. You stumble your way up but are dazed by the attacks, you can't tell if she is holding a weapon or not but she is coming at you full force.<br><br>Do you raise your weapon and strike before she gets to you or do you hold still until you can see clearer?<br><br>wait / strike`
     }
 
     ['e1s3'](player: Player): string {
-        return `You hold your nerves steady to get a clearer picture.. she gets closer and BAM.. She flies onto you biting your neck and clawing your back. The girl IS A MONSTER, you hear her screech and wail as the beast morphs from a young girl into a Werewolf. You reach around your back and rip the thing from you, pulling out your ${player.meta.inventoryStatus.weapon} and striking the Werewolf with one swift blow, tearing its head from its shoulders.<br><br>Argh, all this effort for this thing you think to yourself..<br><br>Well even though nothing came of this, the eyes from Pure Paradise are always watching.. and they will take notice of your heroic acts in the face of the unknown.`
+        return `You hold your nerves steady to get a clearer picture.. she gets closer and BAM.. She flies onto you biting your neck and clawing your back. The girl IS A MONSTER, you hear her screech and wail as the beast morphs from a young girl into a Werewolf. You reach around your back and rip the thing from you, pulling out your ${player.meta.inventoryMeta.weapon} and striking the Werewolf with one swift blow, tearing its head from its shoulders.<br><br>Argh, all this effort for this thing you think to yourself..<br><br>Well even though nothing came of this, the eyes from Pure Paradise are always watching.. and they will take notice of your heroic acts in the face of the unknown.`
     }
 
     ['e1s4'](player: Player): string {
-        return `You cannot hesitate in situations like this and pull your ${player.meta.inventoryStatus.weapon} and STRIKE HER DOWN. Starring at her young body you can't help but wonder what was she thinking? You had no other choice.. There was nothing you could have done, but still.. you have taken the life of a child, and that lives with you forever, even in Pure Paradise.`
+        return `You cannot hesitate in situations like this and pull your ${player.meta.inventoryMeta.weapon} and STRIKE HER DOWN. Starring at her young body you can't help but wonder what was she thinking? You had no other choice.. There was nothing you could have done, but still.. you have taken the life of a child, and that lives with you forever, even in Pure Paradise.`
     }
 
     ['e1s5'](player: Player): string {
@@ -59,13 +59,13 @@ export class DialogManager {
     }
 
     ['e2s2'](player: Player): string {
-        return `Sensing that there is no stopping these men from their blood raged enchantment, you draw your ${player.meta.inventoryStatus.weapon} and begin to defend yourself.. <br>One after another they fall to your overwhelming power and strength, the screams from the men can be
+        return `Sensing that there is no stopping these men from their blood raged enchantment, you draw your ${player.meta.inventoryMeta.weapon} and begin to defend yourself.. <br>One after another they fall to your overwhelming power and strength, the screams from the men can be
                 heard from miles around.<br><br>The last man standing there.. Quivering before you, not as strong and valiant as he was moments before
                 attacking you..<br><br>Ha you think to yourself, you could squash him in an instant, or do you spare his life?<br><br>squash / spare`
     }
 
     ['e2s3'](player: Player): string {
-        return `You cackle like a mad man, before starring into the remaining soldiers eyes, you see him tremble before you as he realises that this is the end for him.. He begs and pleads for his life but you laugh and drive your ${player.meta.inventoryStatus.weapon} through his chest, tearing out his heart.<br><br>Bodies lay everywhere and you've added one more to the pile, oh well.. just one more misfit to blend in with the monsters mess.`
+        return `You cackle like a mad man, before starring into the remaining soldiers eyes, you see him tremble before you as he realises that this is the end for him.. He begs and pleads for his life but you laugh and drive your ${player.meta.inventoryMeta.weapon} through his chest, tearing out his heart.<br><br>Bodies lay everywhere and you've added one more to the pile, oh well.. just one more misfit to blend in with the monsters mess.`
     }
 
     ['e2s4'](player: Player): string {
@@ -81,7 +81,7 @@ export class DialogManager {
     }
 
     ['e2s7'](player: Player): string {
-        return `Well I guess there was nothing better to do than attack a group of soldiers before they had a chance to react. You pull out you ${player.meta.inventoryStatus.weapon} and cut them down, one by one.. Until no more remain.. It was fun while it lasted I suppose..<br><br>Off to the next city!`
+        return `Well I guess there was nothing better to do than attack a group of soldiers before they had a chance to react. You pull out you ${player.meta.inventoryMeta.weapon} and cut them down, one by one.. Until no more remain.. It was fun while it lasted I suppose..<br><br>Off to the next city!`
     }
 
     ['e2s8'](player: Player): string {

@@ -71,6 +71,8 @@ export class GameEngine extends Engine {
             default:
                 this.invalidAction(cmd, player, socket)
         }
+
+        this.eventEngine.onEventMove(player, socket)
     }
 
 }

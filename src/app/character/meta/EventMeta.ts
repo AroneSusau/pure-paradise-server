@@ -1,13 +1,14 @@
 export class EventMeta {
 
-    private _score: Map<Number, Number>
-
+    private _score: Map<number, number>
+    private _eventsCompleted: Map<number, boolean>
     private _code: string
     private _id: number
     private _stage: number
 
     constructor() {
-        this._score = new Map<Number, Number>()
+        this._score = new Map<number, number>()
+        this._eventsCompleted = new Map<number, boolean>()
     }
 
     public updateCode(id: number, stage: number) {
@@ -23,6 +24,14 @@ export class EventMeta {
     public getScore(id: number) {
         this._score.has(id) ? this._score.get(id) : 0
     }
+    
+    public total(): number {
+        let count = 0
+        
+        this.score.forEach(v => count += v)
+
+        return count
+    }
 
     get code(): string {
         return this._code
@@ -34,5 +43,13 @@ export class EventMeta {
 
     get stage(): number {
         return this._stage
+    }
+
+    get score(): Map<number, number> {
+        return this._score
+    }
+
+    get eventsCompleted(): Map<number, boolean> {
+        return this._eventsCompleted
     }
 }

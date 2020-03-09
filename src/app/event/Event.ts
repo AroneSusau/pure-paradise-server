@@ -14,11 +14,10 @@ export abstract class Event {
 
     protected constructor(x1: number, y1: number, x2: number, y2: number) {
         this._location = new PointManager()
-        this._options = new Map()
         this._dialog = new DialogManager()
 
         this.location.local.length = 20
-        this.location.global.length = 20
+        this.location.global.length = 2
         this._location.updateLocalPosition(x1, y1)
         this._location.updateGlobalPosition(x2, y2)
     }

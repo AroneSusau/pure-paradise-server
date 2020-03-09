@@ -21,11 +21,7 @@ export class DialogManager {
     }
 
     ['e1s1'](player: Player): string {
-        return `You dash around the corner and hear the screams growing louder and louder.. closer.. and closer.. until you
-        turn the corner from the town square only to see that it is filled with a sea of monsters. EVERYWHERE THEY CRAWL.
-        You tremble before them as one by one they begin to notice your presence.. But you can see the young girl in the
-        distance hanging on to a large tree in the middle of the town square, screaming, as the monsters claw their way up
-        to her.<br><br>If you choose to fight this might not end too well for you..<br><br>Do you fight or run?<br><br>fight / run`
+        return `You dash around the corner and hear the screams growing louder and louder.. closer.. and closer.. until you turn the corner from the town square only to see that it is filled with a sea of monsters. EVERYWHERE THEY CRAWL. You tremble before them as one by one they begin to notice your presence.. But you can see the young girl in the distance hanging on to a large tree in the middle of the town square, screaming, as the monsters claw their way up to her.<br><br>If you choose to fight this might not end too well for you..<br><br>Do you fight or run?<br><br>fight / run`
     }
 
     ['e1s2'](player: Player): string {
@@ -55,14 +51,11 @@ export class DialogManager {
     }
 
     ['e2s1'](player: Player): string {
-        return `WHAT HAVE YOU DONE!! Turning around you see another group of soldiers approaching but you can see how this current situations may appear to be misleading for anyone stumbling upon you.<br><br>Covered in the solider's blood that you had just helped innocently kill, you try to plead with the so approaching
-        men but they don't seem to want to listen..<br><br>ARHHH WE'LL KILL YOU FOR THIS!<br><br>Do you fight the soldiers or try to convince them you were helping ease the killed soldiers pain?<br><br>fight / convince`
+        return `WHAT HAVE YOU DONE!! Turning around you see another group of soldiers approaching but you can see how this current situations may appear to be misleading for anyone stumbling upon you.<br><br>Covered in the solider's blood that you had just helped innocently kill, you try to plead with the so approaching men but they don't seem to want to listen..<br><br>ARHHH WE'LL KILL YOU FOR THIS!<br><br>Do you fight the soldiers or try to convince them you were helping ease the killed soldiers pain?<br><br>fight / convince`
     }
 
     ['e2s2'](player: Player): string {
-        return `Sensing that there is no stopping these men from their blood raged enchantment, you draw your ${items.get(player.meta.inventoryMeta.weapon).name} and begin to defend yourself.. <br>One after another they fall to your overwhelming power and strength, the screams from the men can be
-                heard from miles around.<br><br>The last man standing there.. Quivering before you, not as strong and valiant as he was moments before
-                attacking you..<br><br>Ha you think to yourself, you could squash him in an instant, or do you spare his life?<br><br>squash / spare`
+        return `Sensing that there is no stopping these men from their blood raged enchantment, you draw your ${items.get(player.meta.inventoryMeta.weapon).name} and begin to defend yourself.. <br>One after another they fall to your overwhelming power and strength, the screams from the men can be heard from miles around.<br><br>The last man standing there.. Quivering before you, not as strong and valiant as he was moments before attacking you..<br><br>Ha you think to yourself, you could squash him in an instant, or do you spare his life?<br><br>squash / spare`
     }
 
     ['e2s3'](player: Player): string {
@@ -70,7 +63,7 @@ export class DialogManager {
     }
 
     ['e2s4'](player: Player): string {
-        return `Pft you exhale and explain what had happened, the solider in front of you confused as he thought this was the end of himself.So we.. all died for nothing? For.. Nothing..<br><br>CRACK..<br><br>In a moment before you had a chance to make a move the solider plunged his own sword through his skull. Taking his own life.<br><br>You gather yourself together and keep moving forward until you finally see the wreckage that is ${AreaNames.TIRERA}.. Oh well, I guess you couldn't have hoped for much else in a time like this I suppose.`
+        return `Pft, you exhale. You begin to explain what had happened, the solider in front of you is confused, he thought this was the end of himself. So we.. all died for nothing? For.. Nothing..<br><br>CRACK..<br><br>In a moment before you had a chance to make a move the solider plunged his own sword through his skull. Taking his own life.<br><br>You gather yourself together and keep moving forward until you finally see the wreckage that is ${AreaNames.TIRERA}.. Oh well, I guess you couldn't have hoped for much else in a time like this I suppose.`
     }
 
     ['e2s5'](player: Player): string {
@@ -82,38 +75,25 @@ export class DialogManager {
     }
 
     ['e2s7'](player: Player): string {
-        return `Well I guess there was nothing better to do than attack a group of soldiers before they had a chance to react. You pull out you ${items.get(player.meta.inventoryMeta.weapon).name} and cut them down, one by one.. Until no more remain.. It was fun while it lasted I suppose..<br><br>Off to the next city!`
+        return `You decide you've had enough psychotic episodes for one day and walk away, slightly unhinged by all the human and monster bodies laying around you.`
     }
 
     ['e2s8'](player: Player): string {
-        return `You decide you've had enough psychotic episodes for one day and walk away, slightly unhinged by all the human and monster bodies laying around you.`
+        return `Well I guess there was nothing better to do than attack a group of soldiers before they had a chance to react. You pull out you ${items.get(player.meta.inventoryMeta.weapon).name} and cut them down, one by one.. Until no more remain.. It was fun while it lasted I suppose..<br><br>Off to the next city!`
     }
 
     // EVENT 3 - ENDING
 
     ['e3s0'](player: Player): string {
-        return `We have been waiting for you ${player.name}.. We have been watching you this entire time.. We see, everything. Know, everything.. Do not think that there isn't a single thing that you have done that we have not seen. That we do not know. Our land of Pure Paradise, we only only the best of people in.. Are you one of them?`
+        return `We have been waiting for you ${player.name}.. We have been watching you this entire time.. We see, everything. Know, everything.. Do not think that there isn't a single thing that you have done that we have not seen. That we do not know. Our land of Pure Paradise, we only only the best of people in.. Are you one of them?<br><br>Enter anything to continue..`
     }
 
     ['e3s1'](player: Player): string {
-        return `You've done some bad things.. You've done some pretty bad things.. But you're not the worst we've seen.. Hmm we have a spot for
-        people just like you.. For all the bad deeds you've committed we sentence you to 2 years of cleaning the city sewerage systems.
-        It may never clear the atrocities that you have committed but at least you have something to atone for the crimes you have
-        committed.`
+        return `We have been watching you ${player.name}.. and we have seen your acts of kindness and bravery, even in the face of the unknown. We have heard all the great things you have done for the villages and have witness your mercy and honour. You are a noble person ${player.name} and we would gladly take you in as one of our own.. you are a hero amongst heroes.. You are given one of highest honours, one of our special leagues.<br><br>Welcome, to becoming apart of Pure Paradise.<br><br>This is what you've traveled so far and fought so hard for.. you are truly the hero of this story.. Thank you!<br>The End.<br><br>Thank you for playing.<br><br>Arone Tie Susau 2020")`
     }
 
     ['e3s2'](player: Player): string {
-        return `We have watched you.. and we have seen your acts of kindness and bravery, even in the face of the unknown. We have heard all the
-        great things you have done for the villages and have witness your mercy and honour. You are a noble person ${player.name} and we would
-        gladly take you in as one of our own.. you are a hero amongst heroes.. You are given one of highest honours, one of our special leagues.
-
-        Welcome, to becoming apart of Pure Paradise.
-
-        This is what you've traveled so far and fought so hard for.. you are truly the hero of this story.. Thank you!`
-    }
-
-    ['e3s3'](player: Player): string {
-        return `The End.<br><br>Thank you for playing.<br><br>Arone Tie Susau 2020");`
+        return `You've done some bad things ${player.name}.. You've done some pretty bad things.. But you're not the worst we've seen.. Hmm we have a spot forpeople just like you.. <br><br>For all the bad deeds you've committed we sentence you to 2 years of cleaning the city sewerage systems.<br><br>It may never clear the atrocities that you have committed but at least you have something to atone for the crimes you havecommitted.<br><br>The End.<br><br>Thank you for playing.<br><br>Arone Tie Susau 2020`
     }
 
 }

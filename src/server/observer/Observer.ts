@@ -1,6 +1,6 @@
 import {Socket} from 'socket.io'
 import {GameUpdate} from '../../types/GameUpdate'
-import {ErrorUpdate} from '../../types/ErrorUpdate.js'
+import {ErrorUpdate} from '../../types/ErrorUpdate'
 import {RoomUpdate} from '../../types/RoomUpdate'
 
 export class Observer {
@@ -56,6 +56,10 @@ export class Observer {
 
     public invalidCommand(obj: ErrorUpdate, socket: Socket) {
         socket.emit('error:invalid', obj)
+    }
+
+    public endingValidationFail(obj: ErrorUpdate, socket: Socket) {
+        socket.emit('error:event:requirements', obj)
     }
 
 }

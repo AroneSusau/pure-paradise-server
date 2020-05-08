@@ -3,4 +3,4 @@
 echo 'Scrubbing project..\n'
 
 # Remove previous build.
-rm -rf ./build
+rm -rf ./build/*.js*

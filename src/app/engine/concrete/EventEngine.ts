@@ -134,10 +134,15 @@ export class EventEngine extends Engine {
             const localMatch = player.location.local.index === event.location.local.index
             const globalMatch = player.location.global.index === event.location.global.index
             const endingRequirementsMet = this.endingRequirementsCheck(player)
+            const isEventAlreadyComplete = player.meta.eventMeta.eventsCompleted.get(event.id)
             const notEnding = event.id !== 3
 
             if (localMatch && globalMatch) {
-                if (notEnding || endingRequirementsMet) {
+                if (isEventAlreadyComplete) {
+
+                    this.eventAlreadyCompleted(player, socket)
+
+                } else if (notEnding || endingRequirementsMet) {
                     player.meta.context = Context.EVENT
                     player.meta.eventMeta.updateCode(event.id, 0)
 
@@ -206,6 +211,59 @@ export class EventEngine extends Engine {
                 }]
             }, socket)
         }
+    }
+
+    eventAlreadyCompleted(player: Player, socket: Socket): void {
+        player.location.local.incrementX()
+        player.location.local.incrementY()
+
+        this._observer.endingValidationFail({
+            id: socket.id,
+            type: 4,
+            message: "This event has already been completed."
+        }, socket)
+
+        this._observer.roomMovement({
+            players: [{
+                id: player.id,
+                name: player.name,
+                room: player.room,
+                context: player.meta.context.toString(),
+                type: CharacterTypes.PLAYER,
+                location: {
+                    local: player.location.local.index,
+                    global: player.location.global.index
+                }
+            }]
+        }, socket)
+
+        this._observer.notify({
+            id: player.id,
+            room: player.room,
+            flags: {
+                generalUpdate: false,
+                mapUpdate: false,
+                playerUpdate: true,
+                battleUpdate: false,
+                eventUpdate: false,
+                contextUpdate: false,
+                error: false
+            },
+            player: {
+                flags: {
+                    inventoryUpdate: false,
+                    equippedUpdate: false,
+                    statsUpdate: false,
+                    coordsUpdate: true
+                },
+                coords: {
+                    local: player.location.local.index,
+                    global: player.location.global.index
+                },
+                name: player.name,
+                context: player.meta.context
+            }
+        }, socket)
     }
 
     endingRequirementsFail(player: Player, socket: Socket): void {

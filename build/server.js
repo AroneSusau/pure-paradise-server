@@ -1261,7 +1261,6 @@ var EventEngine = (function (_super) {
                 var nextOptions = event_1.options.get(nextCode);
                 var finished = event_1.isFinalStage(nextCode);
                 var general = finished ? { text: "Event " + eventId + " Finished" } : undefined;
-                console.log(nextCode);
                 player.meta.eventMeta.updateCode(eventId, nextStage);
                 this.eventFinished(player, finished, socket, eventId, eventStage);
                 this._observer.notify({
@@ -1313,9 +1312,13 @@ var EventEngine = (function (_super) {
             var localMatch = player.location.local.index === event.location.local.index;
             var globalMatch = player.location.global.index === event.location.global.index;
             var endingRequirementsMet = _this.endingRequirementsCheck(player);
+            var isEventAlreadyComplete = player.meta.eventMeta.eventsCompleted.get(event.id);
             var notEnding = event.id !== 3;
             if (localMatch && globalMatch) {
-                if (notEnding || endingRequirementsMet) {
+                if (isEventAlreadyComplete) {
+                    _this.eventAlreadyCompleted(player, socket);
+                }
+                else if (notEnding || endingRequirementsMet) {
                     player.meta.context = Context_1.Context.EVENT;
                     player.meta.eventMeta.updateCode(event.id, 0);
                     _this._observer.notify({
@@ -1384,6 +1387,55 @@ var EventEngine = (function (_super) {
                     }]
             }, socket);
         }
+    };
+    EventEngine.prototype.eventAlreadyCompleted = function (player, socket) {
+        player.location.local.incrementX();
+        player.location.local.incrementY();
+        this._observer.endingValidationFail({
+            id: socket.id,
+            type: 4,
+            message: "This event has already been completed."
+        }, socket);
+        this._observer.roomMovement({
+            players: [{
+                    id: player.id,
+                    name: player.name,
+                    room: player.room,
+                    context: player.meta.context.toString(),
+                    type: CharacterTypes_1.CharacterTypes.PLAYER,
+                    location: {
+                        local: player.location.local.index,
+                        global: player.location.global.index
+                    }
+                }]
+        }, socket);
+        this._observer.notify({
+            id: player.id,
+            room: player.room,
+            flags: {
+                generalUpdate: false,
+                mapUpdate: false,
+                playerUpdate: true,
+                battleUpdate: false,
+                eventUpdate: false,
+                contextUpdate: false,
+                error: false
+            },
+            player: {
+                flags: {
+                    inventoryUpdate: false,
+                    equippedUpdate: false,
+                    statsUpdate: false,
+                    coordsUpdate: true
+                },
+                coords: {
+                    local: player.location.local.index,
+                    global: player.location.global.index
+                },
+                name: player.name,
+                context: player.meta.context
+            }
+        }, socket);
     };
     EventEngine.prototype.endingRequirementsFail = function (player, socket) {
         player.location.local.incrementX();

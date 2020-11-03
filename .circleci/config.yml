@@ -19,7 +19,7 @@ jobs:
       - run: echo machine api.heroku.com > ~/.netrc 
       - run: echo login $HEROKU_EMAIL > ~/.netrc 
       - run: echo password $HEROKU_KEY > ~/.netrc 
-      - run: machine git.heroku.com > ~/.netrc 
+      - run: echo machine git.heroku.com > ~/.netrc 
       - run: echo login $HEROKU_EMAIL > ~/.netrc 
       - run: echo password $HEROKU_KEY > ~/.netrc 
       - run: heroku login

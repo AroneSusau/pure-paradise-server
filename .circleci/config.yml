@@ -5,19 +5,18 @@ orbs:
 
 jobs:
   deploy:
+    executor: heroku/default
     docker: 
       - image: circleci/node:14.8.0
     steps:
       - checkout
+      - heroku/install
       - setup_remote_docker
       - run: npm install
       - run: npm test
       - run: npm run build
       - run: sudo apt-get update
-      - run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      - run: docker login --username=$HEROKU_EMAIL --password=$($HEROKU_KEY) registry.heroku.com
-      - run: heroku container:push web -a pure-paradise-v2 
-      - run: heroku container:release web -a pure-paradise-v2 
+      - heroku/push-docker-image
       
 workflows:
   pure-paradise-server:

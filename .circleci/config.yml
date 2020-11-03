@@ -16,8 +16,8 @@ jobs:
       - run: npm test
       - run: npm run build
       - heroku/push-docker-image:
-        process-types: web
-        recursive: true
+        parameters:
+          process-types: web
       
 workflows:
   pure-paradise-server:

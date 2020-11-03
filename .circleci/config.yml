@@ -16,7 +16,7 @@ jobs:
       - run: npm test
       - when:
           condition:
-            - equal: [ master, << pipeline.git.branch >> ]
+            - equal: [ master, {{ .Branch }} ]
           steps:
             - run: npm run build
             - heroku/push-docker-image

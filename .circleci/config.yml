@@ -13,7 +13,9 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
-      - run: docker build -t ppv2 .
+      - run: heroku container:login 
+      - run: heroku container:push web -a pure-paradise-v2 
+      - run: heroku container:release web -a pure-paradise-v2 
       
 workflows:
   pure-paradise-server:

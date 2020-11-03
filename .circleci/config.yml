@@ -1,7 +1,41 @@
 version: 2.1
+
 orbs:
-  heroku: circleci/heroku@0.0.10
+  heroku: circleci/heroku@1.2.3
+
+jobs:
+  test-only:
+    executor: heroku/default
+    docker: 
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+  test-and-deploy:
+    executor: heroku/default
+    docker: 
+      - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - heroku/install
+      - setup_remote_docker
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+      - run: docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+      - run: heroku container:push web -a $HEROKU_APP
+      - run: heroku container:release web -a $HEROKU_APP
+      
 workflows:
-  heroku_deploy:
+  pure-paradise-server:
     jobs:
-      - heroku/deploy-via-docker
+      - test-only:
+          filters:
+            branches:
+              ignore: master 
+      - test-and-deploy:
+          filters:
+            branches:
+              only: master
+    

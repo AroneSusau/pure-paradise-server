@@ -14,12 +14,8 @@ jobs:
       - setup_remote_docker
       - run: npm install
       - run: npm test
-      - when:
-          condition:
-            - equal: [ master,  $CIRCLE_BRANCH ]
-          steps:
-            - run: npm run build
-            - heroku/push-docker-image
+      - run: npm run build
+      - heroku/push-docker-image
       
 workflows:
   pure-paradise-server:

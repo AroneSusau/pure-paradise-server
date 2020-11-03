@@ -14,7 +14,7 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: sudo apt-get update
-      - run: sudo apt-get heroku
+      - run: sudo apt-get install heroku
       - run: heroku container:login 
       - run: heroku container:push web -a pure-paradise-v2 
       - run: heroku container:release web -a pure-paradise-v2 

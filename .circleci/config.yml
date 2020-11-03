@@ -4,35 +4,25 @@ orbs:
   heroku: circleci/heroku@1.2.3
 
 jobs:
-  test:
+  deploy:
     executor: heroku/default
     docker: 
       - image: circleci/node:14.8.0
     steps:
       - checkout
+      - heroku/install
       - setup_remote_docker
       - run: npm install
       - run: npm test
-      
-  deploy:
-    docker: 
-      - image: circleci/node:14.8.0
-    steps:
-      - checkout
-      - setup_remote_docker
-      - heroku/install
-      - run: npm install
-      - run: npm run build
-      - heroku/push-docker-image
-            
+      - when:
+          condition:
+            - equal: [ master,  $CIRCLE_BRANCH ]
+          steps:
+            - run: npm run build
+            - heroku/push-docker-image
       
 workflows:
   pure-paradise-server:
     jobs:
-      - test
-      - deploy:
-        filters:
-          branches:
-              only: master
-
+      - deploy
     

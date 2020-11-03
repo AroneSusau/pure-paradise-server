@@ -16,7 +16,7 @@ jobs:
       - run: npm test
       - when:
           condition:
-            - equal: [ master, {{ .Branch }} ]
+            - equal: [ master,  $CIRCLE_BRANCH ]
           steps:
             - run: npm run build
             - heroku/push-docker-image

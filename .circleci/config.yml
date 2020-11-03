@@ -7,6 +7,11 @@ jobs:
   deploy:
     docker: 
       - image: circleci/node:14.8.0
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: npm run build
       
 workflows:
   pure-paradise-server:

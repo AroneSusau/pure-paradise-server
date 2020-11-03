@@ -9,16 +9,18 @@ jobs:
       - image: circleci/node:14.8.0
     steps:
       - checkout
-      - restore_cache: 
-        key: v1-dependencies-{{ checksum "./package.json" }}
-      - run: npm install
-      - save_cache: 
-        paths:
-            - ./node_modules
-            - ./.npm
-            - ./.cache
-      - run: npm test
-      - run: npm run build
+      - run: 
+        name: Install dependicies
+        command: npm install
+      - run: 
+        name: Run tests
+        command: npm test
+      - run: 
+        name: Build project
+        command: npm run build
+      - run:
+        name: Build image
+        command: docker build -t ppv2 .
       
 workflows:
   pure-paradise-server:

@@ -16,9 +16,10 @@ jobs:
       - run: npm test
       - run: npm run build
       - when:
-        equal: [ master, << pipeline.git.branch >> ]
-        steps:
-          - heroku/push-docker-image
+        condition: 
+          equal: [ master, << pipeline.git.branch >> ]
+          steps:
+            - heroku/push-docker-image
       
 workflows:
   pure-paradise-server:

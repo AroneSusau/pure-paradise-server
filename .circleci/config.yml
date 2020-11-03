@@ -5,10 +5,6 @@ orbs:
 
 jobs:
   deploy:
-    parameters:
-      process-types: 
-        type: string
-        default: web
     executor: heroku/default
     docker: 
       - image: circleci/node:14.8.0
@@ -19,6 +15,7 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
+      - run: echo {{ pipeline.git.branch }}
       - heroku/push-docker-image:
         process-types: web
       

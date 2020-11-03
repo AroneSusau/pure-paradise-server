@@ -15,6 +15,7 @@ jobs:
       - run: npm run build
       - run: sudo apt-get update
       - run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+      - run: heroku login -i
       - run: heroku container:login 
       - run: heroku container:push web -a pure-paradise-v2 
       - run: heroku container:release web -a pure-paradise-v2 

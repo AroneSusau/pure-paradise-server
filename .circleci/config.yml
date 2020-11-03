@@ -5,6 +5,8 @@ orbs:
 
 jobs:
   deploy:
+    parameters:
+      process-types: web
     executor: heroku/default
     docker: 
       - image: circleci/node:14.8.0

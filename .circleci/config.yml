@@ -15,14 +15,14 @@ jobs:
       - run: npm run build
       - run: sudo apt-get update
       - run: curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      - run: >
-        touch ~/.netrc \
-        echo machine api.heroku.com \
-        echo login arone.s@live.com.au \
-        echo password $HEROKU_KEY \
-        machine git.heroku.com \
-        echo login arone.s@live.com.au \
-        echo password $HEROKU_KEY \
+      - run: |
+        touch ~/.netrc 
+        echo machine api.heroku.com 
+        echo login arone.s@live.com.au 
+        echo password $HEROKU_KEY 
+        machine git.heroku.com 
+        echo login arone.s@live.com.au 
+        echo password $HEROKU_KEY 
       - run: heroku login
       - run: heroku container:login 
       - run: heroku container:push web -a pure-paradise-v2 

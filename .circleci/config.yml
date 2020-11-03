@@ -10,18 +10,10 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: 
-        name: Install dependicies
-        command: npm install
-      - run: 
-        name: Run tests
-        command: npm test
-      - run: 
-        name: Build project
-        command: npm run build
-      - run:
-        name: Build image
-        command: docker build -t ppv2 .
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+      - run: docker build -t ppv2 .
       
 workflows:
   pure-paradise-server:

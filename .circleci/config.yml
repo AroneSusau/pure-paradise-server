@@ -15,7 +15,8 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
-      - heroku/push-docker-image
+      - heroku/push-docker-image:
+        process-types: process-types
       
 workflows:
   pure-paradise-server:

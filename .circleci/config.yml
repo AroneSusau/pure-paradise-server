@@ -15,9 +15,11 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
-      - run: echo {{ pipeline.git.branch }}
-      - heroku/push-docker-image:
-        process-types: web
+      - when:
+        condition:
+          - equal: [ master, << pipeline.git.branch >> ]
+        steps:
+          - heroku/push-docker-image:
       
 workflows:
   pure-paradise-server:

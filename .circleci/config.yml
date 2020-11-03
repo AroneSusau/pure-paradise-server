@@ -9,22 +9,19 @@ jobs:
       - image: circleci/node:14.8.0
     steps:
       - checkout
+      - setup_remote_docker
       - run: 
         name: Install dependicies
-        command: | 
-          npm install
+        command: npm install
       - run: 
         name: Run tests
-        command: |
-          npm test
+        command: npm test
       - run: 
         name: Build project
-        command: |
-          npm run build
+        command: npm run build
       - run:
         name: Build image
-        command: |
-          docker build -t ppv2 .
+        command: docker build -t ppv2 .
       
 workflows:
   pure-paradise-server:

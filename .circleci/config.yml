@@ -30,7 +30,7 @@ workflows:
   pure-paradise-server:
     jobs:
       - test
-      - deploy
+      - deploy:
         filters:
           branches:
               only: master

@@ -17,7 +17,7 @@ jobs:
       - run: npm install
       - run: npm test
       - run: npm run build
-      - push-docker-image:
+      - heroku/push-docker-image:
         process-types: web
       
 workflows:

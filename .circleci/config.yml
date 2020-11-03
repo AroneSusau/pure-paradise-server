@@ -18,7 +18,7 @@ jobs:
       - when:
         equal: [ master, << pipeline.git.branch >> ]
         steps:
-          - heroku/push-docker-image:
+          - heroku/push-docker-image
       
 workflows:
   pure-paradise-server:

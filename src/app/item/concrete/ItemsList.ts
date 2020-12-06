@@ -21,7 +21,7 @@ const items = new Map<number, Item>([
     [ItemId.FISTS, new Weapon(ItemId.FISTS, 'Fists', 'Your bare hands, old fashion but reliable.', 0, 1)],
     [ItemId.RUSTED_RAZOR, new Weapon(ItemId.RUSTED_RAZOR, 'Rusted Razor', 'A rusted, dull blade that is pathetic in every way, shape and form.', 150, 3)],
     [ItemId.KNIFE, new Weapon(ItemId.KNIFE, 'Knife', 'This thing is pointy.', 25, 2)],
-    [ItemId.WOODEN_SWORD, new Weapon(ItemId.WOODEN_SWORD, 'Wooden Sword', 'A sword carved out of wood, greater than man but lesser than the Draconical Sword.', 250, 10)],
+    [ItemId.WOODEN_SWORD, new Weapon(ItemId.WOODEN_SWORD, 'Wooden Sword', 'A sword carved out of wood, greater than a knife but lesser than the Draconical Sword.', 250, 10)],
     [ItemId.DRACONIC_SWORD, new Weapon(ItemId.DRACONIC_SWORD, 'Draconic Sword', 'A sword smithed from a dragon\'s skeleton, the strongest material in all of New Tretham ', 500, 25)],
 
     // Edible Weapon

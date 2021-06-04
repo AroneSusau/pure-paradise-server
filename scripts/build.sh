@@ -10,11 +10,12 @@ if [ -z "$STAGE" ]; then
   STAGE="development"
 fi
 
-echo 'Building project..\n'
+echo '\033[1;33m[RUNNING]\033[0m Building project'
 
 mkdir ./build
 
 # Build webpack project
-webpack --config ./webpack.config.js src/server/server.ts --mode=$STAGE
+# TODO: Revert back to original src when finishing testing
+webpack --config ./webpack.config.js src/server/server.ts --mode=$STAGE --silent
 
-echo 'Build Complete\n'
+echo '\n\033[1;32m[SUCCESS]\033[0m Build Complete'

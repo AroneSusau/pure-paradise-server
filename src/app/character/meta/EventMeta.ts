@@ -22,7 +22,7 @@ export class EventMeta {
     }
 
     public getScore(id: number) {
-        this._score.has(id) ? this._score.get(id) : 0
+        return this._score.has(id) ? this._score.get(id) : 0
     }
     
     public total(): number {

@@ -36,6 +36,11 @@ export class Observer {
         socket.to(obj.room).emit('room:chat', obj)
     }
 
+    // Inventory Updates
+    public inventoyOpened(obj: RoomUpdate, socket: Socket) {
+        socket.emit('client:command', obj)
+    }
+
     // Monster Updates
     public monsterSpawned(obj: RoomUpdate, socket: Socket) {
         socket.to(obj.room).emit('room:monster:spawned', obj)

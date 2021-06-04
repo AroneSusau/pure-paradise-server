@@ -1,6 +1,6 @@
-#! /bin/bash
+#! /bin/sh
 
-# Launches server locally
-npm -s run build
-echo 'Launching local server..\n'
-npm -s start
+npm run build development
+
+echo "\033[1;32m[SUCCESS]\033[0m Starting server"
+node build/server.js

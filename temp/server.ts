@@ -1,18 +1,22 @@
 import {PureParadise} from './PureParadise'
 import {Socket} from 'socket.io'
 
-const express = require('express')
 const config = require('config')
+const express = require('express')
 const app = express()
+const ppv2 = new PureParadise()
 const http = require('http').createServer(app)
-const port = process.env.PORT || 3000
+const port = config.get('web.port')
 const io = require('socket.io')(http, {
     ...config.get('web')
 })
 
+global["ppv2"] = ppv2;
+
+console.log('RUNNING TEST TEMP PROJECT')
+
 io.on('connect', (socket: Socket) => {
-    new PureParadise()
-        .connect(socket)
+    ppv2.connect(socket)
 })
 
 http.listen(port, () => {

@@ -13,12 +13,12 @@ const io = require('socket.io')(http, {
 
 global["ppv2"] = ppv2;
 
-console.log('RUNNING TEST TEMP PROJECT')
+console.log('\nRUNNING TEST TEMP PROJECT')
 
 io.on('connect', (socket: Socket) => {
     ppv2.connect(socket)
 })
 
 http.listen(port, () => {
-    console.log(`\x1b[1m\x1b[32m[SUCCESS]\x1b[0m Listening on port ${port}!`)
+    console.log(`\n\x1b[1m\x1b[32m[SUCCESS]\x1b[0m Listening on port ${port}!`)
 })

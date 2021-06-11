@@ -11,18 +11,20 @@ export default class MovementController extends IController {
   }
 
   public w(args: any[], socket: Socket) {
-    // console.log("w was called!")
+    socket.broadcast.emit(`${this.domain}:${this.source}`, "w was called!")
   }
 
   public a(args: any[], socket: Socket) {
-    console.log("a was called!")
+    socket.broadcast.emit(`${this.domain}:${this.source}`, "a was called!")
   }
 
   public s(args: any[], socket: Socket) {
-    console.log("s was called!")
+    socket.broadcast.emit(`${this.domain}:${this.source}`, "s was called!")
   }
 
   public d(args: any[], socket: Socket) {
-    console.log("d was called!")
+    socket.broadcast.emit(`${this.domain}:${this.source}`, {
+      player: socket.id,
+    })
   }
 }

@@ -1,8 +1,6 @@
 #! /bin/bash
 
-# Starts node server
-./clean.sh
-./build.sh
+npm run build development
 
 echo 'Starting server..\n'
 node build/server.js

@@ -16,6 +16,6 @@ mkdir ./build
 
 # Build webpack project
 # TODO: Revert back to original src when finishing testing
-webpack --config ./webpack.config.js src/server/server.ts --mode=$STAGE --silent
+webpack --config ./webpack.config.js temp/server.ts --mode=$STAGE --silent
 
 echo '\n\033[1;32m[SUCCESS]\033[0m Build Complete'

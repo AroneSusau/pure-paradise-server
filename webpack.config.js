@@ -3,7 +3,7 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   target: "node",
-  entry: "src/server/server.ts",
+  entry: "temp/server.ts",
   devtool: "hidden-source-map",
   module: {
     rules: [

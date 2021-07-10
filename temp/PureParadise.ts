@@ -1,14 +1,19 @@
 import {Socket} from 'socket.io'
 import IController from './controller/IController';
 
+import ConnectionController from './controller/ConnectionController'
 import MovementController from './controller/MovementController'
-import WorldController from './controller/WorldController'
+import GlobalController from './controller/GlobalController'
 
-import Route from './util/Route';
+import { Logger } from './util/Logger';
+import { Route } from './util/Route';
+import { IDatabase } from './data/IDatabase';
+import { LocalDB } from './data/LocalDB';
 
 export class PureParadise {
     
     private routes: Array<Route> = []
+    private database: IDatabase = new LocalDB()
     
     /**
      * Add Controllers here to include more routes.
@@ -23,10 +28,14 @@ export class PureParadise {
      * endpoint is called, it will execute the method with the same name.
      */
     private controllers: Array<IController> = [
-        new MovementController(),
-        new WorldController(),
+        new ConnectionController(this.database),
+        new MovementController(this.database),
+        new GlobalController(this.database),
     ];
 
+    /**
+     * Iterate through Controllers and build all routes.
+     */
     constructor() {
         this.controllers.forEach((controller) => {
             Object
@@ -36,6 +45,9 @@ export class PureParadise {
         })
     }
 
+    /**
+     * Configure all route endpoints and instantiate client object on client connection.
+     */
     public connect(socket: Socket) {
         this.controllers.forEach(controller => this.routes
             .filter(route => route.source == controller.source)
@@ -44,20 +56,39 @@ export class PureParadise {
                 (args: any[]) => controller[route.action](args, socket))))
 
         socket.onAny((...args) => this.default(args, socket))
+        socket.on('disconnect', (...args) => this.disconnect(args, socket))
     }
 
+    /**
+     * Disconnect client and player information.
+     */
+    public disconnect(args: any[], socket: Socket) {
+        this.database.unsetClient(socket.id)
+        socket.broadcast.emit(`client:connection:leave`, { id: socket.id })
+        Logger.request(`Client: ${socket.id} - Route: disconnect`)
+    }
+
+    /**
+     * Default endpoint with general logging.
+     */
     public default(args: any[], socket: Socket) {
         socket.eventNames().includes(args[0]) ?
             this.log(args, socket) :
             this.error(args, socket)
     }
 
+    /**
+     * Generic logging message.
+     */
     public log(args: any[], socket: Socket) {
-        console.log(`\x1b[1m\x1b[35m[REQUEST]\x1b[0m User: ${socket.id} - Route: ${args[0]} - Command: "${args[1]}" [${new Date().toUTCString()}]`)
+        Logger.request(`Client: ${socket.id} - Route: ${args[0]} - Command: "${args[1]}"`)
     }
 
+    /**
+     * Error logging message.
+     */
     public error(args: any[], socket: Socket) {
-        console.log(`\x1b[1m\x1b[31m[ERROR]\x1b[0m User: ${socket.id} - Route: ${args[0]} - Command: "${args[1]}" [${new Date().toUTCString()}]`)
-        socket.emit('error', `Route ${args[0]} does not exist.`)
+        Logger.error(`Client: ${socket.id} - Route: ${args[0]} - Command: "${args[1]}"`)
+        socket.emit('error', `Command ${args[1]} does not exist.`)
     }
 }

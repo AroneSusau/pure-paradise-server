@@ -1,13 +1,18 @@
 import { Socket } from "socket.io"
+import { IDatabase } from "../data/IDatabase"
 import IController from "./IController"
 
-export default class WorldController extends IController {
+export default class GlobalController extends IController {
+  
+  protected database: IDatabase
 
-  constructor() {
+  constructor(database: IDatabase) {
     super()
 
     this.domain = "client"
-    this.source = "world"
+    this.source = "global"
+
+    this.database = database
   }
 
   public chat(args: any[], socket: Socket) {

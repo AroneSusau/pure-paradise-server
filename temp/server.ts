@@ -1,5 +1,6 @@
 import {PureParadise} from './PureParadise'
 import {Socket} from 'socket.io'
+import { Logger } from './util/Logger'
 
 const config = require('config')
 const express = require('express')
@@ -13,12 +14,12 @@ const io = require('socket.io')(http, {
 
 global["ppv2"] = ppv2;
 
-console.log('\nRUNNING TEST TEMP PROJECT')
+console.log('\nRUNNING TEST TEMP PROJECT\n')
 
 io.on('connect', (socket: Socket) => {
     ppv2.connect(socket)
 })
 
 http.listen(port, () => {
-    console.log(`\n\x1b[1m\x1b[32m[SUCCESS]\x1b[0m Listening on port ${port}!`)
+    Logger.success(`Listening on port ${port}!`)
 })

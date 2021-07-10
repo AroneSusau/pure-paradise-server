@@ -1,13 +1,18 @@
 import { Socket } from "socket.io"
+import { IDatabase } from "../data/IDatabase"
 import IController from "./IController"
 
 export default class MovementController extends IController {
+  
+  protected database: IDatabase
 
-  constructor() {
+  constructor(database: IDatabase) {
     super()
 
     this.domain = "client"
     this.source = "movement"
+
+    this.database = database
   }
 
   public w(args: any[], socket: Socket) {

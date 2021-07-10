@@ -1,6 +1,6 @@
 import IController from "../controller/IController";
 
-export default class Route {
+export class Route {
   
   public endpoint: string
   public controller: string

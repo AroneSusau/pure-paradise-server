@@ -1,5 +1,6 @@
 import { Socket } from "socket.io"
 import { IDatabase } from "../data/IDatabase"
+import { MapManager } from "../maps/MapManager"
 import { Player } from "../model/Player"
 import { Logger } from "../util/Logger"
 import { Point } from "../util/Point"
@@ -19,12 +20,9 @@ export default class MovementController extends IController {
   }
 
   public join(args: any, socket: Socket) {    
-    const player = new Player()
+    const player = new Player(socket.id, args)
     const local  = new Point(10, 10)
     const global = new Point(0, 0)
-
-    player.id = socket.id
-    player.name = args
     
     this.database.players.setPlayer(player)
     this.database.localPosition.setPosition(socket.id, local)
@@ -32,36 +30,25 @@ export default class MovementController extends IController {
 
     socket.broadcast.emit(`${this.domain}:${this.source}:player`, {
       playerid: player.id,
+      message: `${player.name} has joined the adventure!`,
+      playersCount: this.database.players.getPlayersCount(),
+      context: player.context,
       local,
-      global
+      global,
+      map: player.map
     })
 
     socket.emit(`${this.domain}:${this.source}:join`, {
       message: `Welcome ${player.name}`,
       local: local,
       global: global,
-      raw: [
-        2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-        2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-        2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3,
-        2, 2, 2, 2, 3, 3, 5, 5, 5, 5, 5, 3, 3, 2, 2, 2, 2, 2, 3, 3,
-        2, 2, 3, 3, 3, 10, 9, 9, 9, 9, 9, 11, 3, 2, 2, 2, 2, 2, 3, 3,
-        2, 2, 3, 3, 10, 9, 76, 84, 84, 73, 88, 9, 11, 2, 2, 2, 2, 2, 3, 3,
-        3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 3, 3,
-        3, 3, 3, 3, 4, 1, 1, 5, 5, 5, 1, 1, 4, 3, 2, 2, 2, 3, 3, 3,
-        3, 3, 3, 3, 4, 7, 8, 4, 0, 4, 7, 8, 4, 3, 3, 3, 3, 3, 3, 3,
-        3, 3, 3, 3, 4, 1, 1, 4, 13, 4, 1, 1, 4, 3, 3, 3, 3, 3, 3, 3,
-        3, 3, 3, 3, 4, 5, 5, 4, 5, 4, 5, 5, 4, 3, 3, 3, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3,
-        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3,
-        3, 3, 3, 2, 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 3, 3, 3, 3,
-        3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 2, 2, 2, 2, 3, 3, 3, 3
-    ]
+      playersCount: this.database.players.getPlayersCount(),
+      context: player.context,
+      health: player.health,
+      hunger: player.hunger,
+      thirst: player.thirst,
+      map: player.map,
+      raw: MapManager.maps.get(player.map).raw
     })    
   }
 }

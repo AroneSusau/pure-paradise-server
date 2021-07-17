@@ -17,6 +17,10 @@ export class PlayerManager extends IPlayer {
     })
   }
 
+  getPlayersCount(): number {
+    return this.players.size
+  }
+
   setPlayer(player: Player) {
     this.players.set(player.id, player)
   }

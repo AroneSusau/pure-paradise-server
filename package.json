@@ -45,7 +45,7 @@
     "@types/node": "13.7.1",
     "@types/socket.io": "^2.1.13",
     "@types/socket.io-client": "^1.4.35",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "jest": "^25.1.0",
     "ts-jest": "^26.4.3",
     "ts-loader": "6.2.1",
